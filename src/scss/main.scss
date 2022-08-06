@@ -1,0 +1,109 @@
+@import url('//db.onlinewebfonts.com/c/ce39f77aca6a7c59706b7748ff07b70e?family=A+Jannat+LT');
+/* 
+    A- Variables Styles .
+    B- Style Genaral Classes .
+ */
+
+ // A- Variables Styles 
+ @font-face {
+  font-family: "AJannatLT";
+  src: url("A\ Jannat\ LT.ttf");
+  }
+ :root {
+   --white-color: #ffffff;
+   --black-color: #000000;
+   // Primary Colors
+  --primary-one-color: #d7515e;
+  --primary-two-color: #5d5d5d;
+  --primary-three-color: #868558;
+  
+  // Font Family
+  --font-ar: AJannatLT;
+  // Font Size
+  --font-heading-size : 40px;
+  --font-title-size:24px;
+  --font-paragraphone-size:24px;
+  --font-paragraphtwo-size:16px;
+}
+
+// Buttons Styles
+
+ .button-active{
+  pointer-events: auto;
+  box-shadow: 5px 3px 24px 0 rgba(0, 0, 0, 0.09);
+  background-image: linear-gradient(to bottom, #ffaf60 -55%, #f39171 -12%, #de5b8f);
+ }
+
+ .button-disabled{
+  pointer-events: none;
+  opacity: 0.51;
+  box-shadow: 5px 3px 24px 0 rgba(0, 0, 0, 0.09);
+  background-image: linear-gradient(to bottom, #ffaf60 -55%, #f39171 -12%, #de5b8f);
+ }
+
+
+ // B- Style Genaral Classes .
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-ar);
+}
+a {
+  text-decoration: none;
+}
+body{
+  user-select: none;
+  color: var(--black-color);
+  
+}
+ul {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style-type: none;
+  }
+}
+img {
+  max-width: 100%;
+}
+.clearfix {
+  clear: both;
+}
+.row {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.btn{
+  &:focus{
+    box-shadow: none;
+  }}
+  .form-control{
+    &:focus {
+      box-shadow: none
+    }
+  }
+.hide{
+  display: none;
+}
+.show{
+  display: block;
+}
+  .mb_20{
+    margin-bottom: 20px;
+  }
+  .errorfiled{
+    color: red
+  }
+  input[type='checkbox'] {
+    accent-color: #fb6f7e!important;
+  }
+  input[type='radio']{
+    accent-color: #fb6f7e!important;
+  }
+
+  @import "../layout/navbar/_style.scss";
+  @import "../pages/home/_style.scss";
+  @import "../layout/footer/_style.scss";
+  @import "../components/products/_style.scss";
+  

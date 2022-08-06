@@ -1,0 +1,136 @@
+footer {
+    width: 100%;
+    height: auto;
+    background-color: rgba(82, 81, 81, 0.1);
+
+    .footersms {
+        margin: 50px 0px;
+
+        h4 {
+            font-size: 26px;
+            color: #309b8f;
+        }
+
+        .input {
+            margin: 40px 0px;
+
+            input {
+                width: 90%;
+                height: 40px;
+                font-size: 16px;
+                font-weight: normal;
+                color: rgba(51, 51, 51, 0.5);
+                padding: 0px 10px;
+                font-size: 14px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+
+                &:focus-visible {
+                    border: none;
+                    border-radius: 5px;
+                }
+            }
+        }
+
+        .btn-send {
+            width: 140px;
+            height: 45px;
+            border-radius: 12px;
+            background-color: #80804d;
+            font-size: 14px;
+            font-weight: normal;
+            text-align: center;
+            color: #fff;
+        }
+    }
+
+    .footerlist {
+        margin: 70px 0px;
+
+        h5 {
+            font-size: 24px;
+            color: #309b8f;
+        }
+
+        ul {
+            li {
+                margin: 10px 0px;
+
+                a {
+                    color: #333;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+            }
+        }
+
+    }
+
+    .footerlogo {
+        margin: 70px 0px;
+
+        .logo {
+
+            display: block;
+            width: 210px;
+            height: 85px;
+            margin: 0px auto 65px auto;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .scoulemedia {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+
+            li {
+                a {
+                    img {
+                        width: 35px;
+                        height: 35px;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .footer-end{
+        border-top: 1px solid #ffffff;
+        padding: 30px 0px;
+    width: 100%;
+        ul{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            li{
+                margin-right: 25px;
+                a{
+                    
+                font-size: 16px;
+                color: #333;
+                }
+            }
+        }
+    }
+}
+
+
+
+.languagear {
+    footer {
+        direction: rtl;
+        font-family: var(--font-ar);
+    }
+}
+
+.languageen {
+    footer {
+        direction: ltr;
+    }
+}
