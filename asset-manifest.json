@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/zahr/static/css/main.6b2ea52f.css",
+    "main.js": "/zahr/static/js/main.15fa918b.js",
+    "static/js/787.9aa1c772.chunk.js": "/zahr/static/js/787.9aa1c772.chunk.js",
+    "static/media/header.png": "/zahr/static/media/header.a1b5415a98ddcec18bee.png",
+    "static/media/image-4.png": "/zahr/static/media/image-4.334f3008c005f49e9bf7.png",
+    "static/media/image-1.png": "/zahr/static/media/image-1.0d2b61e65d35ab0793d9.png",
+    "static/media/Image-5.png": "/zahr/static/media/Image-5.dc86ea162487f9bf45ff.png",
+    "static/media/image-proudect-one.png": "/zahr/static/media/image-proudect-one.01c50cefff30d3c7bf8c.png",
+    "static/media/Image-3.png": "/zahr/static/media/Image-3.40e5b5efff041c5ed244.png",
+    "static/media/image-3.png": "/zahr/static/media/image-3.7d27726c0a80dda48583.png",
+    "static/media/image-2.png": "/zahr/static/media/image-2.c0dc09435f1c08c3d8bf.png",
+    "static/media/backgroud.png": "/zahr/static/media/backgroud.0e4ab982f515642e70a2.png",
+    "static/media/A Jannat LT.ttf": "/zahr/static/media/A Jannat LT.f331a394d97fa5a5850f.ttf",
+    "static/media/logo.png": "/zahr/static/media/logo.f1acba88f410fabb6fd8.png",
+    "static/media/offer.jpg": "/zahr/static/media/offer.ac7bf4cea69f24a5cb3c.jpg",
+    "static/media/woman.png": "/zahr/static/media/woman.3f889d0af5f26871fbcc.png",
+    "static/media/star.svg": "/zahr/static/media/star.77a7d217eea3d1b40c4431b8a583802d.svg",
+    "static/media/left-arrow.svg": "/zahr/static/media/left-arrow.c37d02d5706a306c9ced69c06ab0673a.svg",
+    "index.html": "/zahr/index.html",
+    "static/media/heart-cart.svg": "/zahr/static/media/heart-cart.fb8246941264cf47c6aa9f310952d992.svg",
+    "static/media/icon_remove.svg": "/zahr/static/media/icon_remove.eb79c7866bbd8b9cacdf2d892bca1898.svg",
+    "static/media/chevron-up-solid.svg": "/zahr/static/media/chevron-up-solid.614d3fa14dd3ae46d6c4b7b765766adc.svg",
+    "static/media/chevron-left-solid.svg": "/zahr/static/media/chevron-left-solid.7cbb7b474d7a0a1474cbb1a8d040e167.svg",
+    "static/media/chevron-down-solid.svg": "/zahr/static/media/chevron-down-solid.2d65dd0e43357a9312766a1b8ca479c0.svg",
+    "static/media/user-revewe.svg": "/zahr/static/media/user-revewe.c898c0bbe0195d3da52de412334ea36f.svg",
+    "main.6b2ea52f.css.map": "/zahr/static/css/main.6b2ea52f.css.map",
+    "main.15fa918b.js.map": "/zahr/static/js/main.15fa918b.js.map",
+    "787.9aa1c772.chunk.js.map": "/zahr/static/js/787.9aa1c772.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6b2ea52f.css",
+    "static/js/main.15fa918b.js"
+  ]
+}
