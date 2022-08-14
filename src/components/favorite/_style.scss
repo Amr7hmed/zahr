@@ -1,0 +1,171 @@
+.favorite {
+    margin: 50px 0px;
+    &__header {
+        height: 60px;
+        margin: 28.7px 0px 60px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #000;
+
+        h5 {
+            font-size: 32px;
+            text-align: center;
+
+        }
+    }
+}
+
+.cardfav {
+    display: flex;
+    flex-direction: row;
+    height: 230px;
+    width: 70%;
+    margin: 50px 0px;
+
+    .img {
+        width: 200px;
+        height: 230px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .contenet {
+        padding: 25px 15px 0px 15px;
+        width: calc(100% - 200px);
+        height: 230px;
+
+        .top {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+
+            h6 {
+                font-size: 20px;
+                text-align: right;
+                color: #655959;
+            }
+
+            .heart {
+                width: 28px;
+                height: 28px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .price {
+            margin: 15px 0px;
+            display: block;
+            font-size: 24px;
+            color: #ff5069;
+        }
+
+
+        .color,
+        .size {
+            margin: 25px 0px;
+            display: block;
+
+            span {
+                font-size: 16px;
+                font-weight: normal;
+
+                &:first-of-type {
+                    margin-left: 40px;
+                    color: #9f9f9f;
+                }
+
+                &:last-of-type {
+                    color: #000;
+                }
+            }
+        }
+    }
+}
+
+.languagear {
+    .favorite {
+        direction: rtl;
+    }
+
+}
+
+.languageen {}
+
+// 4- 1- Style Mask Component To Media Queris Large.
+@media screen and (max-width: 991px) {
+    .favorite {
+        margin: 30px 0px;
+    }
+    
+    .cardfav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        width: 70%;
+        margin: 15px auto;
+
+        .img {
+            width: 95%;
+            height: 280px;
+        }
+
+        .contenet {
+            padding: 10px 0px ;
+            width: 95%;
+            height: auto;
+
+            .top {
+                margin-bottom: 10px;
+
+                h6 {
+                    font-size: 16px;
+                }
+
+                .heart {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            .price {
+                margin: 10px 0px;
+                font-size: 16px;
+            }
+
+
+            .color,
+            .size {
+                margin: 10px 0px;
+
+                span {
+                    font-size: 14px;
+
+                    &:first-of-type {
+                        margin-left: 20px;
+                    }
+
+                }
+            }
+        }
+    }
+}  
+
+
+// 1- 2- Style Footer Component To Media Queris Samll.
+@media screen and (max-width: 576px) {
+
+}

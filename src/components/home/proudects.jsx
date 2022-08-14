@@ -1,6 +1,7 @@
 import React from 'react'
 import CardProudects from '../cards/cardproudects';
 import { NavLink } from 'react-router-dom';
+import Image from '../../images/product/image-1.png';
 
 
 
@@ -13,27 +14,27 @@ function SectionProudects() {
         <div className="container">
           <div className="row">
             <div className="col-lg-4 col-md-6 col-sm-12">
-              <CardProudects Image={"https://www.aaronfaber.com/wp-content/uploads/2017/03/product-placeholder-wp.jpg"} Title={"زهور طبيعيه"} Price={"74.75"}/>
+              <CardProudects Image={Image} Title={"زهور طبيعيه"} Price={"74.75"} Id={"1"}/>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">
-              <CardProudects Image={"https://www.aaronfaber.com/wp-content/uploads/2017/03/product-placeholder-wp.jpg"} Title={"زهور طبيعيه"} Price={"74.75"}/>
+              <CardProudects Image={Image} Title={"زهور طبيعيه"} Price={"74.75"} Id={"1"}/>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">
-              <CardProudects Image={"https://www.aaronfaber.com/wp-content/uploads/2017/03/product-placeholder-wp.jpg"} Title={"زهور طبيعيه"} Price={"74.75"}/>
+              <CardProudects Image={Image} Title={"زهور طبيعيه"} Price={"74.75"} Id={"1"}/>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">
-              <CardProudects Image={"https://www.aaronfaber.com/wp-content/uploads/2017/03/product-placeholder-wp.jpg"} Title={"زهور طبيعيه"} Price={"74.75"}/>
+              <CardProudects Image={Image} Title={"زهور طبيعيه"} Price={"74.75"} Id={"1"}/>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">
-              <CardProudects Image={"https://www.aaronfaber.com/wp-content/uploads/2017/03/product-placeholder-wp.jpg"} Title={"زهور طبيعيه"} Price={"74.75"}/>
+              <CardProudects Image={Image} Title={"زهور طبيعيه"} Price={"74.75"} Id={"1"}/>
             </div>
             <div className="col-lg-4 col-md-6 col-sm-12">
-              <CardProudects Image={"https://www.aaronfaber.com/wp-content/uploads/2017/03/product-placeholder-wp.jpg"} Title={"زهور طبيعيه"} Price={"74.75"}/>
+              <CardProudects Image={Image} Title={"زهور طبيعيه"} Price={"74.75"} Id={"1"}/>
             </div>
           </div>
         </div>
 
-      <NavLink to="/products"  className="show_all">عرض الكل</NavLink>
+      <NavLink to="/proudects"  className="show_all">عرض الكل</NavLink>
         </section>
   )
 }

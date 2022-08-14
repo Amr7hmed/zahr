@@ -5,9 +5,15 @@ import { Authcontext } from './store/context.js';
 import Navbar from './layout/navbar/index.jsx';
 import Footer from './layout/footer/index.jsx';
 import Home from './pages/home/index.jsx';
-import Cart from './pages/cart';
-import Favorite from './pages/favorite';
-import Products from './pages/products/products.jsx';
+import Cart from './pages/cart/index.jsx';
+import Favorite from './pages/favorite/index.jsx';
+import Proudects from './pages/proudects/proudects.jsx';
+import ProductsCategories from './pages/proudects/proudectscategories.jsx';
+import Proudect from './pages/proudect/index.jsx';
+import Profile from "./pages/profile/index.jsx";
+import EditeProfile from './components/profile/editeprofile.jsx';
+import CheckOut from './pages/checkout/index.jsx';
+import CheckOutData from './pages/checkout/data.jsx';
 
 function App() {
   const authcontext = useContext(Authcontext);
@@ -19,10 +25,21 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} exact />
           <Route path="/cart" element={<Cart />} exact />
-          <Route path="/favorite" element={<Favorite />} exact />
-          <Route path="/products" element={<Products />} exact />
+          <Route path="/checkout" element={<CheckOut />} exact />
+          <Route path="/checkoutdata" element={<CheckOutData />} exact />
           
+          <Route path="/favorite" element={<Favorite />} exact />
+          <Route path="/proudects" element={<Proudects />} exact />
+          <Route path="/proudectscategories/:id" element={<ProductsCategories/>} exact />
+          <Route path="/proudect/:id" element={<Proudect />} exact />
+          <Route path="/profile" element={<Profile/>} exact />
+          <Route path="/editeprofile" element={<EditeProfile/>} exact />
+          <Route path="/editeprofile" element={<EditeProfile/>} exact />
 
+          
+          
+          
+          
           
         </Routes>
 

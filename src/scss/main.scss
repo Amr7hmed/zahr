@@ -1,109 +1,145 @@
 @import url('//db.onlinewebfonts.com/c/ce39f77aca6a7c59706b7748ff07b70e?family=A+Jannat+LT');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400;500;600&display=swap');
 /* 
     A- Variables Styles .
     B- Style Genaral Classes .
  */
 
- // A- Variables Styles 
- @font-face {
+// A- Variables Styles 
+@font-face {
   font-family: "AJannatLT";
   src: url("A\ Jannat\ LT.ttf");
-  }
- :root {
-   --white-color: #ffffff;
-   --black-color: #000000;
-   // Primary Colors
+}
+
+:root {
+  --white-color: #ffffff;
+  --black-color: #000000;
+  // Primary Colors
   --primary-one-color: #d7515e;
   --primary-two-color: #5d5d5d;
   --primary-three-color: #868558;
-  
+
   // Font Family
   --font-ar: AJannatLT;
+  --font-en: "Poppins", sans-serif;
+  --font-number: 'DynaPuff', cursive;
+
   // Font Size
-  --font-heading-size : 40px;
-  --font-title-size:24px;
-  --font-paragraphone-size:24px;
-  --font-paragraphtwo-size:16px;
+  --font-heading-size: 40px;
+  --font-title-size: 24px;
+  --font-paragraphone-size: 24px;
+  --font-paragraphtwo-size: 16px;
 }
 
 // Buttons Styles
 
- .button-active{
+.button-active {
   pointer-events: auto;
-  box-shadow: 5px 3px 24px 0 rgba(0, 0, 0, 0.09);
-  background-image: linear-gradient(to bottom, #ffaf60 -55%, #f39171 -12%, #de5b8f);
- }
+}
 
- .button-disabled{
+.button-disabled {
   pointer-events: none;
-  opacity: 0.51;
-  box-shadow: 5px 3px 24px 0 rgba(0, 0, 0, 0.09);
-  background-image: linear-gradient(to bottom, #ffaf60 -55%, #f39171 -12%, #de5b8f);
- }
+}
 
 
- // B- Style Genaral Classes .
+// B- Style Genaral Classes .
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-ar);
 }
+
 a {
   text-decoration: none;
 }
-body{
+
+body {
   user-select: none;
   color: var(--black-color);
-  
+
 }
+
 ul {
   margin: 0;
   padding: 0;
+
   li {
     list-style-type: none;
   }
 }
+
 img {
   max-width: 100%;
 }
+
 .clearfix {
   clear: both;
 }
+
 .row {
   padding: 0 !important;
   margin: 0 !important;
 }
-.btn{
-  &:focus{
+
+.btn {
+  &:focus {
     box-shadow: none;
-  }}
-  .form-control{
-    &:focus {
-      box-shadow: none
-    }
   }
-.hide{
+}
+
+.form-control {
+  &:focus {
+    box-shadow: none
+  }
+}
+
+.hide {
   display: none;
 }
-.show{
+
+.show {
   display: block;
 }
-  .mb_20{
-    margin-bottom: 20px;
-  }
-  .errorfiled{
-    color: red
-  }
-  input[type='checkbox'] {
-    accent-color: #fb6f7e!important;
-  }
-  input[type='radio']{
-    accent-color: #fb6f7e!important;
-  }
 
-  @import "../layout/navbar/_style.scss";
-  @import "../pages/home/_style.scss";
-  @import "../layout/footer/_style.scss";
-  @import "../components/products/_style.scss";
-  
+.mb_20 {
+  margin-bottom: 20px;
+}
+
+.errorfiled {
+  color: red
+}
+
+input[type='checkbox'] {
+  accent-color: #5c6349 !important;
+}
+
+input[type='radio'] {
+  accent-color: #5c6349 !important;
+}
+
+
+
+
+.languagear {
+  font-family: var(--font-ar);
+}
+
+.languageen {
+}
+
+
+@import "../components/home/_style.scss";
+@import "../components/proudects/_style.scss";
+@import "../components/fillter/_style.scss";
+@import "../components/proudect/_style.scss";
+@import "../components/cart/_style.scss";
+@import "../components/checkout/_style.scss";
+@import "../components/profile/_style.scss";
+@import "../components/favorite/_style.scss";
+
+@import "../layout/navbar/_style.scss";
+@import "../layout/footer/_style.scss";
+@import "../layout/loading/_style.scss";

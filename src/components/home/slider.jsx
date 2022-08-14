@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
 function Slider() {
   return (
@@ -11,9 +12,8 @@ function Slider() {
         <p>
           تحف وزهور عالية الجودة يتم شحنها إليك مباشرة
         </p>
-        <button className='btn'>
-          تسوق الان
-        </button>
+        
+      <NavLink to="/proudects"  className="btn">تسوق الان </NavLink>
       </div>
     </div>
   )

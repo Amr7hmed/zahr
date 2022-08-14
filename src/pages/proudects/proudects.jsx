@@ -6,12 +6,12 @@ import CardProudects from "../../components/cards/cardproudects";
 import Iconleft from "../../images/icon/left-arrow.svg";
 import Image from "../../images/product/images.jpeg";
 
-function Products() {
+function Proudects() {
   const handlePageClick = (data) => {
     let number = 1 + data.selected;
   };
   return (
-    <section className="products">
+    <section className="proudects__full">
       <div className="container">
         <div className="link">
           <ul>
@@ -22,7 +22,7 @@ function Products() {
               <img src={Iconleft} alt="" />
             </li>
             <li>
-              <NavLink to="/products">أحدث المنتجات </NavLink>
+              <NavLink to="/proudects">أحدث المنتجات </NavLink>
             </li>
           </ul>
         </div>
@@ -32,7 +32,7 @@ function Products() {
               Image={Image}
               Title={"زهور طبيعيه"}
               Price={"74.75"}
-              Style="stylecardproudects"
+              Style="stylecardproudects" Id={"1"}
             />
           </div>
           <div className="col-lg-4 col-md-6 col-sm-12">
@@ -40,7 +40,7 @@ function Products() {
               Image={Image}
               Title={"زهور طبيعيه"}
               Price={"74.75"}
-              Style="stylecardproudects"
+              Style="stylecardproudects" Id={"1"}
             />
           </div>
           <div className="col-lg-4 col-md-6 col-sm-12">
@@ -48,7 +48,7 @@ function Products() {
               Image={Image}
               Title={"زهور طبيعيه"}
               Price={"74.75"}
-              Style="stylecardproudects"
+              Style="stylecardproudects" Id={"1"}
             />
           </div>
 
@@ -57,7 +57,7 @@ function Products() {
               Image={Image}
               Title={"زهور طبيعيه"}
               Price={"74.75"}
-              Style="stylecardproudects"
+              Style="stylecardproudects" Id={"1"}
             />
           </div>
           <div className="col-lg-4 col-md-6 col-sm-12">
@@ -65,7 +65,7 @@ function Products() {
               Image={Image}
               Title={"زهور طبيعيه"}
               Price={"74.75"}
-              Style="stylecardproudects"
+              Style="stylecardproudects" Id={"1"}
             />
           </div>
           <div className="col-lg-4 col-md-6 col-sm-12">
@@ -73,7 +73,7 @@ function Products() {
               Image={Image}
               Title={"زهور طبيعيه"}
               Price={"74.75"}
-              Style="stylecardproudects"
+              Style="stylecardproudects" Id={"1"}
             />
           </div>
           <div className="col-lg-4 col-md-6 col-sm-12">
@@ -81,7 +81,7 @@ function Products() {
               Image={Image}
               Title={"زهور طبيعيه"}
               Price={"74.75"}
-              Style="stylecardproudects"
+              Style="stylecardproudects" Id={"1"}
             />
           </div>
           <div className="col-lg-4 col-md-6 col-sm-12">
@@ -89,7 +89,7 @@ function Products() {
               Image={Image}
               Title={"زهور طبيعيه"}
               Price={"74.75"}
-              Style="stylecardproudects"
+              Style="stylecardproudects" Id={"1"}
             />
           </div>
           <div className="col-lg-4 col-md-6 col-sm-12">
@@ -97,6 +97,7 @@ function Products() {
               Image={Image}
               Title={"زهور طبيعيه"}
               Price={"74.75"}
+              Style="stylecardproudects" Id={"1"}
             />
           </div>
         </div>
@@ -125,4 +126,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default Proudects;

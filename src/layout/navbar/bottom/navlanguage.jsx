@@ -1,6 +1,5 @@
-import { faLanguage } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react'
+import React from 'react';
+import RedFlag from "../../../images/icon/red-flag.png";
 
 function NavLanguage(props) {
     const { language, setLanguage } = props;
@@ -24,7 +23,7 @@ function NavLanguage(props) {
                 
             {language === "Ar" ? "الانجليزية" : "العربيه"}
             </span>
-            <FontAwesomeIcon icon={faLanguage} />
+            <img src={RedFlag} alt="Red Flag" />
         </button>
         </div>
     )

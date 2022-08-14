@@ -2,9 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 function CardCategories(props) {
-    const {Image ,Title}=props;
+    const {Image ,Title , Id}=props;
   return (
-    <NavLink to="/" className='categories_card'>
+    <NavLink to={`/proudectscategories/${Id}`} className='categories_card'>
         <div className="img">
             <img src={Image} alt="" />
         </div>

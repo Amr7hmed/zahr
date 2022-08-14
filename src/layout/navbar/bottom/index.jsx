@@ -5,6 +5,8 @@ import NavLanguage from './navlanguage.jsx';
 import InputSerarch from './inputserarch.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faHeart, faPhone } from '@fortawesome/free-solid-svg-icons';
+import CartIcon from "../../../images/icon/icon-cart.png";
+import HeartIcon from "../../../images/icon/icon-heart.png";
 
 function NavbarBottom() {
   return (
@@ -14,7 +16,7 @@ function NavbarBottom() {
         <div className='list'>
           <div className="left">
 
-            <NavLink to="/" className="user">
+            <NavLink to="/profile" className="user">
               <img src={User} alt="user"
                 onError={(e) => {
                   e.target.onerror = null;
@@ -24,11 +26,11 @@ function NavbarBottom() {
             </NavLink>
 
             <NavLink to="/favorite" className="favort">
-              <FontAwesomeIcon icon={faHeart} />
+              <img src={HeartIcon} alt="" />
             </NavLink>
 
             <NavLink to="/cart" className="cart">
-              <FontAwesomeIcon icon={faCartShopping} />
+              <img src={CartIcon} alt="" />
             </NavLink>
 
             <span className="phone">
@@ -39,7 +41,7 @@ function NavbarBottom() {
             </span>
           </div>
           <div className="right">
-            <NavLanguage />
+            <NavLanguage language={"Ar"}/>
             <InputSerarch />
           </div>
         </div>

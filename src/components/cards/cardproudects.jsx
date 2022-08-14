@@ -3,10 +3,10 @@ import CartIcon from "../../images/icon/heart-cart.svg";
 import { NavLink } from 'react-router-dom';
 
 function CardProudects(props) {
-  const {Image,Title,Price ,Style}=props;
+  const {Image,Title,Price ,Style , Id}=props;
   return (
     <div className={Style +" proudects_card"}>
-      <NavLink to="/" className="img">
+      <NavLink to={`/proudect/${Id}`} className="img">
         <img src={Image} alt="" 
                         onError={(e) => {
                           e.target.onerror = null;
