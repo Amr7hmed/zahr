@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/zahr/static/css/main.6b2ea52f.css",
-    "main.js": "/zahr/static/js/main.42ce9364.js",
+    "main.css": "/zahr/static/css/main.7d4b6d29.css",
+    "main.js": "/zahr/static/js/main.538f7b52.js",
     "static/js/787.9aa1c772.chunk.js": "/zahr/static/js/787.9aa1c772.chunk.js",
     "static/media/header.png": "/zahr/static/media/header.a1b5415a98ddcec18bee.png",
     "static/media/image-4.png": "/zahr/static/media/image-4.334f3008c005f49e9bf7.png",
@@ -16,21 +16,25 @@
     "static/media/logo.png": "/zahr/static/media/logo.f1acba88f410fabb6fd8.png",
     "static/media/offer.jpg": "/zahr/static/media/offer.ac7bf4cea69f24a5cb3c.jpg",
     "static/media/woman.png": "/zahr/static/media/woman.3f889d0af5f26871fbcc.png",
+    "static/media/accept.png": "/zahr/static/media/accept.af2a744f043c0183e3bc.png",
+    "static/media/layer-logo.png": "/zahr/static/media/layer-logo.370a75752811ca69f46c.png",
+    "static/media/cash-payment.png": "/zahr/static/media/cash-payment.8a23bdce4c86b6c49ae9.png",
     "static/media/star.svg": "/zahr/static/media/star.77a7d217eea3d1b40c4431b8a583802d.svg",
+    "static/media/location-icon.svg": "/zahr/static/media/location-icon.6959f003c1ca50bec2ae6613a31772f9.svg",
     "static/media/left-arrow.svg": "/zahr/static/media/left-arrow.c37d02d5706a306c9ced69c06ab0673a.svg",
     "index.html": "/zahr/index.html",
     "static/media/heart-cart.svg": "/zahr/static/media/heart-cart.fb8246941264cf47c6aa9f310952d992.svg",
-    "static/media/icon_remove.svg": "/zahr/static/media/icon_remove.eb79c7866bbd8b9cacdf2d892bca1898.svg",
+    "static/media/icon_remove.svg": "/zahr/static/media/icon_remove.2e6846cce57e105430a2542bd0ff1483.svg",
     "static/media/chevron-up-solid.svg": "/zahr/static/media/chevron-up-solid.614d3fa14dd3ae46d6c4b7b765766adc.svg",
     "static/media/chevron-left-solid.svg": "/zahr/static/media/chevron-left-solid.7cbb7b474d7a0a1474cbb1a8d040e167.svg",
     "static/media/chevron-down-solid.svg": "/zahr/static/media/chevron-down-solid.2d65dd0e43357a9312766a1b8ca479c0.svg",
     "static/media/user-revewe.svg": "/zahr/static/media/user-revewe.c898c0bbe0195d3da52de412334ea36f.svg",
-    "main.6b2ea52f.css.map": "/zahr/static/css/main.6b2ea52f.css.map",
-    "main.42ce9364.js.map": "/zahr/static/js/main.42ce9364.js.map",
+    "main.7d4b6d29.css.map": "/zahr/static/css/main.7d4b6d29.css.map",
+    "main.538f7b52.js.map": "/zahr/static/js/main.538f7b52.js.map",
     "787.9aa1c772.chunk.js.map": "/zahr/static/js/787.9aa1c772.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6b2ea52f.css",
-    "static/js/main.42ce9364.js"
+    "static/css/main.7d4b6d29.css",
+    "static/js/main.538f7b52.js"
   ]
 }
