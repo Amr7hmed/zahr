@@ -120,8 +120,19 @@ input[type='radio'] {
   accent-color: #5c6349 !important;
 }
 
+.section{
 
+  &__header {
+    margin: 40px 0px;
 
+    h3 {
+      font-size: 24px;
+      font-weight: normal;
+      text-align: center;
+    color: #000;
+  }
+}
+}
 
 .languagear {
   font-family: var(--font-ar);
@@ -139,7 +150,12 @@ input[type='radio'] {
 @import "../components/checkout/_style.scss";
 @import "../components/profile/_style.scss";
 @import "../components/favorite/_style.scss";
+@import "../components/address/_style.scss";
+@import "../components/myorders/_style.scss";
+@import "../components/payment/_style.scss";
+@import "../components/paymentdone/_style.scss";
 
 @import "../layout/navbar/_style.scss";
 @import "../layout/footer/_style.scss";
 @import "../layout/loading/_style.scss";
+@import "../layout/navbar/modals/_style.scss";

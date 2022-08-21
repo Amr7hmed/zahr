@@ -1,16 +1,15 @@
 import React from 'react'
-import Card from '../../components/checkout/card';
-import CardButton from '../../components/checkout/cardbutton';
 import Links from '../../components/checkout/links';
 import { useNavigate } from 'react-router-dom';
+import CardButton from '../../components/address/cardbutton.jsx';
+import CardAddress from '../../components/address/card.jsx';
 
 function CheckOut() {
   let navigate  = useNavigate();
 
   const handleDone = (e) => {
     e.preventDefault();
-    //navigate("/checkoutdata");
-    navigate("/");
+    navigate("/checkoutdata");
 };
 
   return (
@@ -25,8 +24,8 @@ function CheckOut() {
         </div>
 
         <div className="checkout__rows">
-          <Card Title={"المنزل"} Nameuser={"محمد علي اسماعيل"} 
-          Addres={"الرياض - العليا- منطقة الرياض -مبني 5 -شقة 12"} Phone={"+9665559164782"}/>
+          <CardAddress Title={"المنزل"} Nameuser={"محمد علي اسماعيل"} 
+          Addres={"الرياض - العليا- منطقة الرياض -مبني 5 -شقة 12"} Phone={"+9665559164782"} ShowButtons={false}/>
 
 
           <CardButton/>

@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {  useContext } from 'react';
-import './App.css';
 import { Authcontext } from './store/context.js';
 import Navbar from './layout/navbar/index.jsx';
 import Footer from './layout/footer/index.jsx';
@@ -14,6 +13,11 @@ import Profile from "./pages/profile/index.jsx";
 import EditeProfile from './components/profile/editeprofile.jsx';
 import CheckOut from './pages/checkout/index.jsx';
 import CheckOutData from './pages/checkout/data.jsx';
+import Address from './pages/address/index.jsx';
+import MyOrders from './pages/myorders/index.jsx';
+import Payment from './pages/checkout/payment.jsx';
+import PaymentDone from './pages/checkout/paymentdone.jsx';
+import PaymentShipping from './pages/checkout/paymentshipping.jsx';
 
 function App() {
   const authcontext = useContext(Authcontext);
@@ -23,7 +27,7 @@ function App() {
     <BrowserRouter>
       <Navbar/>
         <Routes>
-          <Route path="/zahr/" element={<Home />} exact />
+          <Route path="/" element={<Home />} exact />
           <Route path="/cart" element={<Cart />} exact />
           <Route path="/checkout" element={<CheckOut />} exact />
           <Route path="/checkoutdata" element={<CheckOutData />} exact />
@@ -34,12 +38,13 @@ function App() {
           <Route path="/proudect/:id" element={<Proudect />} exact />
           <Route path="/profile" element={<Profile/>} exact />
           <Route path="/editeprofile" element={<EditeProfile/>} exact />
-          <Route path="/editeprofile" element={<EditeProfile/>} exact />
+          <Route path="/addresses" element={<Address/>} exact />
+          <Route path="/myorders" element={<MyOrders/>} exact />
+          <Route path="/payment" element={<Payment/>} exact />
+          <Route path="/paymentdone" element={<PaymentDone/>} exact />
+          <Route path="/paymentshipping" element={<PaymentShipping/>} exact />
+          
 
-          
-          
-          
-          
           
         </Routes>
 

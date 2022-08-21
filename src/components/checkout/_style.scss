@@ -82,46 +82,6 @@
         flex-direction: row;
         flex-wrap: wrap;
 
-        .card__checkout {
-            width: 290px;
-            height: 240px;
-            color: #000;
-            display: flex;
-            flex-direction: column;
-            margin-left: 25px;
-
-            .title,
-            .nameuser,
-            .addres,
-            .phone {
-                font-size: 16px;
-                font-weight: normal;
-                margin: 10px;
-                width: 200px;
-
-                direction: ltr;
-                text-align: right;
-            }
-        }
-
-        .cardbutton {
-            width: 290px;
-            height: 240px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            background-color: #868558;
-
-            font-size: 20px;
-            font-weight: normal;
-            text-align: center;
-
-            a {
-                color: #fff;
-            }
-        }
     }
 
     &__form {
@@ -157,7 +117,38 @@
 
             }
 .time{
-    
+    display:flex;
+    input{
+        width: 60px;
+    height: 70px;
+    margin: 0px 5px;
+    text-align: center;
+    color:#000;
+    font-size:35px;
+    background-color:#e3e3e3;
+    border-color:transparent;
+    }
+    .bulltes{
+        font-size:50px;
+    }
+    .button_zone{
+        display:flex;
+        flex-direction:column;
+    justify-content: space-between;
+        width: 60px;
+        height: 70px;
+        button{
+            height:33px;
+            border-color:transparent;
+            color:#000;
+            
+  text-align: center;
+}
+.notactive{
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+    }
 }
             .react-datepicker-popper {
                 inset: revert !important;

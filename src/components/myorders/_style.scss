@@ -1,0 +1,179 @@
+.myorders {
+    .order{
+        margin: 50px 0px;
+    }
+    &__headr {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 30px 0px;
+
+        span {
+            font-size: 18px;
+
+            &:first-of-type {
+                color: #000;
+            }
+
+            &:last-of-type {
+                color: #afafaf;
+            }
+        }
+    }
+
+    .cardorder {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 30px 0px;
+
+        .contect {
+            display: flex;
+            flex-direction: row;
+
+            .image {
+                img {
+                    width: 130px;
+                    height: 130px;
+                }
+            }
+
+            .text {
+                padding: 5px 0px;
+
+                .title {
+                    font-size: 16px;
+                    color: #655959;
+                  }
+                  .colors{
+                      margin: 15px 0px;
+                  }
+                  .colors,
+                  .weight {
+                      span {
+                          font-size: 16px;
+                          font-weight: normal;
+                          &:first-of-type {
+                              color: #bbb;
+                          }
+  
+                          &:last-of-type {
+                              color: #000;
+                          }
+                      }
+                  }
+                }
+
+            }
+            .price{
+                font-size: 16px;
+                font-weight: normal;
+                color: #ff5069;
+            }
+        }
+        .line{
+            background-color: #d9d9d9;
+            width: 100%;
+            height: 1px;
+            display: block;
+        }
+
+        .show-all{
+            color: #868686;
+            margin: 15px 0px;
+            border-color: transparent;
+            background-color: transparent;
+            font-size: 16px;
+            &:hover{
+                border-color: transparent;
+                background-color: transparent;
+            }
+        }
+    }
+
+
+
+.languagear {
+    .myorders {
+        direction: rtl;
+
+        &__headr {
+            span {
+                font-size: 18px;
+
+                &:first-of-type {
+                    text-align: right;
+                }
+
+                &:last-of-type {
+                    text-align: left;
+                }
+            }
+        }
+
+        .cardorder {
+            .contect {
+                .image {
+                    margin-left: 20px;
+                }
+                .text {
+                      .colors,
+                      .weight {
+                          span {
+                              &:first-of-type {
+                                  margin-left: 20px;
+                              }
+      
+                              &:last-of-type {
+                                  color: #000;
+                              }
+                          }
+                      }
+                    }
+            }
+        }
+    }
+}
+
+.languageen {
+    .myorders {
+        direction: ltr;
+
+        &__headr {
+            span {
+                font-size: 18px;
+
+                &:first-of-type {
+                    text-align: left;
+                }
+
+                &:last-of-type {
+                    text-align: right;
+                }
+            }
+        }
+
+        .cardorder {
+            .contect {
+                .image {
+                    margin-right: 20px;
+                }
+                .text {
+                      .colors,
+                      .weight {
+                          span {
+                              &:first-of-type {
+                                margin-right: 20px;
+                              }
+      
+                              &:last-of-type {
+                                  color: #000;
+                              }
+                          }
+                      }
+                    }
+            }
+        }
+    }
+
+}

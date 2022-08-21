@@ -33,7 +33,7 @@ function CheckOutData() {
 
     const handleDone = (e) => {
         e.preventDefault();
-        //navigate("/checkoutdata");
+        navigate("/payment");
         console.log(state);
     };
 
@@ -41,7 +41,7 @@ function CheckOutData() {
     return (
         <section className='checkout'>
             <div className="container">
-                <Links Stylebulteone={"vector"} Stylebultetwo={"active"} />
+                <Links Stylebulteone={"active"} Stylebultetwo={"vector"} />
                 <div className="checkout__header">
                     <h5> تحديد موعد الاستلام</h5>
                 </div>
@@ -62,10 +62,10 @@ function CheckOutData() {
                         <div className="time">
                             <span className="button_zone">
                                 <button type="button" className="btn-zone">AM</button>
-                                <button type="button" className="btn-zone">PM</button>
+                                <button type="button" className="btn-zone notactive">PM</button>
                             </span>
                             <input type="number" min={"00"} max={"59"} placeholder={state.minutes} name="minutes" onChange={handleChange} />
-                            <span>:</span>
+                            <span className="bulltes">:</span>
                             <input type="number" min={"1"} max={"12"} placeholder={state.hour} name="hour" onChange={handleChange} />
                         </div>
                     </div>

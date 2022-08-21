@@ -26,7 +26,7 @@ function Profile() {
 
 
         <div className="profile__data">
-          <div className="profile__header">
+          <div className="section__header">
             <h3>الملف الشخصي</h3>
           </div>
 

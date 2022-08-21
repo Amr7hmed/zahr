@@ -1,0 +1,197 @@
+.payment {
+    margin: 50px 0px;
+
+    .orderdetails {
+        height: auto;
+    }
+
+    .shippingdetails {
+        height: auto;
+        padding: 25px 10px 25px 10px;
+        background-color: rgba(242, 242, 242, 0.36);
+        margin: 0px 10px;
+        display: flex;
+        flex-direction: column;
+
+        h6 {
+            font-size: 24px;
+            color: #a7a7a7;
+            margin-bottom: 30px;
+        }
+
+        .title,
+        .nameuser,
+        .addres,
+        .phone {
+            font-size: 16px;
+            font-weight: normal;
+            margin: 10px;
+            width: 250px;
+            direction: ltr;
+            text-align: right;
+            color: #000;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin: 10px;
+
+            button {
+                width: 50px;
+                height: 32px;
+                flex-grow: 0;
+                margin: 0px 5px;
+                font-size: 14px;
+                color: #a7a7a7;
+                border-color: transparent;
+                background-color: transparent;
+
+                &:hover {
+                    border-color: transparent;
+                    background-color: transparent;
+                }
+            }
+        }
+
+    }
+
+    .btn-payment {
+        display: block;
+        margin: 40px 0px;
+        height: 70px;
+        border-radius: 8px;
+        background-color: #fff;
+        width: 60%;
+        height: 60px;
+        border: solid 1px #c5c5c5;
+        padding: 0px 5%;
+        color: #909090;
+
+        img {
+            width: 40px;
+            height: 40px;
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    .btn-payment.active {
+        border: solid 2px #7ca768;
+
+        img {
+            opacity: 1;
+            visibility: visible;
+        }
+
+    }
+
+    .paymentform {
+        padding: 20px 30px;
+        border-radius: 30px;
+        border: solid 1px #bebebe;
+        width: 90%;
+
+        h6 {
+            font-size: 20px;
+            color: #000;
+            margin-bottom: 15px;
+        }
+
+        input {
+            border-radius: 15px;
+            margin-bottom: 20px;
+            height: 45px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+
+            div {
+                width: 45%;
+
+                label {
+                    margin-bottom: 15px;
+                }
+
+                input {
+                    text-align: center;
+                }
+            }
+        }
+
+    }
+
+    .buttons {
+        margin: 30px 0px;
+
+        .btn-done {
+            border-color: transparent;
+            background-color: #868558 !important;
+            color: #fff !important;
+            padding: 15px 40px;
+            border-radius: 7px;
+            font-size: 16px;
+
+            &:hover {
+                border-color: transparent;
+            }
+        }
+    }
+}
+
+
+.languagear {
+    .payment {
+        direction: rtl;
+
+        .shippingdetails {
+
+            .title,
+            .nameuser,
+            .addres,
+            .phone {
+                direction: ltr;
+                text-align: right;
+            }
+
+
+        }
+
+        .btn-payment {
+            text-align: right;
+
+            img {
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+.languageen {
+    .payment {
+        direction: ltr;
+
+        .shippingdetails {
+
+            .title,
+            .nameuser,
+            .addres,
+            .phone {
+                direction: ltr;
+                text-align: left;
+            }
+
+
+        }
+
+        .btn-payment {
+            text-align: left;
+
+            img {
+                margin-left: 20px;
+            }
+        }
+    }
+}

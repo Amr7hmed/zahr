@@ -1,13 +1,15 @@
+/* eslint-disable jsx-a11y/no-redundant-roles */
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import User from "../../../images/icon/user.png";
 import NavLanguage from './navlanguage.jsx';
 import InputSerarch from './inputserarch.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faHeart, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import CartIcon from "../../../images/icon/icon-cart.png";
 import HeartIcon from "../../../images/icon/icon-heart.png";
-
+import Iconlogin from './Iconlogin.jsx';
+import Iconprofile from './Iconprofile.jsx';
 function NavbarBottom() {
   return (
     <section className='navbar__bottom'>
@@ -16,14 +18,19 @@ function NavbarBottom() {
         <div className='list'>
           <div className="left">
 
-            <NavLink to="/profile" className="user">
-              <img src={User} alt="user"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src =
-                    "https://www.aaronfaber.com/wp-content/uploads/2017/03/product-placeholder-wp.jpg";
-                }} />
-            </NavLink>
+            <div className="dropdown">
+              <button
+                className="btn  dropdown-toggle btn_user"
+                role="button"
+                id="dropdownMenuLink"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img src={User} alt="user" />
+
+              </button>
+              <Iconprofile/>
+            </div>
 
             <NavLink to="/favorite" className="favort">
               <img src={HeartIcon} alt="" />
@@ -41,7 +48,7 @@ function NavbarBottom() {
             </span>
           </div>
           <div className="right">
-            <NavLanguage language={"Ar"}/>
+            <NavLanguage language={"Ar"} />
             <InputSerarch />
           </div>
         </div>

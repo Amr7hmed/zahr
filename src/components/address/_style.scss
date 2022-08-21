@@ -1,0 +1,268 @@
+.address {
+    &__row {
+        margin: 60px 0px;
+    }
+}
+
+.cardaddress {
+    width: 290px;
+    height: 240px;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+margin-bottom: 15px;
+    .title,
+    .nameuser,
+    .addres,
+    .phone {
+        font-size: 16px;
+        font-weight: normal;
+        margin: 10px;
+        width: 200px;
+        direction: ltr;
+        text-align: right;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: flex-end;
+        margin: 10px;
+
+        button {
+            width: 50px;
+            height: 32px;
+            flex-grow: 0;
+            margin: 0px 5px;
+            font-size: 14px;
+            color: #000;
+            border-color: transparent;
+            background-color: transparent;
+
+            &:hover {
+                border-color: transparent;
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+.cardbutton {
+    width: 290px;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background-color: #868558;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        color: #fff;
+        font-size: 20px;
+        font-weight: normal;
+        text-align: center;
+        border-color: transparent;
+        background-color: transparent;
+
+        &:hover {
+            border-color: transparent;
+            background-color: transparent;
+        }
+
+    }
+}
+
+
+
+.modaladdaddress {
+
+    .modal-footer {
+        button {
+            width: 100px;
+            height: 40px;
+            flex-grow: 0;
+            margin: 0px 5px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 50px;
+        }
+
+        .btn-save {
+            background-color: #868558 !important;
+            color: #fff !important;
+        }
+
+        .btn-cansal {
+            background-color: transparent;
+            border: 1px solid #868558 !important;
+            color: #868558 !important;
+        }
+
+    }
+
+
+    .input {
+        padding: 10px 0px;
+        text-align: right;
+
+        label {
+            width: 100%;
+            text-align: right;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select {
+            border-radius: 20px;
+            border: solid 1px #ccc;
+            text-align: right;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .input-phone{
+            direction: ltr;
+        }
+    }
+
+    .mab {
+        width: 100%;
+        height: 230px;
+        position: relative;
+        background-color: burlywood;
+        margin: 15px 0px;
+
+        .mab-overload {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(102, 102, 102, 0.4);
+
+            button {
+                height: 35.3px;
+                flex-grow: 0;
+                padding: 5px 10px;
+                border-radius: 12px;
+                background-color: #868558;
+                font-size: 14px;
+                color: #fff;
+border-color: transparent;
+                img {
+                    width: 18px;
+                    height: 15px;
+                    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+                }
+            }
+        }
+    }
+}
+
+
+.languagear {
+    .address {
+        direction: rtl;
+    }
+
+    .cardaddress {
+        margin-left: 25px;
+
+        .title,
+        .nameuser,
+        .addres,
+        .phone {
+            direction: ltr;
+            text-align: right;
+        }
+    }
+
+    .modaladdaddress {
+        .input {
+            text-align: right;
+
+            label {
+                text-align: right;
+            }
+
+            input {
+                text-align: right;
+            }
+
+            select.form-select {
+                background-position: left 0.75rem center !important;
+            }
+            .mab {
+        
+                .mab-overload {
+        
+                    button {
+                        img {
+                            margin-left: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.languageen {
+    .address {
+        direction: ltr;
+    }
+
+    .cardaddress {
+        margin-right: 25px;
+
+        .title,
+        .nameuser,
+        .addres,
+        .phone {
+            direction: ltr;
+            text-align: left;
+        }
+    }
+
+    .modaladdaddress {
+        .input {
+            text-align: left;
+
+            label {
+                text-align: left;
+            }
+
+            input {
+                text-align: left;
+            }
+
+            .select.form-select {
+                background-position: right 0.75rem center;
+            }
+            .mab {
+        
+                .mab-overload {
+        
+                    button {
+                        img {
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
