@@ -3,7 +3,7 @@ import React from 'react';
 import IconFav from "../../images/icon/heart_icon_fav.png";
 
 function CardFav(props) {
-    const {Image , Price ,Size ,Color}=props;
+    const {Image , Price ,Size ,Color,Title}=props;
   return (
     <div className='cardfav'>
         <div className="img">
@@ -12,7 +12,7 @@ function CardFav(props) {
 
         <div className='contenet'>
             <div className="top">
-                <h6>مزهرية مضلعة ثلاثية الابعاد</h6>
+                <h6>{Title}</h6>
                 <span className="heart"><img src={IconFav} alt="IconFav" /></span>
             </div>
             <span className="price"> {Price} {" "} SAR</span>

@@ -141,7 +141,17 @@
     input {
       width: calc(100% - 24px);
       height: 40px;
+    border: none;
+    background-color: transparent;
+
+    &:focus-visible {
       border: none;
+      box-shadow: none;
+      outline: none;
+    }
+    &:internal-autofill-selected{
+      
+    }
     }
 
     .btn-search {

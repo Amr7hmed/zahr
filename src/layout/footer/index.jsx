@@ -36,7 +36,7 @@ function Footer() {
             </li>
             <li>
               <a href="#">
-              سياسه خاصه
+              سياسة خاصة
               </a>
             </li>
           </ul>

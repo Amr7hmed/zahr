@@ -8,8 +8,8 @@ function FooterCategories() {
 
         <ul>
             <li><NavLink to="/">زهور</NavLink></li>
-            <li><NavLink to="/">نحف</NavLink></li>
-            <li><NavLink to="/">أوانى منزليه</NavLink></li>
+            <li><NavLink to="/">تحف</NavLink></li>
+            <li><NavLink to="/"> أواني منزلية</NavLink></li>
         </ul>
     </div>
   )

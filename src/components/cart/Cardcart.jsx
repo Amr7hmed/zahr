@@ -3,7 +3,7 @@ import React from 'react';
 import IconDelete from "../../images/icon/delete.png";
 
 function Cardcart(props) {
-    const {Image , Price ,Size ,Color , Hidebutton}=props;
+    const {Image , Price ,Size ,Color , Hidebutton ,Title}=props;
   return (
     <div className='cardcart'>
         <div className="img">
@@ -12,7 +12,7 @@ function Cardcart(props) {
 
         <div className='contenet'>
             <div className="top">
-                <h6>مزهرية مضلعة ثلاثية الابعاد</h6>
+                <h6>{Title}</h6>
                 {Hidebutton === false ?"":
                 <button type="button" className="heart"><img src={IconDelete} alt="IconDelete" /></button>
                 }

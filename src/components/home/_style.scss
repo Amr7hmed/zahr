@@ -233,12 +233,13 @@
 }
 
 // Style Card "Home Page" .
+
 .proudects_card {
-    width: 300px;
+    width: 100%;
     margin: 0px auto 40px auto;
 
     .img {
-        width: 300px;
+        width: 100%;
         height: 300px;
         border-radius: 15px;
         display: block;
@@ -294,6 +295,16 @@
     }
 }
 
+.home_card {
+    width: 90% !important;
+    margin: 0px auto 40px auto;
+
+    .img {
+        width: 100%;
+        height: 300px;
+
+    }
+}
 
 // Style Card "Proudect All Page" .
 .stylecardproudects {

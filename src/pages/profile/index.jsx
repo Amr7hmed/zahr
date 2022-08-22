@@ -1,11 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import InputImgUpload from "../../images/icon/camera.png";
 import Image from "../../images/icon/woman.png";
 import { NavLink } from 'react-router-dom';
 import Reseteicon from "../../images/icon/reset-password.png";
 import ModalPassword from '../../components/profile/form/modalpassword';
+import { Getprofile } from '../../api/actions';
 
-function Profile() {
+function Profile(props) {
+  const { language  } = props;
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [cartid, setCartid] = useState("");
+
+  const [isVisible, setIsVisible] = useState(false);
+  // Top: 0 takes us all the way back to the top of the page
+  // Behavior: smooth keeps it smooth!
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    Getprofile()
+      // Button is displayed after scrolling for 500 pixels
+      const toggleVisibility = () => {
+        if (window.pageYOffset > 500) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      };
+      window.addEventListener("scroll", toggleVisibility);
+      return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
   const [file, setFile] = useState(null);
 
   const handleChange = (e) => {
@@ -53,7 +86,7 @@ function Profile() {
 
 
           <div className="itemdatashow">
-            <span class="txt">
+            <span className="txt">
               سارة علي
             </span>
           </div>
@@ -61,7 +94,7 @@ function Profile() {
 
 
           <div className="itemdatashow">
-            <span class="txt">
+            <span className="txt">
               sara.ali@gmailcom
             </span>
           </div>
@@ -69,14 +102,14 @@ function Profile() {
 
 
           <div className="itemdatashow">
-            <span class="txt">
+            <span className="txt">
               056995562
             </span>
           </div>
 
 
           <div className="itemdatashow">
-            <span class="txt">
+            <span className="txt">
               الرياض
             </span>
           </div>
@@ -92,7 +125,7 @@ function Profile() {
 
 
           <div className="buttons">
-            <NavLink to={`/editeprofile`} className="edite-button">
+            <NavLink to={`/editeprofile`} className="edite-button" onClick={scrollToTop}>
               تعديل
             </NavLink>
           </div>

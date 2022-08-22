@@ -6,7 +6,7 @@ function NavbarTop() {
   return (
     <section className='navbar__top'>
 
-      <NavLink to="/">
+      <NavLink to="/zahr">
         <img src={Logo} alt="Logo" 
                         onError={(e) => {
                           e.target.onerror = null;
