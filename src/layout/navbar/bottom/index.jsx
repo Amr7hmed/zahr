@@ -20,7 +20,7 @@ function NavbarBottom() {
 
             <div className="dropdown">
               <button
-                className="btn  dropdown-toggle btn_user"
+                className="dropdown-toggle btn_user"
                 role="button"
                 id="dropdownMenuLink"
                 data-bs-toggle="dropdown"
@@ -29,7 +29,9 @@ function NavbarBottom() {
                 <img src={User} alt="user" />
 
               </button>
-              <Iconprofile/>
+              {localStorage.getItem("token") === null ? 
+              <Iconlogin /> :
+               <Iconprofile />}
             </div>
 
             <NavLink to="/favorite" className="favort">

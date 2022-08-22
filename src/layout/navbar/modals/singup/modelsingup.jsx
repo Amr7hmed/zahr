@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Singup } from "../../../../api/actions";
 import Logo from "../../../../images/logo/layer-logo.png";
 
 
@@ -21,7 +22,7 @@ function ModelSingup(props) {
 
     const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("email", JSON.stringify(state.email));
+    Singup(state,setMessage);
   };
 
 
@@ -64,7 +65,7 @@ function ModelSingup(props) {
                 <button type="button" 
                 className={state.email ===''?"btn button-login mb-5 button-disabled":"btn button-login mb-5 button-active"}
                 data-bs-target={state.email ===''?" ":"#singupModal2"}
-              data-bs-toggle="modal">
+              data-bs-toggle="modal" onClick={handleSubmit}>
                   
               {language === "En" ? "Send Code" : "أرسال الرمز" }
                 

@@ -1,8 +1,10 @@
 
 import React, { useState } from "react";
+import { AddNewPassword } from "../../../../api/actions";
 import Logo from "../../../../images/logo/layer-logo.png";
 
-function ModelthreePassword() {
+function ModelthreePassword(props) {
+  const { Code } = props;
   const [state, setState] = useState({
     email: JSON.parse(localStorage.getItem("email")),
     password: "",
@@ -23,8 +25,7 @@ function ModelthreePassword() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    
+    AddNewPassword(state, setMessage, setToggole,Code);
   };
 
 
@@ -32,7 +33,7 @@ function ModelthreePassword() {
   return (
     <div
     className="modal fade"
-    id="exampleModalToggle4"
+    id="exampleModalToggle5"
     aria-hidden="true"
     aria-labelledby="exampleModalToggleLabel2"
     tabIndex="-1"

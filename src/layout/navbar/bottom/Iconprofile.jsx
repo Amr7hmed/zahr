@@ -9,7 +9,7 @@ import Logout from "../../../images/icon/Logout-icon.png";
 function Iconprofile(props) {
   const { language } = props;
   const handleSubmit = () => {
-    //localStorage.removeItem("token");
+    localStorage.removeItem("token");
     window.location.pathname = "/";
   }
   return (

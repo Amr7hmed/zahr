@@ -1,12 +1,13 @@
 
 import React, { useState } from "react";
+import { SingupCodecomplete } from "../../../../api/actions";
 import Logo from "../../../../images/logo/layer-logo.png";
 
 function ModelThreeSingup(props) {
   const { language } = props;
   const [state, setState] = useState({
     name: "",
-    email: JSON.parse(localStorage.getItem("email")),
+    email: "",
     password: "",
     password_confirmation: "",
   });
@@ -14,6 +15,7 @@ function ModelThreeSingup(props) {
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
+    
     const value = e.target.value;
     setState({
       ...state,
@@ -25,9 +27,7 @@ function ModelThreeSingup(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    
-    
+    SingupCodecomplete(state,setMessage,setToggole);
   };
 
   return (
@@ -54,7 +54,7 @@ function ModelThreeSingup(props) {
                   {language === "En" ? "Complete Your Information" : "أكمل بياناتك" }
           </h5>
           <div className="modal-body">
-            <form onSubmit={handleSubmit}>
+            <form >
               <div className="input_form">
                 <input
                   type="text"
@@ -99,7 +99,8 @@ function ModelThreeSingup(props) {
                 />
               </div>
               <span className="errorfiled">{message}</span>
-              <button type="submit"
+              <button type="button"
+               onClick={handleSubmit} 
                 className={
                   toggole === false
                     ? "btn button-login mb-5 button-disabled"

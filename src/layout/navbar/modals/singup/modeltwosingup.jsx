@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { SingupCode } from "../../../../api/actions";
 import Logo from "../../../../images/logo/layer-logo.png";
 
 function ModeltwoSingup(props) {
@@ -6,7 +7,7 @@ function ModeltwoSingup(props) {
   const [state, setState] = useState({
     code: "",
   });
-  const [toggole, setToggole] = useState(false);
+  const [toggole ,setToggole] = useState(false);
   const [message, setMessage] = useState("");
 
 
@@ -15,6 +16,7 @@ function ModeltwoSingup(props) {
     setState({
       [e.target.name]: value
     });
+    
     setMessage("")
     setToggole(false)
   };
@@ -23,8 +25,7 @@ function ModeltwoSingup(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-
+SingupCode(state,setMessage,setToggole);
   };
 
 
@@ -55,20 +56,20 @@ function ModeltwoSingup(props) {
             <form>
 
               <div className="input_form">
-                <input type="text" className="form-code"
+                <input type="text" className="form-control"  
+                  name="code"
                   onChange={handleChange} />
-                <input type="text" className="form-code"
-                  onChange={handleChange} />
-                <input type="text" className="form-code"
-                  onChange={handleChange} />
-                <input type="text" className="form-code"
-                  onChange={handleChange} />
+                  
+                <button className="btn send" type="button" onClick={handleSubmit}>
+                  {language === "En" ? "Send" : "أرسال" }
+                  </button>
               </div>
               <span className="errorfiled">{message}</span>
               <button type="button"
-                className={"btn button-login mb-5 button-active"}
-                data-bs-target={toggole === false ? "#singupModal3" : "#singupModal3"}
-                data-bs-toggle="modal">
+                className={toggole ===false?"btn button-login mb-5 button-disabled":"btn button-login mb-5 button-active"}
+                data-bs-toggle="modal" onClick={handleSubmit} 
+                data-bs-target={toggole ===false?" ": "#singupModal3"}>
+
                 {language === "En" ? "Confirmation" : "تأكيد"}
               </button>
             </form>
@@ -80,3 +81,14 @@ function ModeltwoSingup(props) {
 }
 
 export default ModeltwoSingup;
+
+/*
+
+                <input type="text" className="form-code"
+                  onChange={handleChange} />
+                <input type="text" className="form-code"
+                  onChange={handleChange} />
+                <input type="text" className="form-code"
+                  onChange={handleChange} />
+*/
+// 

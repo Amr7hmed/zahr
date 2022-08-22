@@ -1,12 +1,13 @@
 
 import React, { useState } from "react";
+import { ResetPasswordRequest } from "../../../../api/actions";
 import Logo from "../../../../images/logo/layer-logo.png";
 
 function ModelonePassword() {
   const [state, setState] = useState({
     email: "",
   });
-  const [toggole ,setToggole] = useState(false);
+  const [toggole, setToggole] = useState(false);
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
@@ -21,7 +22,7 @@ function ModelonePassword() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("email", JSON.stringify(state.email));
+    ResetPasswordRequest(state, setMessage, setToggole);
   };
 
   return (
@@ -42,9 +43,9 @@ function ModelonePassword() {
               aria-label="Close"
             ></button>
           </div>
-          
 
-<img src={Logo} alt="" className="logo" />
+
+          <img src={Logo} alt="" className="logo" />
 
           <h5 className="modal-title" id="exampleModalToggleLabel">
             نسيت كلمة المرور
@@ -52,19 +53,19 @@ function ModelonePassword() {
           <div className="modal-body">
             <form >
               <div className="input_form">
-                <input type="text" className="form-control"  
+                <input type="text" className="form-control"
                   name="email"
                   placeholder="رقم الهاتف/ البريد الإلكترونى"
                   value={state.email || ''}
-                  onChange={handleChange}/>
+                  onChange={handleChange} />
               </div>
 
               <span className="errorfiled">{message}</span>
-                <button
-                className={state.email === "" ?"btn button-login button-disabled":"btn button-login button-active"}
-                data-bs-target={toggole === false?"#exampleModalToggle4":"#exampleModalToggle4"}
-              data-bs-toggle="modal" type="button" onClick={handleSubmit}>
-             ارسل الرمز
+              <button
+                className={state.email === "" ? "btn button-login button-disabled" : "btn button-login button-active"}
+                data-bs-target={toggole === false ? "#exampleModalToggle4" : "#exampleModalToggle4"}
+                data-bs-toggle="modal" type="button" onClick={handleSubmit}>
+                ارسل الرمز
               </button>
             </form>
           </div>

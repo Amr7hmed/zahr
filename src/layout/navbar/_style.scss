@@ -182,10 +182,15 @@
       .left {
         .btn_user {
           display: inline-block;
-          width: 20px;
-          height: 26px;
+          width: 23px;
+          height: 28px;
           margin-right: 28px;
-
+          border-color: transparent;
+          background-color: transparent;
+          &:hover{
+            border-color: transparent;
+            background-color: transparent;
+          }
           img {
             width: 100%;
             height: 100%;
@@ -220,30 +225,35 @@
       }
     }
   }
-&__iconprofile{
-padding:5px 0px;
-width: 250px !important;
-  li{
-    margin:  0px;
-    a,button{
-      color: #212529 !important;
-      margin: 0px;
-      display: inline-block;
-      padding: 10px 0px;
-      width: 95%;
-      font-size: 14px;
-    }
-    
-    a{
-      border-bottom: 1px solid #cbc4c4;
-    }
-    .icon{
-      width: 25px;
-      height: 25px;
-    }
-  }
 
-}
+  &__iconprofile {
+    padding: 5px 0px;
+    width: 250px !important;
+
+    li {
+      margin: 0px;
+
+      a,
+      button {
+        color: #212529 !important;
+        margin: 0px;
+        display: inline-block;
+        padding: 10px 0px;
+        width: 95%;
+        font-size: 14px;
+      }
+
+      a {
+        border-bottom: 1px solid #cbc4c4;
+      }
+
+      .icon {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+  }
 }
 
 
@@ -271,17 +281,21 @@ width: 250px !important;
         }
       }
     }
-    &__iconprofile{
-    
-      li{
-        a,button{
+
+    &__iconprofile {
+
+      li {
+
+        a,
+        button {
           text-align: right;
         }
-        .icon{
+
+        .icon {
           margin-left: 15px;
         }
       }
-    
+
     }
   }
 }
@@ -309,20 +323,114 @@ width: 250px !important;
       }
     }
 
-    &__iconprofile{
-    
-      li{
-        
-        a,button{
+    &__iconprofile {
+
+      li {
+
+        a,
+        button {
           text-align: left;
         }
-        .icon{
+
+        .icon {
           margin-right: 15px;
         }
       }
-    
+
     }
   }
 }
 
 
+// 1- 1- Style Navbar Component To Media Queris Large.
+@media screen and (max-width: 991px) {
+  .navbar {
+
+
+    &__bottom {
+      .list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        .left {
+          width: 100%;
+          justify-content: space-around;
+        }
+
+        .right {
+          width: 100%;
+          justify-content: space-around;
+
+        }
+      }
+    }
+
+  }
+}
+
+
+// 1- 2- Style Navbar Component To Media Queris Samll.
+@media screen and (max-width: 576px) {
+
+  .navbar {
+  
+    &__top {
+      width: 100%;
+      height: 70px;
+  
+      a {
+        width: 150px;
+        height: 60px;
+      }
+    }
+
+    
+  &__bottom {
+    width: 100%;
+
+    .list {
+      .left {
+        .cart {margin-right: 15px;}
+
+        .phone {
+          font-size: 20px;
+          .text {
+            font-size: 16px;
+          }
+
+        }
+      }
+      .right {
+        .navbar__language {
+          button {
+            margin-right: 0px;
+
+            span {
+              font-size: 16px;
+              margin-right: 0px;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+  
+  &__search {
+    width: 180px;
+    padding-bottom: 5px;
+
+    input {
+      height: 30px;
+    }
+
+    .btn-search {
+      height: 30px;
+    }
+  }
+  }
+}
