@@ -4,16 +4,20 @@ import Empty from "../../components/empty";
 import CardFav from '../../components/favorite/cardfav';
 import Loading from "../../layout/loading/loading";
 import Imagrempity from "../../images/empty/wishlist_empty.png";
+import { Authcontext } from "../../store/context";
 
-function Favorite(props) {
-  const { language  } = props;
+function Favorite() {
   
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
+  const setWishlist = authcontext.setWishlist;
+
 
 
   useEffect(() => {
-    Getfavourites(setLoading,setProducts)
+    Getfavourites(setLoading,setProducts,setWishlist)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
@@ -34,14 +38,15 @@ function Favorite(props) {
       <div className="container">
         <div className="favorite__header">
           <h5>
-            مفضلتي
+          {language === "En" ? "My Favourite": "مفضلتي"}
           </h5>
         </div>
         <div className="favorite__items">
         
         {products.map(item=>
           <CardFav Image={item.product.image}  Price={item.product.price} Color={"متعدد الألوان"}
-            Size={"2.5"} Title={item.product.title} key={item.product.id}/>
+            Size={"2.5"} Title={item.product.title} key={item.product.id}
+             Id={item.product.id} setLoading={setLoading}/>
             )}
         </div>
       </div>

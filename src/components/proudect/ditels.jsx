@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Cover from './cover';
 import Image from "../../images/product/image-proudect-one.png"
 import Carousel from './carousel';
@@ -7,31 +7,34 @@ import ProudectEnd from './proudectend';
 import ReviewsList from './reviews/reviewslist';
 import SimilarProducts from './similarproducts';
 
-function Ditels() {
+function Ditels(props) {
+    const {proudect,Similarproducts}=props;
+    const [index, setindex] = useState(0);
+    console.log(proudect);
     return (
         <section className='proudect__ditels'>
             <div className="row">
                 <div className="col-md-12 col-lg-5">
-                    <Cover Image={Image} />
+                    <Cover Image={proudect.image} Images={proudect.images} index={index}/>
                 </div>
 
                 <div className="col-md-12 col-lg-7">
-                    <Data />
+                    <Data Proudect={proudect}/>
                 </div>
                 
                 <div className="col-md-12 col-lg-5">
-                    <Carousel />
+                    <Carousel Images={proudect.images} setindex={setindex}/>
                 </div>
 
                 
                 <div className="col-md-12 col-lg-7">
-                    <ProudectEnd/>
+                    <ProudectEnd proudect={proudect}/>
                 </div>
             </div>
 
             <ReviewsList/>
 
-            <SimilarProducts/>
+            <SimilarProducts Similarproducts={Similarproducts}/>
         </section>
     )
 }

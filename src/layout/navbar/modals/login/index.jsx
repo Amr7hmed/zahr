@@ -9,12 +9,13 @@ import ModeltwoPassword from "../password/ModeltwoPassword.jsx";
 
 function Login() {
   const [code, setCode] = useState("");
+  const [email, setEmail] = useState("");
   return (
     <>
       <Modelone />
-      <ModelonePassword/>
+      <ModelonePassword setEmail={setEmail}/>
       <ModeltwoPassword  setCode={setCode} codedata={code} />
-      <ModelthreePassword Code={code} />
+      <ModelthreePassword Code={code} email={email}/>
       <ModelSingup />
       <ModeltwoSingup />
       <ModelThreeSingup />
@@ -23,8 +24,3 @@ function Login() {
 }
 
 export default Login;
-
-/*
-      <ModelthreePassword code={code} />
-      <ModelSingup />
-*/

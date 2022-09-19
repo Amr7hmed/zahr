@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import { useContext } from "react";
 import { ResetPasswordCode } from "../../../../api/actions";
 //import { SingupCode } from "../../../../api/actions";
 import Logo from "../../../../images/logo/layer-logo.png";
+import { Authcontext } from "../../../../store/context";
 
 function ModeltwoPassword(props) {
-    const { language } = props;
+    const authcontext = useContext(Authcontext);
+    const language = authcontext.language;
+    const {setCode, codedata}=props;
     const [state, setState] = useState({
         code: "",
     });
@@ -27,7 +31,7 @@ function ModeltwoPassword(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         ResetPasswordCode(state, setMessage, setToggole)
-        props.setCode(state.code);
+        setCode(state.code);
     };
 
 
@@ -61,16 +65,17 @@ function ModeltwoPassword(props) {
                             <div className="input_form">
                                 <input type="text" className="form-control"
                                     name="code"
-                                    onChange={handleChange} />
-
+                                    onChange={handleChange} onKeyUp={handleSubmit} />
+                                {/*
                                 <button className="btn send" type="button" onClick={handleSubmit}>
                                     {language === "En" ? "Send" : "أرسال"}
                                 </button>
+                                */}
                             </div>
-                            <span className="errorfiled">{message}</span>
+                            {toggole === false ? <span className="errorfiled">{message}</span>:""}
                             <button type="button"
                                 className={toggole === false ? "btn button-login mb-5 button-disabled" : "btn button-login mb-5 button-active"}
-                                data-bs-toggle="modal" onClick={handleSubmit}
+                                data-bs-toggle="modal"
                                 data-bs-target={toggole === false ? " " : "#exampleModalToggle5"}>
 
                                 {language === "En" ? "Confirmation" : "تأكيد"}

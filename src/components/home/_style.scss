@@ -1,5 +1,5 @@
 .home {
-    margin: 30px 0px;
+    margin: 0px 0px 30px 0px;
 
     .headr {
         margin-bottom: 30px;
@@ -87,13 +87,12 @@
             display: flex;
             flex-wrap: wrap;
             height: auto;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
 
             .categories_card {
                 width: 320px;
                 height: auto;
-                margin-right: 50px;
                 margin-bottom: 30px;
 
                 .img {
@@ -121,7 +120,12 @@
     }
 
     &__proudects {
-        margin-bottom: 50px;
+        background-color: rgba(248, 220, 220, 0.2);
+        padding: 100px 0px;
+
+        .container {
+            margin-top: 60px;
+        }
 
         .show_all {
             display: block;
@@ -229,11 +233,78 @@
                 }
             }
         }
+
+        
+        .slick-slider.slick-initialized {
+            width: 100%;
+            height: 100%;
+            button{
+                height: 50%;
+                top: 40%;
+            }
+            button.slick-arrow {
+              height: 100%;
+              width: 50px;
+              z-index: 1;
+            }
+  
+            button.slick-prev {
+              left: 0%;
+              &::before{
+                font-size: 30px;
+                color: #769075;
+              }
+            }
+  
+            button.slick-next {
+              right: 0%;
+              &::before{
+                font-size: 30px;
+                color: #769075;
+              }
+            }
+  
+            .slick-list {
+              width: 100%;
+              height: 100%;
+              border-radius: 35px;
+  
+              .slick-track {
+                width: 100%;
+                height: 100%;
+                border-radius: 35px;
+  
+                .slick-slide {
+                  height: 100%;
+                  border-radius: 35px;
+  
+                  >div {
+                    height: 100%;
+                    border-radius: 35px;
+  
+                  }
+  
+                }
+              }
+  
+            }
+  
+            .slick-dots {
+              li {
+                button {
+                  &:before {
+                    font-size: 12px;
+                    color: #5c6349;
+                  }
+                }
+              }
+            }
+          }
+  
     }
 }
 
 // Style Card "Home Page" .
-
 .proudects_card {
     width: 100%;
     margin: 0px auto 40px auto;
@@ -256,12 +327,14 @@
         padding: 10px;
         display: flex;
         flex-direction: column;
-
         .title {
+            overflow: hidden;
             font-family: var(--font-ar);
             font-size: 16px;
             font-weight: normal;
             color: #655959;
+            text-overflow: ellipsis;
+            height: 25px;
         }
 
         .end {
@@ -298,6 +371,8 @@
 .home_card {
     width: 90% !important;
     margin: 0px auto 40px auto;
+    background-color: white;
+    border-radius: 10px;
 
     .img {
         width: 100%;
@@ -329,7 +404,7 @@
     }
 }
 
-.languagear {
+.Ar {
     .home {
         font-family: var(--font-ar);
 
@@ -343,6 +418,10 @@
             .img {
                 right: 0%;
             }
+        }
+
+        &__proudects {
+            direction: rtl;
         }
     }
 
@@ -363,7 +442,7 @@
     }
 }
 
-.languageen {
+.En {
     .home {
         &__slider {
             .content {
@@ -400,19 +479,69 @@
 
 
 // 1- 1- Style Navbar Component To Media Queris Large.
-@media screen and (max-width: 991px) {}
+@media screen and (max-width: 991px) {
+    .home {
+        overflow: hidden;
+        .headr {
+            h3 {
+                font-size: 36px;
+                margin-bottom: 30px;
+            }
+
+            span {
+                width: 40%;
+            }
+        }
+        &__categories {
+
+            &__row {
+                .categories_card {
+                    width: 45%;
+                    margin-bottom: 20px;
+
+                    .img {
+                        height: 320px;
+                        width: 100%;
+                    }
+
+                    .text {
+                        h6 {
+                            font-size: 20px;
+                            margin: 15px 0px;
+                        }
+                    }
+
+                }
+            }
+        }
+        &__offer {
+    
+            .img {
+                display: none;
+            }
+    
+            .content {
+                h5 {
+                    font-size: 48px;
+                    margin-bottom: 30px;
+                }
+    
+                p {
+                    font-size: 32px;
+                }
+            }
+        }
+    }
+}
 
 // 1- 2- Style Navbar Component To Media Queris Samll.
 @media screen and (max-width: 576px) {
-
     .home {
-        margin: 15px 0px;
-
         .headr {
             margin-bottom: 10px;
 
             h3 {
-                font-size: 34px;
+                font-size: 28px;
                 margin-bottom: 15px;
             }
 
@@ -425,13 +554,17 @@
             height: 60vh;
 
             .content {
+                width: 90%;
+                margin: 0px auto;
 
                 h2 {
                     font-size: 40px;
+                    margin: 0px;
                 }
 
                 p {
                     font-size: 18px;
+                    margin: 20px 0px;
                 }
 
                 .btn {
@@ -448,24 +581,17 @@
             margin: 30px 0px;
 
             &__row {
-
                 .categories_card {
-                    width: 250px;
                     margin: 10px auto;
 
                     .img {
-                        height: 270px;
+                        height: 200px;
                         width: 100%;
-
-                        img {
-                            width: 100%;
-                            height: 100%;
-                        }
                     }
 
                     .text {
                         h6 {
-                            font-size: 24px;
+                            font-size: 18px;
                             margin: 10px 0px;
                         }
                     }
@@ -474,8 +600,7 @@
         }
 
         &__proudects {
-            margin-bottom: 30px;
-    
+
             .show_all {
                 display: block;
                 width: 200px;
@@ -485,5 +610,57 @@
                 line-height: 40px;
             }
         }
+
+        .proudects_card {
+            width: 100%;
+            margin: 0px auto 40px auto;
+        
+        
+            .text {
+                .title {
+                    font-size: 14px;
+                }
+        
+                .end {
+                    .price {
+                        font-size: 14px;
+                    }
+        
+                    .btn-fivorte {
+                        width: 17px;
+                        height: 17px;
+                    }
+                }
+            }
+        }
+        
+        .home_card {
+            width: 100% !important;
+            margin: 0px auto 20px auto;
+        
+            .img {
+                width: 100%;
+                height: 180px;
+            }
+        }
+        &__offer {
+            height: 400px;
+            .img {
+                display: none;
+            }
+    
+            .content {
+                h5 {
+                    font-size: 36px;
+                    margin-bottom: 30px;
+                }
+    
+                p {
+                    font-size: 22px;
+                }
+            }
+        }
     }
+
+    
 }

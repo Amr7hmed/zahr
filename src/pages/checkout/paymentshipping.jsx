@@ -5,7 +5,7 @@ import LinkShipping from '../../components/paymentdone/linkshipping';
 
 function PaymentShipping() {
   return (
-    <section className='paymentdone'>
+    <section className='paymentdone paymentshipping'>
       <div className="container">
         <LinkShipping/>
         <div className="paymentdone__row">

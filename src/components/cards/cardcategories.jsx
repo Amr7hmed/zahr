@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { NavLink } from 'react-router-dom';
+import { Authcontext } from "../../store/context";
 
 function CardCategories(props) {
   const { Image, NameEn, NameAr ,Id } = props;
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
   
   const [isVisible, setIsVisible] = useState(false);
   // Top: 0 takes us all the way back to the top of the page
@@ -28,7 +32,8 @@ function CardCategories(props) {
   }, []);
 
   return (
-    <NavLink to={`/proudectscategories/${Id}`} className='categories_card' onClick={scrollToTop}>
+    <NavLink to={`/proudectscategories/${Id}/${language === "En" ? NameEn:NameAr}`} 
+    className='categories_card' onClick={scrollToTop}>
       <div className="img">
         <img src={Image} alt="" />
       </div>

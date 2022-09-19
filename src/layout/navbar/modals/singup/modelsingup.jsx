@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useContext } from "react";
 import { Singup } from "../../../../api/actions";
 import Logo from "../../../../images/logo/layer-logo.png";
+import { Authcontext } from "../../../../store/context";
 
 
-function ModelSingup(props) {
-  const { language } = props;
+function ModelSingup() {
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
   const [state, setState] = useState({
     email: "",
   });
@@ -22,7 +25,7 @@ function ModelSingup(props) {
 
     const handleSubmit = (e) => {
     e.preventDefault();
-    Singup(state,setMessage);
+    Singup(state,setMessage,setToggole);
   };
 
 
@@ -55,17 +58,19 @@ function ModelSingup(props) {
               <div className="input_form input_code">
                 <input type="text" className="form-control"  
                   name="email"
-                  placeholder="رقم الهاتف/ البريد الإلكترونى"
+                  placeholder= {language === "En" ? 
+                  " Phone Number / Email" 
+                  : "رقم الهاتف/ البريد الإلكترونى" }
                   value={state.email || ''}
-                  onChange={handleChange}/>
+                  onChange={handleChange} onKeyUp={handleSubmit}/>
 
               </div>
               <span className="errorfiled">{message}</span>
 
                 <button type="button" 
-                className={state.email ===''?"btn button-login mb-5 button-disabled":"btn button-login mb-5 button-active"}
-                data-bs-target={state.email ===''?" ":"#singupModal2"}
-              data-bs-toggle="modal" onClick={handleSubmit}>
+                className={"btn button-login mb-5 button-active"}
+                data-bs-target={toggole === false ?" ":"#singupModal2"}
+              data-bs-toggle="modal">
                   
               {language === "En" ? "Send Code" : "أرسال الرمز" }
                 

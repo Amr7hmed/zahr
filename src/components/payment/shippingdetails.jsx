@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function ShippingDetails(Props) {
+function ShippingDetails(props) {
+  const {Title,Nameuser,Addres,Phone ,Cartid}=props;
     let navigate  = useNavigate();
   
     const handleDone = (e) => {
       e.preventDefault();
-      navigate("/checkout");
+      navigate(`/checkout/${Cartid}`);
   };
-    const {Title,Nameuser,Addres,Phone }=Props;
   return (
     <div className="shippingdetails">
         <h6> الشحن الي</h6>

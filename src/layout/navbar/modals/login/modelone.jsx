@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { useContext } from "react";
 import { login } from "../../../../api/actions";
 import Logo from "../../../../images/logo/layer-logo.png";
+import { Authcontext } from "../../../../store/context";
 
 function Modelone() {
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
+
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -20,7 +25,7 @@ function Modelone() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    login(state,setMessage);
+    login(state, setMessage);
   };
 
   return (
@@ -44,17 +49,17 @@ function Modelone() {
 
           <img src={Logo} alt="" className="logo" />
           <h5 className="modal-title" id="exampleModalToggleLabel">
-            تسجيل الدخول
+            {language === "En" ? "Sign In" : " تسجيل الدخول"}
           </h5>
           <div className="modal-footer">
-            لا تملك حساب ؟
+          {language === "En" ? "Don't Have An Account?" : " لا تملك حساب ؟" }
             <a
               className="btn"
               data-bs-target="#singupModal"
               data-bs-toggle="modal"
               href="#singupModal"
             >
-              انشىء حسابك الان
+            {language === "En" ? "Create Your Account Now" : " انشىء حسابك الان" }
             </a>
           </div>
           <div className="modal-body">
@@ -62,14 +67,14 @@ function Modelone() {
               <div className="input_form">
                 <input type="text" className="form-control"
                   name="email"
-                  placeholder="رقم الهاتف/ البريد الإلكترونى"
+                  placeholder={language === "En" ? " Phone Number / Email" : "رقم الهاتف/ البريد الإلكترونى"}
                   value={state.email || ''}
                   onChange={handleChange} />
               </div>
               <div className="input_form">
                 <input type="password" className="form-control"
                   name="password"
-                  placeholder="كلمة المرور"
+                  placeholder={language === "En" ? "Password" : " كلمة المرور"}
                   value={state.password}
                   onChange={handleChange} />
               </div>
@@ -78,8 +83,8 @@ function Modelone() {
                 <span
                   className="btn"
                   data-bs-target="#exampleModalToggle2"
-                  data-bs-toggle="modal">هل نسيت كلمة المرور؟
-
+                  data-bs-toggle="modal">
+                  {language === "En" ? "Did You Forget Your Password?" : "هل نسيت كلمة المرور؟"}
                 </span>
 
               </div>
@@ -87,7 +92,8 @@ function Modelone() {
 
 
               <button type="button"
-                className={ "btn button-login button-active"} onClick={handleLogin}> تسجيل الدخول
+                className={"btn button-login button-active"} onClick={handleLogin}>
+                {language === "En" ? "Sign In" : " تسجيل الدخول" }
 
               </button>
             </form>

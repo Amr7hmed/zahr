@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Top from "../../images/icon/chevron-up-solid.svg";
 import Down from "../../images/icon/chevron-down-solid.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import HeartIcon from "../../images/icon/heart-icon.svg";
+import { Authcontext } from '../../store/context';
+import { useParams } from 'react-router-dom';
+import { AddToCart, AddToFavourite } from '../../api/actions';
+import swal from 'sweetalert';
 
-function ProudectEnd() {
+function ProudectEnd(props) {
+    const { proudect } = props;
+    const { id } = useParams();
     const [number, setNumber] = useState(1);
+    const authcontext = useContext(Authcontext);
+    const language = authcontext.language;
+    const setCart = authcontext.setCart;
+    const cart = authcontext.cart;
+    const setWishlist = authcontext.setWishlist;
+    const wishlist = authcontext.wishlist;
+
+
+    const Id = parseInt(id);
 
     const Plusaction = (e) => {
         e.preventDefault();
@@ -21,16 +37,29 @@ function ProudectEnd() {
         }
     }
 
-
-    const AddCart = (e) => {
-        e.preventDefault();
-        alert("This Item Is Add To Cart !")
+    const addCart = (Id, number) => {
+        setCart([...cart, proudect])
+        //setShowalertcart(true);
+        AddToCart(Id, number)
+        if (language === "En") {
+            swal("Item Has Been Added !", "", "success");
+        } else {
+            swal("تمت إضافة المنتج", "", "success");
+        }
     }
 
-    const AddFavort = (e) => {
-        e.preventDefault();
-        alert("This Item Is Add To Favort !")
+    const addWishlist = (id) => {
+        setWishlist([...wishlist, proudect])
+        // setShowalertWishlist(true);
+
+        AddToFavourite(id)
+        if (language === "En") {
+            swal("Item Has Been Added !", "", "success");
+        } else {
+            swal("تمت إضافة المنتج", "", "success");
+        }
     }
+
     return (
         <div className="proudect__end">
             <div className="conter">
@@ -48,13 +77,25 @@ function ProudectEnd() {
             </div>
 
             <div className="cart">
-                <button className='btn-cart' type='button' onClick={AddCart} >
-                    اضافة الي عربة التسوق
-                </button>
+                {localStorage.getItem("token") === null ?
+                    <button className='btn-cart button-active' data-bs-toggle="modal" data-bs-target="#exampleModalcart">
+                        {language === "En" ? "Add To Cart " : "إضافه الى عربة التسوق"}
+                    </button>
 
-                <button className='btn-favort' type='button' onClick={AddFavort} >
-                    <FontAwesomeIcon icon={faHeart} />
-                </button>
+                    :
+                    <button className='btn-cart button-active' type='button' onClick={() => addCart(Id, number)}>
+                        {language === "En" ? "Add To Cart " : "إضافه الى عربة التسوق"}
+                    </button>
+                }
+                {localStorage.getItem("token") === null ?
+                    <button className='btn-favort' data-bs-toggle="modal" data-bs-target="#exampleModalcart">
+                        <img src={HeartIcon} alt="" />
+                    </button>
+                    :
+                    <button className='btn-favort' type='button' onClick={() => addWishlist(Id)}>
+                    <img src={HeartIcon} alt="" />
+                    </button>
+                }
             </div>
         </div>
     )

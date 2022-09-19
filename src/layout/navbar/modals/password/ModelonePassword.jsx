@@ -1,9 +1,14 @@
 
 import React, { useState } from "react";
+import { useContext } from "react";
 import { ResetPasswordRequest } from "../../../../api/actions";
 import Logo from "../../../../images/logo/layer-logo.png";
+import { Authcontext } from "../../../../store/context";
 
-function ModelonePassword() {
+function ModelonePassword(props) {
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
+  const {setEmail}=props;
   const [state, setState] = useState({
     email: "",
   });
@@ -22,6 +27,7 @@ function ModelonePassword() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setEmail(state.email);
     ResetPasswordRequest(state, setMessage, setToggole);
   };
 
@@ -48,24 +54,26 @@ function ModelonePassword() {
           <img src={Logo} alt="" className="logo" />
 
           <h5 className="modal-title" id="exampleModalToggleLabel">
-            نسيت كلمة المرور
+            {language === "En" ? " Forgot your password" : "نسيت كلمة المرور" }
           </h5>
           <div className="modal-body">
             <form >
               <div className="input_form">
                 <input type="text" className="form-control"
                   name="email"
-                  placeholder="رقم الهاتف/ البريد الإلكترونى"
+                  placeholder={language === "En" ? " Phone Number / Email" : "رقم الهاتف/ البريد الإلكترونى" }
                   value={state.email || ''}
-                  onChange={handleChange} />
+                  onChange={handleChange} onKeyUp={handleSubmit}/>
               </div>
 
               <span className="errorfiled">{message}</span>
               <button
-                className={state.email === "" ? "btn button-login button-disabled" : "btn button-login button-active"}
+                className={"btn button-login button-active"}
                 data-bs-target={toggole === false ? "#exampleModalToggle4" : "#exampleModalToggle4"}
-                data-bs-toggle="modal" type="button" onClick={handleSubmit}>
-                ارسل الرمز
+                data-bs-toggle="modal" type="button" >
+                  
+                  {language === "En" ? "Send Code" : "ارسل الرمز" }
+                
               </button>
             </form>
           </div>

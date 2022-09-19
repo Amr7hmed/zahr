@@ -142,7 +142,7 @@
 }
 
 
-.languagear {
+.Ar {
     .payment {
         direction: rtl;
 
@@ -169,7 +169,7 @@
     }
 }
 
-.languageen {
+.En {
     .payment {
         direction: ltr;
 
@@ -192,6 +192,127 @@
             img {
                 margin-left: 20px;
             }
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .payment {
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .btn-payment {
+            display: block;
+            margin: 20px auto;
+            width: 80%;
+            height: 35px;
+            padding: 0px 10px;
+            color: #909090;
+            font-size: 12px;
+
+            img {
+                width: 15px;
+                height: 15px;
+            }
+        }
+
+        .paymentform {
+            padding: 10px;
+            border-radius: 30px;
+            border: solid 1px #bebebe;
+            width: 80%;
+            margin: 0px auto;
+            h6 {
+                font-size: 16px;
+                color: #000;
+                margin-bottom: 15px;
+            }
+
+            input {    border-radius: 10px;
+                margin-bottom: 14px;
+                height: 30px;
+                font-size: 12px;
+            }
+
+            .footer {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                align-items: center;
+                div {
+                    width: 100%;
+
+                    label {
+                        margin-bottom: 5px;
+                        font-size: 12px;
+                    }
+
+                    input {
+                        text-align: center;
+                        width: 100%;
+                        margin-bottom: 10px;
+                        font-size: 12px;
+                    }
+                }
+            }
+
+        }
+
+        .buttons {
+            margin: 15px auto;
+            text-align: center;
+            .btn-done {
+                padding: 10px 25px;
+                border-radius: 5px;
+                font-size: 14px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -ms-border-radius: 5px;
+                -o-border-radius: 5px;
+}
+        }
+        .shippingdetails {
+            padding: 10px;
+            width: 80%;
+            margin: 10px auto;
+    
+            h6 {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+    
+            .title,
+            .nameuser,
+            .addres,
+            .phone {
+                font-size: 14px;
+                width: auto;
+            }
+    
+            .buttons {
+                display: flex;
+                justify-content: flex-end;
+                margin: 10px;
+    
+                button {
+                    width: 50px;
+                    height: 32px;
+                    flex-grow: 0;
+                    margin: 0px 5px;
+                    font-size: 14px;
+                    color: #a7a7a7;
+                    border-color: transparent;
+                    background-color: transparent;
+    
+                    &:hover {
+                        border-color: transparent;
+                        background-color: transparent;
+                    }
+                }
+            }
+    
         }
     }
 }

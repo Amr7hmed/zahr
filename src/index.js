@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import './scss/main.scss';
+import 'antd/dist/antd.css'; 
 
 import "react-datepicker/dist/react-datepicker.css";
 // CSS Modules, react-datepicker-cssmodules.css

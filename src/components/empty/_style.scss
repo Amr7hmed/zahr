@@ -36,4 +36,11 @@
         border-color: transparent;
         line-height: 42px;
     }
+
+    img.img-address {
+        filter: invert(65%) sepia(3%) saturate(0%) hue-rotate(7deg) brightness(95%) contrast(96%);
+        -webkit-filter: invert(65%) sepia(3%) saturate(0%) hue-rotate(7deg) brightness(95%) contrast(96%);
+        width: 80px;
+    height: 80px;
+}
 }

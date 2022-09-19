@@ -3,22 +3,23 @@ import { NavLink } from 'react-router-dom';
 import Iconleft from "../../images/icon/chevron-left-solid.svg";
 
 
-function Links() {
-  const Id =1;
+function Links(props) {
+  const Id = 1;
+  const {Category,Title}=props;
   return (
     <div className="proudect__link">
       <NavLink to="/">
         الصفحه الرئيسيه
       </NavLink>
 
-<img src={Iconleft} alt="" />
+      <img src={Iconleft} alt="" />
 
-<NavLink to={`/proudectscategories/${Id}`}>
-  نجف
-  </NavLink>
-  
-<img src={Iconleft} alt="" />
-<span>كل المنتجات</span>
+      <NavLink to={`/proudects`}>
+        {Category}
+      </NavLink>
+
+      <img src={Iconleft} alt="" />
+      <span>{Title}</span>
     </div>
   )
 }

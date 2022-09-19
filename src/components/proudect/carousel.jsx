@@ -2,23 +2,23 @@ import React from "react";
 import Slider from "react-slick";
 import Image from "../../images/product/image-proudect-one.png"
 
-function Carousel() {
-    
+function Carousel(props) {
+    const {Images ,setindex}=props;
   const settings = {
-    dots: false,
-    infinite: true,
     slidesToShow: 4,
     slidesToScroll: 2,
     autoplay: true,
     speed: 500,
     autoplaySpeed: 3000,
     cssEase: "linear",
+    dots: true,
+    infinite: true,  
     responsive: [
       {
         breakpoint: 1199,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 2,
           infinite: true,
           dots: true,
         },
@@ -36,8 +36,8 @@ function Carousel() {
       {
         breakpoint: 767,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToShow: 3,
+          slidesToScroll: 4,
           initialSlide: 1,
         },
       },
@@ -45,13 +45,11 @@ function Carousel() {
         breakpoint: 480,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToScroll: 5,
         },
       },
     ],
   };
-
-
 
   return (
     <>
@@ -62,28 +60,16 @@ function Carousel() {
 
 
           <Slider {...settings}>
+          {Images.map((item,index)=>
             <div className="item">
-              <img src={Image} alt="dress" className="img-ouer" />
+              <img src={item.image} alt="dress" className="img-ouer" onClick={()=>setindex(index)} />
             </div>
+              )}
+            {/*
+          {Images.map(item=>)}
+        */}
 
-            <div className="item">
-              <img src={Image} alt="dress" className="img-ouer" />
-            </div>
 
-            <div className="item">
-              <img src={Image} alt="dress" className="img-ouer" />
-            </div>
-            <div className="item">
-              <img src={Image} alt="dress" className="img-ouer" />
-            </div>
-
-            <div className="item">
-              <img src={Image} alt="dress" className="img-ouer" />
-            </div>
-
-            <div className="item">
-              <img src={Image} alt="dress" className="img-ouer" />
-            </div>
 
 
             </Slider>

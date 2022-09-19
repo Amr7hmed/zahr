@@ -1,47 +1,72 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Links from '../../components/checkout/links';
-import DatePicker from "react-datepicker";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import swal from "sweetalert";
+import { Authcontext } from "../../store/context";
+import DatePickerdata from "./datepicker";
+import TimePickerdata from "./timepicker";
+import { CheckoutDate } from "../../api/actions";
+import { Api } from "../../api";
+import axios from "axios";
 
 function CheckOutData() {
     let navigate = useNavigate();
-
-    const [state, setState] = useState({
-        date: new Date(),
-        hour: "7",
-        minutes: "00",
-    });
-
-
-    const handleChangeData = (e) => {
-        const value = e;
-        setState({
-            ...state,
-            date: value,
-        });
-    };
+    const { id } = useParams();
+    const authcontext = useContext(Authcontext);
+    const language = authcontext.language;
+    const [startDate, setStartDate] = useState(new Date());
+    const [startTime, setStartTime] = useState("");
 
 
-
-    const handleChange = (e) => {
-        const value = e.target.value;
-        setState({
-            ...state,
-            [e.target.name]: value,
-        });
-    };
-
+    const CheckoutDate = (startDate,startTime) => {
+        const options = {
+          method: "post",
+          url: `${Api}order/date`,
+          headers: {
+            Accept: "application/json",
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+          },
+          data: JSON.stringify({
+            "date": startDate,
+            "time": startTime
+          })
+        };
+        axios(options).then(function (response) {
+          console.log("handle success");
+          navigate(`/payment/${id}`);
+        })
+          .catch(function (error) {
+            if (error.response) {
+              console.log(error.response.data);
+              console.log(error.response.status);
+              console.log(error.response.headers);
+            } else if (error.request) {
+              console.log(error.request);
+            } else {
+              console.log('Error', error.message);
+            }
+            console.log(error.config);
+          });
+      };
     const handleDone = (e) => {
         e.preventDefault();
-        navigate("/payment");
-        console.log(state);
+        if (startDate === new Date() || startTime === "") {
+            {language === "En"?
+              swal("Please Select A Shipping Date !", "", "warning"):
+              swal("يرجي تحديد موعد الشحن", "", "warning")
+            }
+        } else {
+        CheckoutDate(startDate,startTime)
+        }
     };
-
 
     return (
         <section className='checkout'>
             <div className="container">
-                <Links Stylebulteone={"active"} Stylebultetwo={"vector"} />
+                <Links Stylebultes={"vectorotwo"} />
+        <div className='checkout__data'>
+            
                 <div className="checkout__header">
                     <h5> تحديد موعد الاستلام</h5>
                 </div>
@@ -50,8 +75,7 @@ function CheckOutData() {
                     <div className="item">
                         <label>تاريخ الطلب</label>
                         <div className="data">
-                            <DatePicker onChange={handleChangeData}
-                                className="data-input" minDate={new Date()} placeholder={state.date} />
+                            <DatePickerdata startDate={startDate} setStartDate={setStartDate}/>
                         </div>
                     </div>
 
@@ -60,13 +84,7 @@ function CheckOutData() {
                     <div className="item">
                         <label>تحديد الوقت</label>
                         <div className="time">
-                            <span className="button_zone">
-                                <button type="button" className="btn-zone">AM</button>
-                                <button type="button" className="btn-zone notactive">PM</button>
-                            </span>
-                            <input type="number" min={"00"} max={"59"} placeholder={state.minutes} name="minutes" onChange={handleChange} />
-                            <span className="bulltes">:</span>
-                            <input type="number" min={"1"} max={"12"} placeholder={state.hour} name="hour" onChange={handleChange} />
+                            <TimePickerdata setStartTime={setStartTime}/>
                         </div>
                     </div>
 
@@ -76,6 +94,7 @@ function CheckOutData() {
                         <button type="button" className='btn-done' onClick={handleDone}>استمرار</button>
                     </div>
                 </div>
+        </div>
             </div>
         </section>
     )

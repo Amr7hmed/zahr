@@ -1,5 +1,22 @@
-.fillter_control {
+.fillter {
 
+    &__categories,
+    &__price {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 20px;
+    }
+
+    &__categories,
+    &__city {
+        >ul {
+            max-height: 260px;
+            overflow-y: auto;
+        }
+    }
+}
+
+.fillter_control {
     .fillter {
         background-color: #ffffff;
         .btn_removeall {
@@ -44,11 +61,11 @@
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                margin: 16px 0px;
+                margin: 5px 0px;
 
                 input {
-                    width: 20px;
-                    height: 20px;
+                    width: 16px;
+                    height: 16px;
                     margin-right: 10px;
                     border-radius: 5px;
                     margin-left: 10px;
@@ -66,30 +83,47 @@
             font-size: 16px;
 
             input {
-                width: 20px;
-                height: 20px;
+                width: 16px;
+                height: 16px;
                 margin-right: 10px;
                 border-radius: 5px;
                 margin-left: 10px;
                 border-color: #c0c0c0;
-                accent-color: var(--primary-three-color) !important;
+                accent-color: #5c6349 !important;
                 display: block !important;
                 color: white;
-
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -ms-border-radius: 5px;
+                -o-border-radius: 5px;
                 +label {
                     color: #c0c0c0;
                 }
-
             }
 
             label {
                 color: #c0c0c0;
+            }
+            input.active{
+                +label {
+                    color: #333;
+                }
+
             }
         }
 
         .accordion-button {
             padding: 15px 0px;
             position: relative;
+
+            &:focus-visible {
+                outline: none !important;
+            }
+
+            &:focus {
+                border-color: transparent !important;
+                box-shadow: none !important;
+            }
 
             &:not(.collapsed) {
                 background-color: white;
@@ -114,6 +148,21 @@
                 color: #c0c0c0;
                 position: absolute;
             }
+        }
+
+        .accordion-body {
+            padding: 3px 20px;
+        }
+
+        .accordion-button-noafter {
+
+            &:not(.collapsed) {
+
+                &::after {
+                    display: none;
+                }
+            }
+
         }
 
         &__price {
@@ -185,13 +234,90 @@
     }
 }
 
-.languagear {
+.Ar {
     .fillter_control {
 
         .fillter {
-            font-family: var(--font-ar);   
+            font-family: var(--font-ar);
         }
     }
 }
 
-.languageen {}
+.En {}
+
+
+// 1- 1- Style Navbar Component To Media Queris Large.
+@media screen and (max-width: 991px) {
+
+    .fillter_control {
+        overflow-y: scroll;
+        position: fixed;
+        z-index: 10;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+
+        .fillter {
+            position: absolute;
+            width: 90%;
+            top: 30px;
+            left: 50%;
+            padding: 20px;
+            transform: translate(-50%, 30px);
+            -webkit-transform: translate(-50%, 30px);
+            -moz-transform: translate(-50%, 30px);
+            -ms-transform: translate(-50%, 30px);
+            -o-transform: translate(-50%, 30px);
+
+
+            .btn_search {
+                display: block;
+            }
+        }
+
+
+    }
+
+    .hidefillter {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 2s;
+        -webkit-transition: all 2s;
+        -moz-transition: all 2s;
+        -ms-transition: all 2s;
+        -o-transition: all 2s;
+    }
+
+    .showfillter {
+        opacity: 1;
+        visibility: visible;
+        display: block;
+        background-color: #ededed;
+        transition: all 2s;
+        -webkit-transition: all 2s;
+        -moz-transition: all 2s;
+        -ms-transition: all 2s;
+        -o-transition: all 2s;
+    }
+
+    .languagear {
+        .hidefillter {
+            right: -100%;
+        }
+
+        .showfillter {
+            right: 0%;
+        }
+    }
+
+    .languageen {
+        .hidefillter {
+            left: -100%;
+        }
+
+        .showfillter {
+            left: 0%;
+        }
+    }
+}

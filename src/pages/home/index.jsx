@@ -22,8 +22,11 @@ function Home() {
     ) : (
       <section className='home'>
         <Slider />
+        
         <SectionCategories Categories={categories}/>
         <SectionProudects Products={products}/>
+         
+           
         <Offer />
         <Services />
       </section>

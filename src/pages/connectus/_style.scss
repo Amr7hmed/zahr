@@ -1,0 +1,127 @@
+.outer {
+  &__links {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 16px;
+      margin: 30px 0px;
+      position: relative;
+      img {
+          width: 7.9px;
+          height: 16px;
+          margin: 0px 10px;
+          object-fit: contain;
+          filter: invert(45%) sepia(1%) saturate(2331%) hue-rotate(24deg) brightness(102%) contrast(91%);
+      }
+
+      a,
+      span {
+          font-size: 16px;
+          color: #b0b0b0;
+      }
+      h4{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+      }
+  }
+
+  &__data{
+    margin: 100px 0px ;
+   h5{
+    font-size: 22px;
+    color: #000;
+   }
+  }
+  &__row{
+    margin: 100px 0px;
+  }
+  // Form
+  &__header {
+    margin: 60px 0px 0px 0px;
+    text-align: center;
+
+    h3 {
+      color: var(--black-color);
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  // Form
+  &__content {
+    width: 75%;
+    margin: 64px auto 100px auto;
+    p {
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      color: var(--primary-two-color);
+    }
+    .input_form {
+      margin-bottom: 30px;
+
+      label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--primary-two-color);
+      }
+
+      input {
+        width: 95%;
+        height: 39px;
+        margin: 4px 0px 0px 0px;
+        border-radius: 19.5px;
+        border: solid 1px #d5d5d5;
+        background-color: #fff;
+        -webkit-border-radius: 19.5px;
+        -moz-border-radius: 19.5px;
+        -ms-border-radius: 19.5px;
+        -o-border-radius: 19.5px;
+      }
+
+      textarea {
+        width: 95%;
+        height: 271px;
+      }
+
+    }
+    .btn {
+      pointer-events: auto;
+      box-shadow: 5px 3px 24px 0 rgba(0, 0, 0, 0.09);
+      margin: 30px auto;
+      border-radius: 5px;
+      display: block;
+      width: 150px;
+      height: 40px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #80804d;
+      font-size: 14px;
+      font-weight: normal;
+      text-align: center;
+      color: #fff;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+    }
+  }
+}
+
+.Ar {
+  .outer {
+    font-family: var(--font-ar);
+    direction: rtl;
+  }
+}
+
+.En {
+  .outer {
+    direction: ltr;
+  }
+
+}

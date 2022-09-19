@@ -1,10 +1,14 @@
 import React from 'react';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Authcontext } from '../../store/context';
 
 function FooterCategories() {
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
   return (
     <div className='footerlist'>
-        <h5> فئات</h5>
+        <h5>{language === "En"?"Categories":"فئات"}</h5>
 
         <ul>
             <li><NavLink to="/">زهور</NavLink></li>

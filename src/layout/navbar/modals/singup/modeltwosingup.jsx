@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useContext } from "react";
 import { SingupCode } from "../../../../api/actions";
 import Logo from "../../../../images/logo/layer-logo.png";
+import { Authcontext } from "../../../../store/context";
 
-function ModeltwoSingup(props) {
-  const { language } = props;
+function ModeltwoSingup() {
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
   const [state, setState] = useState({
     code: "",
   });
@@ -58,16 +61,17 @@ SingupCode(state,setMessage,setToggole);
               <div className="input_form">
                 <input type="text" className="form-control"  
                   name="code"
-                  onChange={handleChange} />
-                  
+                  onChange={handleChange}  onKeyUp={handleSubmit} />
+                  {/*
                 <button className="btn send" type="button" onClick={handleSubmit}>
                   {language === "En" ? "Send" : "أرسال" }
                   </button>
+                */}
               </div>
-              <span className="errorfiled">{message}</span>
+              {toggole === false ? <span className="errorfiled">{message}</span>:""}
               <button type="button"
                 className={toggole ===false?"btn button-login mb-5 button-disabled":"btn button-login mb-5 button-active"}
-                data-bs-toggle="modal" onClick={handleSubmit} 
+                data-bs-toggle="modal"
                 data-bs-target={toggole ===false?" ": "#singupModal3"}>
 
                 {language === "En" ? "Confirmation" : "تأكيد"}

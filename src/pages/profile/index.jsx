@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from "react";
-import InputImgUpload from "../../images/icon/camera.png";
+import React, { useState, useEffect, useContext } from "react";
 import Image from "../../images/icon/woman.png";
 import { NavLink } from 'react-router-dom';
 import Reseteicon from "../../images/icon/reset-password.png";
-import ModalPassword from '../../components/profile/form/modalpassword';
+import ModalPassword from '../../components/editeprofile/form/modalpassword';
 import { Getprofile } from '../../api/actions';
+import Loading from "../../layout/loading/loading";
+import InputImag from "../../components/profile/InputImag";
+import { Authcontext } from "../../store/context";
 
-function Profile(props) {
-  const { language  } = props;
+function Profile() {
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
 
-  const [products, setProducts] = useState([]);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [cartid, setCartid] = useState("");
 
   const [isVisible, setIsVisible] = useState(false);
   // Top: 0 takes us all the way back to the top of the page
@@ -26,7 +28,6 @@ function Profile(props) {
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    Getprofile()
       // Button is displayed after scrolling for 500 pixels
       const toggleVisibility = () => {
         if (window.pageYOffset > 500) {
@@ -39,55 +40,35 @@ function Profile(props) {
       return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  const [file, setFile] = useState(null);
+  useEffect(() => { 
+    Getprofile(setLoading,setData);
+  }, [loading]);
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setFile(value);
-  };
 
-  const handleChangeImage = () => {
-    if (file === null) {
-      alert("No picture selected")
-    } else {
-      console.log(file);
-    }
-  };
-  return (
+
+
+  console.log(data);
+  return (<>
+    {loading === false ? (
+      <Loading />
+    ) : (
     <section className='profile'>
       <div className="container">
 
 
         <div className="profile__data">
           <div className="section__header">
-            <h3>الملف الشخصي</h3>
+            <h3> 
+              
+            {language === "En" ?"Profile ":"الملف الشخصي"}
+            </h3>
           </div>
 
-
-          <div className="imageinput">
-            <span className="imgcover">
-              <img src={Image} className="img-one" alt=""
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src =
-                    "https://www.aaronfaber.com/wp-content/uploads/2017/03/product-placeholder-wp.jpg";
-                }} />
-              <span className="imginput">
-                <img src={InputImgUpload} alt="" />
-                <input type="file" className="input-file"
-                  onChange={handleChange} />
-              </span>
-            </span>
-
-            <button className="btn_save_img" type='button' onClick={handleChangeImage}>
-              تغير الصورة الشخصية
-            </button>
-          </div>
-
+<InputImag Data={data}/>
 
           <div className="itemdatashow">
             <span className="txt">
-              سارة علي
+              {data.name}
             </span>
           </div>
 
@@ -95,7 +76,7 @@ function Profile(props) {
 
           <div className="itemdatashow">
             <span className="txt">
-              sara.ali@gmailcom
+              {data.email}
             </span>
           </div>
 
@@ -103,7 +84,7 @@ function Profile(props) {
 
           <div className="itemdatashow">
             <span className="txt">
-              056995562
+              {data.phone === null? "010025848455":data.phone}
             </span>
           </div>
 
@@ -115,12 +96,12 @@ function Profile(props) {
           </div>
 
 
-          <div className="itemdatashow">
+          <div className="itemdatashow input-control-password">
             <button className='btn_password' type="button" data-bs-toggle="modal" data-bs-target="#chingepassword" >
               <img src={Reseteicon} alt="" />
               تغيير كلمة المرور
             </button>
-            <ModalPassword />
+            <ModalPassword setLoading={setLoading}/>
           </div>
 
 
@@ -132,7 +113,8 @@ function Profile(props) {
         </div>
       </div>
     </section>
-  )
+    )}
+  </>)
 }
 
 export default Profile;

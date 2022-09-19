@@ -2,7 +2,7 @@ import React from 'react'
 import ModalEditeAddress from './modalediteaddress.jsx';
 
 function CardAddress(Props) {
-    const {Title,Nameuser,Addres,Phone ,ShowButtons}=Props;
+    const {Title,Nameuser,Addres,Phone ,ShowButtons, Id}=Props;
   return (
     <div className='cardaddress'>
         <span className='title'>{Title}</span>
@@ -19,8 +19,7 @@ function CardAddress(Props) {
             </button>
         </div>
         }
-        <ModalEditeAddress Nameuser={"محمد علي اسماعيل"} 
-          Addres={"العليا- مبني 5 -شقة 12"} Phone={"+9665559164782"} />
+        <ModalEditeAddress Id={Id}/>
     </div>
   )
 }
