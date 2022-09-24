@@ -13,9 +13,15 @@ export function Contextprovider(props) {
     //Wishlist
     const [wishlist, setWishlist] = useState([]);
     
-    //localstorg
     useEffect(() => {
-    }, [])
+
+      if(localStorage.getItem("language") !== null){
+        setLanguage("En")
+      }else{
+        setLanguage("Ar")
+      }
+    }, [language]);
+    
 
     /*wishlist,setWishlist */
     const value = {

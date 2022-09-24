@@ -24,12 +24,17 @@ import Proudects from './pages/proudects/all/index.jsx';
 import ProductsCategories from './pages/proudects/categories/index.jsx';
 import ModelCart from './layout/navbar/modals/modelcart/index.jsx';
 import EditeProfile from './pages/editeprofile/index.jsx';
+import FormConnectUs from './pages/connectus/formconnectus.jsx';
+import Articles from './pages/articles/index.jsx';
+import Article from './components/articles/article.jsx';
+import Proudectssearch from './pages/Proudectssearch/index.jsx';
+import Proudectssearchcategorey from './pages/Proudectssearch/searchcategorey.jsx';
 
 function App() {
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
   return (
-    <main className={"Ar"}>
+    <main className={language}>
     <BrowserRouter>
       <Navbar/>
         <Routes>
@@ -50,11 +55,13 @@ function App() {
           <Route path="/paymentdone/:id" element={<PaymentDone/>} exact />
           <Route path="/paymentshipping" element={<PaymentShipping/>} exact />
           <Route path="/connectus" element={<ConnectUs/>} exact />
+          <Route path="/formconnectus" element={<FormConnectUs/>} exact />
           <Route path="/aboutus" element={<AboutUs/>} exact />
           <Route path="/pages/:id" element={<OuterPages/>} exact />
-
-          
-
+          <Route path="/articles" element={<Articles/>} exact />
+          <Route path="/article/:id" element={<Article/>} exact />
+          <Route path="/Proudectssearch/:search" element={<Proudectssearch/>} exact />
+          <Route path="/Proudectssearchcategorey/:search" element={<Proudectssearchcategorey />} exact />
           
         </Routes>
 

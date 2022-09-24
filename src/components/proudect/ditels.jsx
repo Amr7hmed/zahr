@@ -8,7 +8,7 @@ import ReviewsList from './reviews/reviewslist';
 import SimilarProducts from './similarproducts';
 
 function Ditels(props) {
-    const {proudect,Similarproducts}=props;
+    const {proudect,Similarproducts,Id}=props;
     const [index, setindex] = useState(0);
     console.log(proudect);
     return (
@@ -19,7 +19,7 @@ function Ditels(props) {
                 </div>
 
                 <div className="col-md-12 col-lg-7">
-                    <Data Proudect={proudect}/>
+                    <Data Proudect={proudect} Id={Id}/>
                 </div>
                 
                 <div className="col-md-12 col-lg-5">
@@ -32,7 +32,7 @@ function Ditels(props) {
                 </div>
             </div>
 
-            <ReviewsList/>
+            <ReviewsList Rates={proudect.rates}/>
 
             <SimilarProducts Similarproducts={Similarproducts}/>
         </section>

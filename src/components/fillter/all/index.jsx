@@ -11,11 +11,6 @@ function Fillter(props) {
   const{  setProducts ,setLoading ,setPerpage ,ToggleFilterclass ,setTogglefilter}=props;
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
-
-
-  const [cities,setCities]=useState([]);
-  const [maxprice,setMaxprice]=useState("");
-  const [minprice,setMinprice]=useState("");
   const [city, setCity] = useState("");
   const [categories, setCategories] = useState("");
   // get data 
@@ -81,7 +76,15 @@ function Fillter(props) {
           categories={categories}
           minValue={minValue}
           maxValue={maxValue} />
-        <Price  setProducts={setProducts} maxprice={maxprice} minprice={minprice}/>
+        <Price setProducts={setProducts} 
+        maxValue={maxValue} 
+        minValue={minValue} 
+        Datafilter={Datafilter}
+        set_minValue={set_minValue}
+        set_maxValue={set_maxValue}
+        city={city}
+        setPerpage={setPerpage}
+        categories={categories}/>
         <City
           Getcity={getcity}
           setProducts={setProducts}

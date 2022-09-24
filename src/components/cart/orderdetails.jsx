@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { Getsummery } from "../../api/actions";
+import { AddCoupon, Getsummery } from "../../api/actions";
 import { Authcontext } from "../../store/context";
 
 
@@ -13,11 +13,23 @@ function OrderDetails(props) {
     const [price, setPrice] = useState("");
     const [delivery, setDelivery] = useState("");
     const [total, setTotal] = useState("");
+    const [coupon, setCoupon] = useState("");
+    const [datacoupon, setDataCoupon] = useState(false);
+
+    const handleChange = (e) => {
+        const value = e.target.value;
+        setCoupon(value)
+    }
+
     const handleDone = (e) => {
         e.preventDefault();
         navigate(`/checkout/${Cartid}`);
     };
-
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        AddCoupon(setDataCoupon,coupon)
+        setCoupon("")
+    };
 
     useEffect(() => {
         Getsummery(setPrice, setDelivery, setTotal);
@@ -31,9 +43,19 @@ function OrderDetails(props) {
 
             <span className="input">
                 <input type="text"
+                    name="coupon"
+                    value={coupon || ''}
+                    onChange={handleChange}
                     placeholder={language === "En" ? "Enter Coupon" : 'ادخل الكوبون'} />
-                <button type='button' className='btn-ceboun'>
-                    {language === "En" ? "Application" : "تطبيق"}
+                <button className='btn-ceboun' type="button" onClick={handleSubmit}>
+                    {datacoupon === false ? <>
+                        {language === "En" ? "Application" : "تطبيق"}
+                    </>
+                        : <>
+                            {language === "En" ? "Removal" : "إزالة"}
+                        </>
+
+                    }
                 </button>
             </span>
 

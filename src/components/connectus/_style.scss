@@ -1,0 +1,285 @@
+.outer {
+  &__links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 16px;
+    margin: 30px 0px;
+    position: relative;
+
+    img {
+      width: 7.9px;
+      height: 16px;
+      margin: 0px 10px;
+      object-fit: contain;
+      filter: invert(45%) sepia(1%) saturate(2331%) hue-rotate(24deg) brightness(102%) contrast(91%);
+    }
+
+    a,
+    span {
+      font-size: 16px;
+      color: #b0b0b0;
+    }
+
+    h4 {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      color: #000;
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+
+  &__data {
+    margin: 100px 0px;
+
+    h5 {
+      font-size: 22px;
+      color: #000;
+    }
+  }
+
+  &__row {
+    margin: 100px 0px;
+    position: relative;
+
+    .imgbakground {
+      position: absolute;
+      z-index: -1;
+      top: 0%;
+      left: -7%;
+      width: 350px;
+      height: 600px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .cardconnectus {
+      width: 90%;
+      height: 225px;
+      flex-grow: 0;
+      margin: 25px auto;
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 3px 49px 9px rgba(0, 0, 0, 0.06);
+      background-color: #fff;
+
+      .top {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .image {
+          width: 50px;
+          height: 50px;
+          background-color: var(--primary-three-color);
+          border-radius: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            width: 30px;
+            height: 30px;
+            filter: invert(99%) sepia(68%) saturate(0%) hue-rotate(58deg) brightness(112%) contrast(100%);
+            -webkit-filter: invert(99%) sepia(68%) saturate(0%) hue-rotate(58deg) brightness(112%) contrast(100%);
+          }
+        }
+
+        .text {
+          font-size: 20px;
+        }
+      }
+
+      .bottom {
+        text-align: center;
+        margin: 40px 0px;
+        color: #000;
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__button {
+    margin: 60px 0px;
+
+    .btn {
+      pointer-events: auto;
+      box-shadow: 5px 3px 24px 0 rgba(0, 0, 0, 0.09);
+      margin: 30px auto;
+      border-radius: 5px;
+      display: block;
+      width: 150px;
+      height: 40px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      background-color: #80804d;
+      font-weight: normal;
+      text-align: center;
+      color: #fff;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+
+      &:hover {
+        color: #fff !important;
+      }
+    }
+
+  }
+
+  // Form
+  &__header {
+    margin: 60px 0px 0px 0px;
+    text-align: center;
+
+    h3 {
+      color: var(--black-color);
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  // Form
+  &__content {
+    width: 75%;
+    margin: 64px auto 100px auto;
+
+    p {
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      color: var(--primary-two-color);
+    }
+
+    .input_form {
+      margin-bottom: 30px;
+
+      label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--primary-two-color);
+      }
+
+      input {
+        width: 95%;
+        height: 39px;
+        margin: 4px 0px 0px 0px;
+        border-radius: 19.5px;
+        border: solid 1px #d5d5d5;
+        background-color: #fff;
+        -webkit-border-radius: 19.5px;
+        -moz-border-radius: 19.5px;
+        -ms-border-radius: 19.5px;
+        -o-border-radius: 19.5px;
+      }
+
+      textarea {
+        width: 95%;
+        height: 271px;
+      }
+
+    }
+
+    .btn {
+      pointer-events: auto;
+      box-shadow: 5px 3px 24px 0 rgba(0, 0, 0, 0.09);
+      margin: 30px auto;
+      border-radius: 5px;
+      display: block;
+      width: 150px;
+      height: 40px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #80804d;
+      font-size: 14px;
+      font-weight: normal;
+      text-align: center;
+      color: #fff;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+    }
+  }
+}
+
+.Ar {
+  .outer {
+    font-family: var(--font-ar);
+    direction: rtl;
+
+    &__row {
+      .cardconnectus {
+        .top {
+          .image {
+            margin-left: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.En {
+  .outer {
+    direction: ltr;
+  }
+}
+
+
+
+@media screen and (max-width: 991px) {
+  .outer {
+    &__links {
+      a,
+      span {
+        font-size: 14px;
+      }
+    }
+    
+  &__data {
+    margin: 50px 0px;
+    h5 {
+      font-size: 18px;
+    }
+  }
+  
+  &__row {
+    margin: 50px 0px;
+  }
+  }
+
+  .Ar {
+    .outer {
+      &__links {
+        h4 {
+          left: 0%;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .En {
+    .outer {
+      &__links {
+        h4 {
+          right: 0%;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+// 1- 2- Style Footer Component To Media Queris Samll.
+@media screen and (max-width: 576px) {}

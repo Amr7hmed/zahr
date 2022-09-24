@@ -12,7 +12,11 @@ function Profile() {
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
 
-  const [data, setData] = useState([]);
+  const [file, setFile] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [isVisible, setIsVisible] = useState(false);
@@ -28,91 +32,88 @@ function Profile() {
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
-      // Button is displayed after scrolling for 500 pixels
-      const toggleVisibility = () => {
-        if (window.pageYOffset > 500) {
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
-        }
-      };
-      window.addEventListener("scroll", toggleVisibility);
-      return () => window.removeEventListener("scroll", toggleVisibility);
+    // Button is displayed after scrolling for 500 pixels
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 500) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  useEffect(() => { 
-    Getprofile(setLoading,setData);
+  useEffect(() => {
+    Getprofile(setLoading, setName, setFile, setEmail, setPhone, setCity);
   }, [loading]);
 
 
-
-
-  console.log(data);
   return (<>
     {loading === false ? (
       <Loading />
     ) : (
-    <section className='profile'>
-      <div className="container">
+      <section className='profile'>
+        <div className="container">
 
 
-        <div className="profile__data">
-          <div className="section__header">
-            <h3> 
-              
-            {language === "En" ?"Profile ":"الملف الشخصي"}
-            </h3>
-          </div>
+          <div className="profile__data">
+            <div className="section__header">
+              <h3>
 
-<InputImag Data={data}/>
+                {language === "En" ? "Profile " : "الملف الشخصي"}
+              </h3>
+            </div>
 
-          <div className="itemdatashow">
-            <span className="txt">
-              {data.name}
-            </span>
-          </div>
+            <InputImag Data={file} />
 
-
-
-          <div className="itemdatashow">
-            <span className="txt">
-              {data.email}
-            </span>
-          </div>
+            <div className="itemdatashow">
+              <span className="txt">
+                {name}
+              </span>
+            </div>
 
 
 
-          <div className="itemdatashow">
-            <span className="txt">
-              {data.phone === null? "010025848455":data.phone}
-            </span>
-          </div>
+            <div className="itemdatashow">
+              <span className="txt">
+                {email}
+              </span>
+            </div>
 
 
-          <div className="itemdatashow">
-            <span className="txt">
-              الرياض
-            </span>
-          </div>
+
+            <div className="itemdatashow">
+              <span className="txt">
+                {phone === null ? "" : phone}
+              </span>
+            </div>
 
 
-          <div className="itemdatashow input-control-password">
-            <button className='btn_password' type="button" data-bs-toggle="modal" data-bs-target="#chingepassword" >
-              <img src={Reseteicon} alt="" />
-              تغيير كلمة المرور
-            </button>
-            <ModalPassword setLoading={setLoading}/>
-          </div>
+            <div className="itemdatashow">
+              <span className="txt">
+                {city === null ? "" : city}
+              </span>
+            </div>
 
 
-          <div className="buttons">
-            <NavLink to={`/editeprofile`} className="edite-button" onClick={scrollToTop}>
-              تعديل
-            </NavLink>
+            <div className="itemdatashow input-control-password">
+              <button className='btn_password' type="button" data-bs-toggle="modal" data-bs-target="#chingepassword" >
+                <img src={Reseteicon} alt="" />
+                تغيير كلمة المرور
+              </button>
+              <ModalPassword setLoading={setLoading} />
+            </div>
+
+
+            <div className="buttons">
+              <NavLink to={`/editeprofile`} className="edite-button" onClick={scrollToTop}>
+                تعديل
+              </NavLink>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     )}
   </>)
 }

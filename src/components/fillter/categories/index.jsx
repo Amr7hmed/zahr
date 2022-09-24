@@ -14,6 +14,12 @@ function Fillter(props) {
   const [cities,setCities]=useState([]);
   const [maxprice,setMaxprice]=useState("");
   const [minprice,setMinprice]=useState("");
+  const [Datafilter, setDatafilter] = useState("");
+  const [city, setCity] = useState("");
+  
+  const [minValue, set_minValue] = useState(0);
+  const [maxValue, set_maxValue] = useState(0);
+
   const [isVisible, setIsVisible] = useState(false);
   const [listcategories,setlistcategories]=useState([]);
   
@@ -48,16 +54,34 @@ function Fillter(props) {
   };
 
   useEffect(() => {
-    GetFiltersCategories(setCities,setMaxprice,setMinprice,setlistcategories)
+    GetFiltersCategories(setCities,setDatafilter,set_minValue,set_maxValue,setlistcategories)
   }, []);
 
 
   return (
     <section className='fillter'>
       <form>
-        <Categories listcategories={listcategories} CategoriesId={Id}/>
-        <Price Id={Id} setProducts={setProducts} maxprice={maxprice} minprice={minprice}/>
-        <City Id={Id} setProducts={setProducts} cities={cities}/>
+        <Categories 
+        listcategories={listcategories} 
+        CategoriesId={Id}/>
+        <Price Id={Id} 
+        setProducts={setProducts}
+        Datafilter={Datafilter}
+        city={city} 
+        setCity={setCity}
+        maxValue={maxValue} 
+        minValue={minValue} 
+        set_minValue={set_minValue}
+        set_maxValue={set_maxValue}/>
+
+        <City 
+        Id={Id} 
+        setProducts={setProducts} 
+        cities={cities}
+        setCity={setCity}
+        minValue={minValue}
+        maxValue={maxValue}/>
+        
           <button className="btn btn_removeall" type="button" onClick={() => removeData()}>
           {language === "En" ?"Remove All":"مسح الكل"}
           </button>

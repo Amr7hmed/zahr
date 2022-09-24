@@ -8,7 +8,6 @@ function Order(props) {
 
     const Toggoleaction = () => {
         setToggole(!toggole)
-
     }
     return (
         <div className='order'>
@@ -22,13 +21,13 @@ function Order(props) {
                 <div className={toggole === false ? "show" : "hide"}>
 
                     <CardOrder Image={OrderProducts[0].image} Title={OrderProducts[0].title}
-                        Color={OrderProducts[0].colors} Weight={"25"} Price={`${OrderProducts[0].price} ر.س`} />
+                        Color={OrderProducts[0].colors} Weight={OrderProducts[0].weight} Price={`${OrderProducts[0].price} ر.س`} />
                 </div>
-                <div className={toggole === false ? "hide" : "show"}>
+                <div className={toggole === false ? "hide" : "show all"}>
                     {OrderProducts.map(item => <div key={item.id}>
 
                         <CardOrder Image={item.image} Title={item.title}
-                            Color={item.colors} Weight={"25"} Price={`${item.price} ر.س`} />
+                            Color={item.colors} Weight={item.weight} Price={`${item.price} ر.س`} />
                         <span className="line"></span>
                     </div>
                     )}

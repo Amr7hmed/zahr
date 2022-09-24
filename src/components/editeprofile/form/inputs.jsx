@@ -80,23 +80,25 @@ export function InputImage(props) {
 
 
 export function InputName(props) {
-    const { Name, SetName } = props;
+    const { name, SetName } = props;
 
     const handleChange = (e) => {
         const value = e.target.value;
         SetName(value);
     };
-
-
     return (
         <div className='input'>
-            <label>
-                اسم المستخدم
-            </label>
+            
+        <form>
 
-            <input className="form-control" type="text" value={Name}
-                onChange={handleChange} />
+            <label>اسم المستخدم</label>
+            <input type="text"
+              className="form-control shadow-none input-fild"
+              value={name}
+              name="name"
+              onChange={handleChange} />
 
+            </form>
         </div>
     )
 }
@@ -136,11 +138,10 @@ export function InputPhone(props) {
 
     return (
         <div className='input'>
-            <label>
-رقم الهاتف
-            </label>
+            <label>رقم الهاتف</label>
 
-            <input className="form-control" type="text" value={Phone}
+            <input className="form-control" type="text" 
+            value={Phone === null ? null :Phone}
                 onChange={handleChange} />
 
         </div>
@@ -163,7 +164,9 @@ export function InputCity(props) {
                 المدينة
             </label>
 
-            <input className="form-control" type="text" value={City}
+            <input className="form-control" type="text" 
+            value={City}
+            name="city"
                 onChange={handleChange} />
 
         </div>

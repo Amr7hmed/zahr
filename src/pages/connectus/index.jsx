@@ -1,20 +1,44 @@
-import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useContext } from 'react';
-import { ConnectUsapi } from '../../api/actions';
-import { Api } from '../../api/index';
 import { Authcontext } from '../../store/context';
 import Links from '../../components/connectus/links';
 import CardConnectUs from '../../components/connectus/cardconnectus';
+import LoctionIcon from '../../images/icon/location-dot-solid.svg';
+import EmailIcon from '../../images/icon/envelope-regular.svg';
+import PhoneIcon from '../../images/icon/phone-solid.svg';
+import { NavLink } from 'react-router-dom';
+import AboutusBackground from "../../images/bg/blackgroud.png";
 
 function ConnectUs() {
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
+  const [isVisible, setIsVisible] = useState(false);
+  // Top: 0 takes us all the way back to the top of the page
+  // Behavior: smooth keeps it smooth!
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    // Button is displayed after scrolling for 500 pixels
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 500) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
 
   return (
     <section className="outer">
       <div className="container">
-        <Links/>
+        <Links />
         <div className="outer__data">
           <h5>
             {language === "En" ?
@@ -36,9 +60,30 @@ function ConnectUs() {
         </div>
 
         <div className="outer__row">
-          <CardConnectUs/>
+              <div className="imgbakground"><img src={AboutusBackground}/></div>
+          <div className="row">
+            <div className="col-12 col-lg-4">
+              <CardConnectUs Title={language === "En" ? "The Address" : "العنوان"}
+               Image={LoctionIcon} Detiles={"هنا يوضع عنوان"} />
+            </div>
+            <div className="col-12 col-lg-4">
+              <CardConnectUs Title={language === "En" ? "E-mail" : "البريد الالكتروني"}
+               Image={EmailIcon} Detiles={"zahr@gmail.com"} />
+            </div>
+            <div className="col-12 col-lg-4">
+              <CardConnectUs Title={language === "En" ? "Phone Number" : "رقم الهاتف"}
+               Image={PhoneIcon} Detiles={"0584932999"} />
+            </div>
+          </div>
         </div>
 
+        <div className="outer__button">
+          <NavLink to="/formconnectus" className="btn send" type="button"  onClick={scrollToTop}>
+
+            {language === "En" ? "Message Us" : "راسالنا"}
+
+          </NavLink>
+        </div>
       </div>
     </section>
   )

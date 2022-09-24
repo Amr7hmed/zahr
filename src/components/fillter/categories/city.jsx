@@ -1,29 +1,50 @@
 import React from "react";
 import { useContext } from "react";
-import { FilterDataCity } from "../../../api/actions";
+import { FilterDataCategoryPage, FilterDataCity } from "../../../api/actions";
 import { Authcontext } from "../../../store/context";
+import removeIcon from "../../../images/icon/icon_remove.svg";
 
 function City(props) {
-  const { Id, setProducts, cities } = props;
+  const {cities, Id, setProducts,setCity ,minValue,maxValue } = props;
+
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
 
   const handleChange = (e) => {
     const value = e.target.id;
-    FilterDataCity(Id, setProducts, value)
+    setCity(value)
+    FilterDataCategoryPage(Id,setProducts,minValue,maxValue,value)
   };
+
+  const clearAllRadios=()=> {
+    var radList = document.getElementsByName('city');
+    for (var i = 0; i < radList.length; i++) {
+      if(radList[i].checked) radList[i].checked = false;
+    }
+    const newcity="";
+    setCity("")
+   FilterDataCategoryPage(Id,setProducts,minValue,maxValue,newcity)
+  }
+
 
   return (
     <div className='fillter__city'>
       <div className="title">
+        
+        {language === "En" ?  <h4>City/Region</h4> : <h4>المدينه/المنطقه</h4>}
 
-          {language === "En" ? <h4>City/Region</h4> : <h4>المدينه/المنطقه</h4>}
+        
+        <button className='btn' id="btn-removeall" onClick={()=> clearAllRadios()} type="button">
 
-      </div>
+          <img src={removeIcon} alt="" />
+        </button>
+    </div>
       <ul>
         {cities.map(item =>
           <li key={item.city}>
-            <input type="radio" value={item.city} name="filter" onChange={handleChange} id={item.city} />
+            <input type="radio" value={item.city} name="filter" onChange={handleChange}
+             name="city"
+            id={item.city} />
             <label htmlFor={item.city}>
               {item.city}
             </label>

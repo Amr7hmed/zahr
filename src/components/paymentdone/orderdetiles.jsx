@@ -4,18 +4,18 @@ import CashImage from "../../images/icon/cash-payment.png";
 import { Authcontext } from '../../store/context';
 
 function OrderDetiles(props) {
-  const { Showbutton } = props;
+  const { Showbutton, summary } = props;
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
   return (
     <div className='orderdetiles'>
       <div className='title'>
         <h6>
-            {language === "En" ? "Order" : "الطلبية"}
+          {language === "En" ? "Order" : "الطلبية"}
           <span>567345#</span></h6>
         {Showbutton === false ? "" :
           <button type="button" className="btn-done">
-          {language === "En" ? "Underway" : " قيد التنفيذ"}
+            {language === "En" ? "Underway" : " قيد التنفيذ"}
           </button>
         }
       </div>
@@ -25,7 +25,7 @@ function OrderDetiles(props) {
         <div className="col-md-12 col-lg-4">
           <div className='ordercontener'>
             <span className='top'>
-          {language === "En" ? "The Address" : "العنوان"}
+              {language === "En" ? "The Address" : "العنوان"}
             </span>
             <span className='text'>
               المنزل
@@ -41,29 +41,34 @@ function OrderDetiles(props) {
         <div className="col-md-12 col-lg-4">
           <div className='ordercontener'>
             <span className='top'>
-          {language === "En" ? "Order Summary" : "ملخص الطلبية"}
+              {language === "En" ? "Order Summary" : "ملخص الطلبية"}
             </span>
 
             <div className="item">
               <span>
-          {language === "En" ? "The Total Amount" : " أجمالى المبلغ"}
-                </span>
-              <span>150 {" "} ر.س</span>
-            </div>
-
-            <div className="item">
-              <span> 
-                
-          {language === "En" ? "Shipping" : "الشحن"}
+                {language === "En" ? "The Total Amount" : " أجمالى المبلغ"}
               </span>
-              <span>150 {" "} ر.س</span>
+              <span>{summary.price} {" "}
+
+                {language === "En" ? "R.S" : "ر.س"}
+              </span>
             </div>
 
             <div className="item">
               <span>
-          {language === "En" ? "The Total" : "المجموع"}
-           </span>
-              <span>150 {" "} ر.س</span>
+
+                {language === "En" ? "Shipping" : "الشحن"}
+              </span>
+              <span>{summary.delivery_price}  {" "}
+                {language === "En" ? "R.S" : "ر.س"}</span>
+            </div>
+
+            <div className="item">
+              <span>
+                {language === "En" ? "The Total" : "المجموع"}
+              </span>
+              <span>{summary.total} {" "}
+                {language === "En" ? "R.S" : "ر.س"}</span>
             </div>
           </div>
 
@@ -71,14 +76,15 @@ function OrderDetiles(props) {
         <div className="col-md-12 col-lg-4">
           <div className='ordercontener cashordercontener'>
             <span className='top'>
-          {language === "En" ? "Payment Method" : "طريقة الدفع"}
+              {language === "En" ? "Payment Method" : "طريقة الدفع"}
             </span>
 
             <div className="cash">
               <img src={CashImage} alt="Cash Image" />
-              <span>
-          {language === "En" ? "Pay Cash" : " الدفع نقدا"}
-                </span>
+              {language === "En" ?
+                <span>{summary.payment_type === "visa" ? "Payment Visa" : "Payment Cash"}</span> :
+                <span>{summary.payment_type === "visa" ? " الدفع فيزا" : " الدفع نقدا"}</span>
+              }
             </div>
           </div>
 

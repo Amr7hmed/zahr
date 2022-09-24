@@ -18,15 +18,16 @@ function Payment() {
   const [loading, setLoading] = useState(false);
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
+  const setCart = authcontext.setCart;
   let navigate = useNavigate();
 
   const { id } = useParams();
 
 
- const PaymentPay = (Id, data) => {
+ const PaymentPay = (data) => {
   const options = {
     method: "post",
-    url: `${Api}order/payment/${Id}`,
+    url: `${Api}order/payment`,
     headers: {
       Accept: "application/json",
       'Content-Type': 'application/json',
@@ -39,9 +40,10 @@ function Payment() {
   axios(options).then(function (response) {
     console.log("handle success");
     console.log(response.messge);
+    setCart([])
       if(data==="cash" ){
         console.log(data)
-        //navigate(`/paymentdone/${id}`);
+        navigate(`/paymentdone/${id}`);
       }else if(data==="visa"){
         console.log(data)
       }else{
@@ -70,17 +72,19 @@ function Payment() {
       swal("يرجي تحديد طريقة الدقع", "", "warning")
     }
     } else {
-      navigate(`/paymentdone/${id}`);
-      //PaymentPay(id,payment)
+      //navigate(`/paymentdone/${id}`);
+      PaymentPay(payment)
     }
   };
 
   const handleCash = () => {
     Setpayment("cash")
+   // PaymentPay("cash")
   };
 
   const handleVisa = () => {
     Setpayment("visa")
+    //PaymentPay("visa")
   };
 
   useEffect(() => {

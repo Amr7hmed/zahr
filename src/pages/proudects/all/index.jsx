@@ -27,14 +27,14 @@ function Proudects() {
     setpageCount(number)
   };
 
-  const ToggleFilterclass=()=>{
-    if(togglefilter=== "hidefillter"){
+  const ToggleFilterclass = () => {
+    if (togglefilter === "hidefillter") {
       setTogglefilter("showfillter")
-    }else{
+    } else {
       setTogglefilter("hidefillter")
     }
   }
-  
+
   return (
     <>
       {loading === false ? (
@@ -42,25 +42,25 @@ function Proudects() {
       ) : (
         <section className="proudects__all">
           <div className="container">
-            <Proudectsnav setProducts={setProducts}  />
-            <ButtonFillter ToggleFilterclass={ToggleFilterclass}/>
+            <Proudectsnav setProducts={setProducts} />
+            <ButtonFillter ToggleFilterclass={ToggleFilterclass} />
             <div className="proudects__all__row row">
-                <div className={"col-md-12 col-lg-3 fillter_control " + togglefilter}>
-                <Fillter setProducts={setProducts} setLoading={setLoading} 
-                setPerpage={setPerpage} ToggleFilterclass={ToggleFilterclass} setTogglefilter={setTogglefilter}/>
+              <div className={"col-md-12 col-lg-3 fillter_control " + togglefilter}>
+                <Fillter setProducts={setProducts} setLoading={setLoading}
+                  setPerpage={setPerpage} ToggleFilterclass={ToggleFilterclass} setTogglefilter={setTogglefilter} />
               </div>
               <div className="col-md-12 col-lg-9">
-                <AllProudect Products={products}/>
+                <AllProudect Products={products} />
               </div>
-              </div>
-            <ReactPaginate
+              <div className="col-12">
+              <ReactPaginate
               previousLabel={"<"}
               nextLabel={">"}
               breakLabel={"..."}
               pageCount={perpage}
-              pageSize={4}
-              marginPagesDisplayed={4}
-              pageRangeDisplayed={3}
+              pageSize={1}
+              marginPagesDisplayed={1}
+              pageRangeDisplayed={1}
               onPageChange={handlePageClick}
               containerClassName={"pagination justify-content-center"}
               pageClassName={"page-item"}
@@ -73,6 +73,10 @@ function Proudects() {
               breakLinkClassName={"page-link"}
               activeClassName={"active"}
             />
+              </div>
+            </div>
+
+            
           </div>
         </section>
 

@@ -4,13 +4,14 @@ import { deleteFavorite } from '../../api/actions';
 import IconDelete from "../../images/icon/delete.png";
 import { Authcontext } from '../../store/context.js';
 import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 
 function CardFav(props) {
     const {Image , Price ,Size ,Color,Title,Id,setLoading}=props;
     const authcontext = useContext(Authcontext);
     const language = authcontext.language;
   return (
-    <div className='cardfav'>
+    <NavLink to={`/proudect/${Id}`}  className='cardfav'>
         <div className="img">
             <img src={Image} alt="Image" />
         </div>
@@ -21,7 +22,9 @@ function CardFav(props) {
                 <button type="button" className="heart" onClick={()=>deleteFavorite(Id,setLoading)}>
                     <img src={IconDelete} alt="IconDelete" /></button>
             </div>
-            <span className="price"> {Price} {" "} SAR</span>
+            <span className="price"> {Price} {" "} 
+            SAR
+            </span>
             <span className="color">
                 <span>{language === "En" ? "Color": "اللون"}</span>{" "}
                 <span>{Color}</span>
@@ -32,7 +35,7 @@ function CardFav(props) {
                 <span>{Size} K.g</span>
             </span>
         </div>
-    </div>
+    </NavLink>
   )
 }
 

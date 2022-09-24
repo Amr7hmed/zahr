@@ -478,7 +478,7 @@ export const Getcart = async (setLoading, setProducts, setCartid ,setCart) => {
     });
 };
 
-export const Getprofile = async (setLoading, setData) => {
+export const Getprofile = async (setLoading, setName ,setFile,setEmail,setPhone,setCity) => {
   const options = {
     method: "get",
     url: `${Api}profile`,
@@ -493,10 +493,11 @@ export const Getprofile = async (setLoading, setData) => {
       console.log("handle success");
       console.log(response.data.user);
       setLoading(true);
-      setData(response.data.user);
-      //setEmail(response.data.user.email)
-      //setPhone(response.data.user.phone)
-      //setFile(response.data.user.image)
+      setName(response.data.user.name);
+      setEmail(response.data.user.email)
+      setPhone(response.data.user.phone)
+      setFile(response.data.user.image)
+      setCity(response.data.user.city)
     })
     .catch(function (error) {
       console.log("handle error");
@@ -591,6 +592,78 @@ export const AddToFavourite = (Id) => {
       console.log(error.config);
     });
 };
+
+export const AddRevwe = (Id,rate,comment) => {
+  const options = {
+    method: "post",
+    url: `${Api}rate`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+    },
+    data: JSON.stringify({
+      product_id: Id,
+      rate: rate,
+      comment: comment,
+      //"product_id": 2
+    }),
+  };
+  axios(options)
+    .then(function (response) {
+      console.log("handle success");
+      console.log(response);
+    })
+    .catch(function (error) {
+      if (error.response) {
+        console.log("error");
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log("Error", error.message);
+      }
+      console.log(error.config);
+    });
+};
+
+export const AddCoupon = (setDataCoupon,codedata) => {
+  const options = {
+    method: "post",
+    url: `${Api}order/code`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+    },
+    data: JSON.stringify({
+      code: codedata 
+    }),
+  };
+  axios(options)
+    .then(function (response) {
+      console.log("handle success");
+      console.log(response);
+      setDataCoupon(true)
+    })
+    .catch(function (error) {
+      setDataCoupon(false)
+      if (error.response) {
+        console.log("error");
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log("Error", error.message);
+      }
+      console.log(error.config);
+    });
+};
+
 
 export const deleteCart = (Cartid, Id, setLoading) => {
   const options = {
@@ -792,9 +865,31 @@ export const GetDatapage = async (id,setLoading,setPage) => {
     });
 };
 
-// Api Filter Data Categories
+export const GetSummary = async (setLoading,setSummary) => {
+  const options = {
+    method: "get",
+    url: `${Api}order/summary`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+    },
+  };
+  axios(options)
+    .then(function (response) {
+      console.log("handle success");
+      console.log(response.data);
+      setSummary(response.data.summary)
+     setLoading(true);
+    })
+    .catch(function (error) {
+      console.log("handle error");
+      setLoading(true);
+      console.log(error.response.data);
+    });
+};
 
-export const GetFiltersCategories = async (setCities ,setMaxprice,setMinprice,setlistcategories) => {
+export const GetCategories = async (setLoading,setcategories) => {
   const options = {
     method: "get",
     url: `${Api}filters`,
@@ -807,10 +902,35 @@ export const GetFiltersCategories = async (setCities ,setMaxprice,setMinprice,se
     .then(function (response) {
       console.log("handle success");
       console.log(response.data);
+      setcategories(response.data.categories);
+      setLoading(true);
+    })
+    .catch(function (error) {
+      setLoading(true);
+      console.log("handle error");
+      console.log(error.response.data);
+    });
+};
+// Api Filter Data Categories
+
+export const GetFiltersCategories = async (setCities ,setDatafilter,set_minValue,set_maxValue,setlistcategories) => {
+  const options = {
+    method: "get",
+    url: `${Api}filters`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  axios(options)
+    .then(function (response) {
+      console.log("handle success");
+      //console.log(response.data);
+      setDatafilter(response.data)
+      set_minValue(parseInt(response.data.min_price))
+      set_maxValue(parseInt(response.data.max_price)+1000)
       setlistcategories(response.data.categories);
       setCities(response.data.cities)
-      setMaxprice(response.data.max_price)
-      setMinprice(response.data.min_price)
       //setLoading(true);
     })
     .catch(function (error) {
@@ -861,10 +981,14 @@ export const FilterDataPrice = async (Id,setProducts,minvalue,maxvalue) => {
   });
 };
 
-export const FilterDataCity = async (Id,setProducts,value) => {
+export const FilterDataCategoryPage = async (Id,setProducts,minValue,maxValue,city) => {
   const  options = {
     method: "get",
-    url: `${Api}products?category=${Id}&city=${value}`,
+    url: `${Api}products?
+    ${Id === "" ? "":`category=${Id}`}
+    ${minValue === "" ? "":`&min_price=${minValue}`}
+    ${maxValue === "" ? "":`&max_price=${maxValue}`}
+    ${city === "" ? "":`&city=${city}`}`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json;charset=UTF-8",
@@ -913,10 +1037,12 @@ export const GetFiltersAll = async (setLoadingfilter,setGetCategories
 export const FilterDataAll = async (setPerpage,setProducts,categories,minValue,maxValue,city) => {
   const  options = {
     method: "get",
-    //url: `${Api}products?${categories === "" ? "":`category=${categories}`}${minValue === "" ? "":`&min_price=${minValue}`}${maxValue === "" ? "":`&max_price=${maxValue}`}${city === "" ? "":`&city=${city}`}`,
     url: `${Api}products?
     ${categories === "" ? "":`category=${categories}`}
+    ${minValue === "" ? "":`&min_price=${minValue}`}
+    ${maxValue === "" ? "":`&max_price=${maxValue}`}
     ${city === "" ? "":`&city=${city}`}`,
+    //url: `${Api}products?${categories === "" ? "":`category=${categories}`}${city === "" ? "":`&city=${city}`}`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json;charset=UTF-8",
@@ -932,8 +1058,89 @@ export const FilterDataAll = async (setPerpage,setProducts,categories,minValue,m
   });
 };
 
-// Get Data Icons
+export const FilterSearchCategorey = async (datasearch) => {
+  const  options = {
+    method: "get",
+    url: `${Api}products?categorey_keyword=${datasearch}`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  await axios(options).then(function (response) {
+    window.location.pathname = `/Proudectssearchcategorey/${datasearch}`;
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log("handle error");
+    console.log(error.response.data);
+  });
+};
 
+export const FilterSearchInput = async (datasearch) => {
+  const  options = {
+    method: "get",
+    url: `${Api}products?search=${datasearch}`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  await axios(options).then(function (response) {
+   window.location.pathname = `/Proudectssearch/${datasearch}`;
+  })
+  .catch(function (error) {
+    console.log("handle error");
+    console.log(error.response.data);
+  });
+};
+
+export const FilterSearchData = async (setLoading,datasearch , setData,setPerpage,setResults) => {
+  const  options = {
+    method: "get",
+    url: `${Api}products?search=${datasearch}`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  await axios(options).then(function (response) {
+    setData(response.data.products.data);
+    setPerpage(Math.ceil(response.data.products.total / response.data.products.per_page));
+    setResults(response.data.results);
+    
+    setLoading(true);
+  })
+  .catch(function (error) {
+    console.log("handle error");
+    console.log(error.response.data);
+    setLoading(true);
+  });
+};
+export const FilterSearchDatacategorey = async (setLoading,datasearch , setData,setPerpage,setResults) => {
+  const  options = {
+    method: "get",
+    url: `${Api}products?categorey_keyword=${datasearch}`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  await axios(options).then(function (response) {
+    setData(response.data.products.data);
+    setPerpage(Math.ceil(response.data.products.total / response.data.products.per_page));
+    setResults(response.data.results);
+    
+    
+    setLoading(true);
+  })
+  .catch(function (error) {
+    console.log("handle error");
+    console.log(error.response.data);
+    setLoading(true);
+  });
+};
+// Get Data Icons
 
 export const GetcartIcon = async (setCart) => {
   const options = {

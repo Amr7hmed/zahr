@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { NavLink } from 'react-router-dom';
+import { Authcontext } from "../../store/context";
 
 function Slider() {
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
   
   const [isVisible, setIsVisible] = useState(false);
   // Top: 0 takes us all the way back to the top of the page
@@ -31,13 +35,18 @@ function Slider() {
       <div className="overload"> </div>
       <div className="content">
         <h2>
-          مرحبا بكم في زهر!
+          {language === "En" ? ("Welcome To Zahr")
+         : ("مرحبا بكم في زهر!")}
         </h2>
         <p>
-          تحف وزهور عالية الجودة يتم شحنها إليك مباشرة
+          {language === "En" ? ("High Quality Antiques And Flowers")
+         : ("تحف وزهور عالية الجودة يتم شحنها إليك مباشرة")}
         </p>
         
-      <NavLink to="/proudects"  className="btn" onClick={scrollToTop}>تسوق الان </NavLink>
+      <NavLink to="/proudects"  className="btn" onClick={scrollToTop}>
+          {language === "En" ? ("Shop Now")
+         : ("تسوق الان")} 
+      </NavLink>
       </div>
     </div>
   )

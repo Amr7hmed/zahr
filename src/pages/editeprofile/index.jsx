@@ -5,15 +5,9 @@ import { Authcontext } from "../../store/context.js";
 
 
 function EditeProfile() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
   
-  useEffect(() => { 
-    Getprofile(setLoading,setData);
-  }, [loading]);
-
   return (
     <section className='profile'>
       <div className="container">
@@ -27,7 +21,7 @@ function EditeProfile() {
             </h3>
           </div>
 
-          <FormProfile data={data} setLoading={setLoading}/>
+          <FormProfile/>
           </div>
           </div>
           </section>

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import { GetDatapages } from '../../api/actions';
-import Facebooklogo from "../../images/icon/fb.png";
-import Insta from "../../images/icon/insta.png";
-import Twiter from "../../images/icon/twiter.png";
 import { Authcontext } from '../../store/context';
 
 function FooterEnd() {
@@ -11,6 +9,29 @@ function FooterEnd() {
   const language = authcontext.language;
   const [loading, setLoading] = useState(false);
   const [pages, setPages] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
+  // Top: 0 takes us all the way back to the top of the page
+  // Behavior: smooth keeps it smooth!
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    // Button is displayed after scrolling for 500 pixels
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 500) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
 
   useEffect(() => {
     GetDatapages(setLoading,setPages)
@@ -30,7 +51,9 @@ function FooterEnd() {
         
       <li key={item.id}>
         
-        <a href={`/pages/${item.id}`} key={item.id} > {language === "En" ? item.name_en : item.name_ar}</a>
+        <NavLink to={`/pages/${item.id}`} key={item.id}  onClick={scrollToTop}>
+          {language === "En" ? item.name_en : item.name_ar}
+          </NavLink>
       </li>
         )}
     </ul>

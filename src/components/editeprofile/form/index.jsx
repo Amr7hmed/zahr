@@ -1,8 +1,8 @@
-import React, { useState ,useContext} from 'react';
+import React, { useState ,useContext, useEffect} from 'react';
 import { InputCity, InputEmail, InputImage, InputName, InputPhone } from './inputs';
 import Reseteicon from "../../../images/icon/reset-password.png";
 import ModalPassword from './modalpassword';
-import { EditeProfile } from '../../../api/actions';
+import { EditeProfile, Getprofile } from '../../../api/actions';
 import { Authcontext } from "../../../store/context.js";
 import swal from 'sweetalert';
 import axios from 'axios';
@@ -10,17 +10,16 @@ import { Api } from '../../../api/index.js';
 import { useNavigate } from 'react-router-dom';
 
 
-function FormProfile(props) {
-  const { data ,setLoading} = props;
+function FormProfile() {
+  const [loading, setLoading] = useState(false);
   let navigate  = useNavigate();
-  const [file, setFile] = useState(data.image);
-  const [name, setName] = useState(data.name);
-  const [email, setEmail] = useState(data.email);
-  const [phone, setPhone] = useState(data.phone);
-  const [city, setCity] = useState(data.city);
+  const [file, setFile] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [city, setCity] = useState("");
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
-
 
  const EditeProfile = (file,name,email,phone,city) => {
     const options = {
@@ -71,11 +70,16 @@ function FormProfile(props) {
     navigate(`/profile`);
   };
 
+  
+  useEffect(() => { 
+    Getprofile(setLoading,setName,setFile,setEmail,setPhone,setCity);
+  }, [loading]);
+
 
   return (
     <div className='formprofile'>
       <InputImage setUrlImage={setFile} urlimage={file} />
-      <InputName Name={name} SetName={setName} />
+      <InputName name={name} SetName={setName} />
       <InputEmail Email={email} SetEmail={setEmail} />
       <InputPhone Phone={phone} SetPhone={setPhone} />
       <InputCity City={city} SetCity={setCity} />

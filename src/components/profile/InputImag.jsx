@@ -9,7 +9,7 @@ function InputImag(props) {
     const {Data}=props;
     const [selectedFile, setSelectedFile] = useState("");  
     
-    const [urlimage, setUrlImage] = useState(Data.image);
+    const [urlimage, setUrlImage] = useState(Data);
     
     const getBase64 = file => {
       return new Promise(resolve => {

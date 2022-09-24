@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import CardProudects from '../cards/cardproudects';
 import { NavLink } from 'react-router-dom';
+import { Authcontext } from "../../store/context";
+import { useContext } from "react";
 
 
 
 function SectionProudects(props) {
   const { Products } = props;
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
   
   const [isVisible, setIsVisible] = useState(false);
   // Top: 0 takes us all the way back to the top of the page
@@ -33,7 +37,11 @@ function SectionProudects(props) {
   return (
     <section className='home__proudects'>
         <div className="headr">
-            <h3>أحدث المنتجات</h3>
+      {language === "En" ? 
+        <h3>Latest Products</h3>
+      :
+        <h3>أحدث المنتجات</h3>
+        }
         </div>
         <div className="container">
           <div className="row">
@@ -46,7 +54,13 @@ function SectionProudects(props) {
           </div>
         </div>
 
-      <NavLink to="/proudects"  className="show_all" onClick={scrollToTop}>عرض الكل</NavLink>
+      <NavLink to="/proudects"  className="show_all" onClick={scrollToTop}>
+        {language === "En" ? 
+        "View All"
+      :
+      "عرض الكل"
+        }
+        </NavLink>
         </section>
   )
 }

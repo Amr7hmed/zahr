@@ -15,7 +15,8 @@ import Logo from "../../../images/logo/logo.png";
 import IconCart from './iconcart';
 import IconWishlist from './iconwishlist';
 
-function NavbarTop() {
+function NavbarTop(props) {
+  const {categories ,loading}=props;
   return (
     <section className='navbar__top'>
 
@@ -42,15 +43,15 @@ function NavbarTop() {
                     <Iconprofile />}
                 </div>
                 <NavLink to="/favorite" className="favort">
-                {localStorage.getItem("token") === null ?
-                  <>
+                  {localStorage.getItem("token") === null ?
+                    <>
                       <img src={HeartIcon} alt="" />
-                  </>
-                  : <>
+                    </>
+                    : <>
                       <img src={HeartIcon} alt="" />
-                      <IconWishlist/>
-                  </>}
-                    </NavLink>
+                      <IconWishlist />
+                    </>}
+                </NavLink>
 
 
                 <NavLink to="/cart" className="cart">
@@ -58,22 +59,14 @@ function NavbarTop() {
                     <>
                       <img src={CartIcon} alt="" />
                     </>
-                    :<>
-                    
-      <img src={CartIcon} alt="" />
-                    <IconCart />
-                    </> 
-                    }
+                    : <>
+
+                      <img src={CartIcon} alt="" />
+                      <IconCart />
+                    </>
+                  }
                 </NavLink>
 
-                {/*
-            <span className="phone">
-              <FontAwesomeIcon icon={faPhone} />
-              <span className='text'>
-                05849832999
-              </span>
-            </span>
-          */}
               </div>
             </div>
 
@@ -91,7 +84,7 @@ function NavbarTop() {
             </div>
             <div className="col-12 col-sm-12 col-lg-4">
               <div className="right">
-                <InputSerarch />
+                <InputSerarch categories={categories} loading={loading}/>
               </div>
 
             </div>

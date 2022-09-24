@@ -24,7 +24,7 @@ function Proudect() {
       <section className="proudect">
       <div className="container">
         <Links Category={"كل المنتجات"} Title={proudect.title}/>
-        <Ditels proudect={proudect} Similarproducts={similarproducts}/>
+        <Ditels proudect={proudect} Similarproducts={similarproducts} Id={id}/>
       </div>
       </section>
       )}

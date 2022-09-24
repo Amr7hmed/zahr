@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
+import { AddRevwe } from '../../api/actions';
 
-function PoupeRevewe() {
+function PoupeRevewe(props) {
+    const { Id} = props;
     const [rating, setRating] = useState(0);
     const [message, setMessage] = useState("");
 
@@ -22,6 +24,9 @@ function PoupeRevewe() {
         e.preventDefault();
         console.log(message);
         console.log(rating);
+        AddRevwe(Id,rating,message);
+        setRating(0)
+        setMessage("")
     };
 
 

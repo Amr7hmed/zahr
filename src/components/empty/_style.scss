@@ -44,3 +44,53 @@
     height: 80px;
 }
 }
+
+.emptysearch {
+
+    .img {
+        width: 100%;
+        text-align: center;
+        margin: 50px auto;
+        height: 80px;
+
+        img {
+            width: 65px;
+            object-fit: contain;
+            height: 100%;
+            filter: invert(49%) sepia(11%) saturate(11%) hue-rotate(340deg) brightness(92%) contrast(90%);
+            -webkit-filter: invert(49%) sepia(11%) saturate(11%) hue-rotate(340deg) brightness(92%) contrast(90%);
+        }
+    }
+
+    p {
+        font-family: Cairo;
+        font-size: 17px;
+        font-weight: normal;
+        text-align: center;
+        color: #939090;
+        span{
+            display: block;
+        }
+    }
+}
+
+
+// 1- 2- Style Navbar Component To Media Queris Samll.
+@media screen and (max-width: 576px) {
+    .empty-contener {
+        margin: 30px auto;
+    
+        h5 {
+            font-size: 24px;
+        }
+    
+        .img {
+            margin: 20px auto;
+    
+        }
+    
+        p {
+            font-size: 14px;
+        }
+    }   
+}

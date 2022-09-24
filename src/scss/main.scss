@@ -114,12 +114,14 @@ img {
 .btn {
   &:focus {
     box-shadow: none;
+    border-color: transparent;
   }
 }
 
 .form-control {
   &:focus {
-    box-shadow: none
+    box-shadow: none;
+    border-color: transparent;
   }
 }
 
@@ -170,10 +172,12 @@ input:-webkit-autofill,
     -o-transition: background-color 600000s 0s, color 600000s 0s;
 }
 .Ar {
-  font-family: var(--font-ar);
+  font-family: var(--font-ar) !important;
 }
 
 .En {
+  text-transform: capitalize !important;
+  font-family: var(--font-en) !important;
 }
 
 .btn{
@@ -218,8 +222,9 @@ input:-webkit-autofill,
 @import "../components/paymentdone/_style.scss";
 @import "../components/empty/_style.scss";
 @import "../components/profile/_style.scss";
+@import "../components/articles/_style.scss";
+@import "../components/connectus/_style.scss";
 
-@import "../pages/connectus/_style.scss";
 @import "../pages/aboutus/_style.scss";
 @import "../layout/navbar/modals/modelcart/_style.scss";
 

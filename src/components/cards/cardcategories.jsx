@@ -38,7 +38,8 @@ function CardCategories(props) {
         <img src={Image} alt="" />
       </div>
       <div className="text">
-        <h6>{NameAr}</h6>
+      {language === "En" ?  <h6>{NameEn}</h6> :  <h6>{NameAr}</h6>}
+       
       </div>
     </NavLink>
   )

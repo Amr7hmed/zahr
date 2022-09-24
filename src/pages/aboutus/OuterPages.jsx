@@ -13,7 +13,7 @@ function OuterPages() {
   
   useEffect(() => {
    GetDatapage(id,setLoading,setPage)
-  }, [loading]);
+  }, [loading,id]);
 
   return (<>
     {loading === false ? (

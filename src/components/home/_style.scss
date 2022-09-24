@@ -69,12 +69,17 @@
                 height: 58px;
                 border-radius: 10px;
                 background-color: var(--primary-three-color);
+                color: #fff;
                 text-align: center;
                 font-size: 16px;
                 font-weight: normal;
-                color: #fff;
                 display: block;
                 line-height: 42px;
+                &:hover{
+                    
+                background-color: var(--primary-three-color) !important;
+                color: #fff !important;
+                }
             }
         }
     }
@@ -162,7 +167,7 @@
 
         .content {
             text-align: center;
-
+margin-right: 20px;
             h5 {
                 font-size: 60px;
                 font-weight: normal;
@@ -453,7 +458,7 @@
         &__offer {
 
             .img {
-                left: 0%;
+                right: 0%;
             }
         }
     }
@@ -521,6 +526,7 @@
             }
     
             .content {
+margin-right: 0px;
                 h5 {
                     font-size: 48px;
                     margin-bottom: 30px;

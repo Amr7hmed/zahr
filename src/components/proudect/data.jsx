@@ -5,7 +5,7 @@ import Share from "../../images/icon/share.png";
 import PoupeRevewe from './pouperevewe';
 
 function Data(props) {
-  const { Proudect } = props;
+  const { Proudect ,Id} = props;
   return (
     <div className='proudect__data'>
       <span className='over'> كوبون Dg522 - خصم إضافي 25%</span>
@@ -46,7 +46,7 @@ function Data(props) {
         <span className="btn-revewe" data-bs-toggle="modal" data-bs-target="#exampleModal">
           تقييم المنتج
         </span>
-        <PoupeRevewe />
+        <PoupeRevewe Id={Id} />
       </div>
 
       <div className="color">
