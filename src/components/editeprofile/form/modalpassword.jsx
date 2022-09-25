@@ -87,28 +87,32 @@ function ModalPassword(props) {
             <img src={Logo} alt="Logo" />
           </div>
 
-          <h4>تغير كلمة المرور</h4>
+          <h4>
+                {language === "En" ? "Change Password" : "تغيير كلمة المرور"}
+          </h4>
 
           <input className="form-control" type="password"
-            name="password_confirmation_done" placeholder="أعد ادخل كلمة مرور جديدة"
+            name="password_confirmation_done" placeholder=
+            {language === "En" ? "Current Password": "كلمة المرور الحاليه"}
             value={state.password_confirmation_done || ''}
             onChange={handleChange} />
 
 
           <input className="form-control" type="password"
             name="password"  
-            placeholder="ادخل كلمة مرور جديدة"
+            placeholder={language === "En" ? "Enter a new password": "ادخل كلمة المرور جديدة"}
             value={state.password || ''}
             onChange={handleChange} />
 
 
           <input className="form-control" type="password"
-            name="password_confirmation" 
-            placeholder="أعد ادخل كلمة مرور جديدة"
+            name="password_confirmation" placeholder=
+            {language === "En" ? "Re-enter A New Password": "أعد ادخل كلمة المرور جديدة"}
             value={state.password_confirmation || ''}
             onChange={handleChange} />
           <button type="button" className="btn-save" onClick={handleSubmit} aria-label="Close">
-            حفظ
+            {language === "En" ? "Save": "حفظ"}
+            
           </button>
         </div>
       </div>

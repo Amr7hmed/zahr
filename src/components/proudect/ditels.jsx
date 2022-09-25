@@ -19,7 +19,7 @@ function Ditels(props) {
                 </div>
 
                 <div className="col-md-12 col-lg-7">
-                    <Data Proudect={proudect} Id={Id}/>
+                    <Data Proudect={proudect} Id={Id}  Rates={proudect.rates}/>
                 </div>
                 
                 <div className="col-md-12 col-lg-5">

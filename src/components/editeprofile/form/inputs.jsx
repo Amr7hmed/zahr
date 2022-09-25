@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import InputImgUpload from "../../../images/icon/camera.png";
 import Image from "../../../images/icon/woman.png";
+import { Authcontext } from '../../../store/context';
 
 export function InputImage(props) {
     const { setUrlImage ,urlimage } = props;
     const [selectedFile, setSelectedFile] = useState(null);  
-    
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
     const getBase64 = file => {
         return new Promise(resolve => {
           let fileInfo;
@@ -50,7 +52,7 @@ export function InputImage(props) {
     return (
         <div className='input'>
             <label>
-                صورة شخصية
+                {language === "En" ? "Profile Picture" : "صورة شخصية"}
             </label>
             
             <div className="imageinput">
@@ -70,7 +72,7 @@ export function InputImage(props) {
               </span>
 
               <button className="btn_save_img" type='button' >
-              تغير الصورة الشخصية
+                {language === "En" ?"Change Profile Picture":"تغير الصورة الشخصية"}
             </button>
 
             </div>
@@ -78,10 +80,10 @@ export function InputImage(props) {
     )
 }
 
-
 export function InputName(props) {
     const { name, SetName } = props;
-
+    const authcontext = useContext(Authcontext);
+    const language = authcontext.language;
     const handleChange = (e) => {
         const value = e.target.value;
         SetName(value);
@@ -90,8 +92,9 @@ export function InputName(props) {
         <div className='input'>
             
         <form>
-
-            <label>اسم المستخدم</label>
+            <label>
+                {language === "En" ? "User Name " : "اسم المستخدم"}
+            </label>
             <input type="text"
               className="form-control shadow-none input-fild"
               value={name}
@@ -106,6 +109,8 @@ export function InputName(props) {
 
 export function InputEmail(props) {
     const { Email, SetEmail } = props;
+    const authcontext = useContext(Authcontext);
+    const language = authcontext.language;
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -116,7 +121,7 @@ export function InputEmail(props) {
     return (
         <div className='input'>
             <label>
-            البريد الالكتروني
+                {language === "En" ? "Email" : "البريد الالكتروني"}
             </label>
 
             <input className="form-control" type="text" value={Email}
@@ -129,6 +134,8 @@ export function InputEmail(props) {
 
 export function InputPhone(props) {
     const { Phone, SetPhone } = props;
+    const authcontext = useContext(Authcontext);
+    const language = authcontext.language;
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -138,7 +145,9 @@ export function InputPhone(props) {
 
     return (
         <div className='input'>
-            <label>رقم الهاتف</label>
+            <label>
+                {language === "En" ? "Phone Number" : "رقم الهاتف"}
+            </label>
 
             <input className="form-control" type="text" 
             value={Phone === null ? null :Phone}
@@ -151,6 +160,8 @@ export function InputPhone(props) {
 
 export function InputCity(props) {
     const { City , SetCity } = props;
+    const authcontext = useContext(Authcontext);
+    const language = authcontext.language;
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -160,9 +171,7 @@ export function InputCity(props) {
 
     return (
         <div className='input'>
-            <label>
-                المدينة
-            </label>
+                {language === "En" ? "City" : "المدينة"}
 
             <input className="form-control" type="text" 
             value={City}

@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Authcontext } from '../../store/context';
 
 function CardOrder(props) {
     const {Image,Title , Color ,Weight ,Price}=props;
+    const authcontext = useContext(Authcontext);
+    const language = authcontext.language;
   return (
     <div className='cardorder'>
         <div className="contect">
@@ -14,13 +17,17 @@ function CardOrder(props) {
             <span className='title'>{Title}</span>
 
             <div className="colors">
-                <span>الالوان</span>{" "}
+                <span>
+                {language === "En" ? "Colors" : "الالوان"}
+                    </span>{" "}
                 <span>{Color}</span>
             </div>
 
             
             <div className="weight">
-                <span>الوزن</span>{" "}
+                <span>
+                {language === "En" ? "Weight" : "الوزن"}
+                </span>{" "}
                 <span>{Weight}kg</span>
             </div>
         </div>

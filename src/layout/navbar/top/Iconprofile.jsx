@@ -1,13 +1,16 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import User from "../../../images/icon/user-icon.png";
 import Location from "../../../images/icon/location-icon.png";
 import Shopping from "../../../images/icon/shopping-icon.png";
 import Logout from "../../../images/icon/Logout-icon.png";
+import { Authcontext } from "../../../store/context";
 
-function Iconprofile(props) {
-  const { language } = props;
+function Iconprofile() {
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
+
   const handleSubmit = () => {
     localStorage.removeItem("token");
     window.location.pathname = "/";

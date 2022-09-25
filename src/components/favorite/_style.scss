@@ -84,7 +84,6 @@
                 font-weight: normal;
 
                 &:first-of-type {
-                    margin-left: 40px;
                     color: #9f9f9f;
                 }
 
@@ -100,10 +99,38 @@
     .favorite {
         direction: rtl;
     }
+    .cardfav {
+        .contenet {
+            .color,
+            .size {
+                span {
+                    &:first-of-type {
+                        margin-left: 40px;
+                    }
+                }
+            }
+        }
+    }
+    
 
 }
 
-.En {}
+.En {
+    .favorite {
+        direction: ltr;
+    }
+    .cardfav {
+        .contenet {
+            .color,
+            .size {
+                span {
+                    &:first-of-type {
+                        margin-right: 40px;
+                    }
+                }
+            }
+        }
+    }}
 
 // 4- 1- Style Mask Component To Media Queris Large.
 @media screen and (max-width: 991px) {

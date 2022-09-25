@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Cardcart from '../cart/Cardcart';
 import Image from "../../images/product/image-proudect-one.png";
+import { Authcontext } from '../../store/context';
 
 function OrderCard(props) {
   const { Showbutton } = props;
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
   return (
     <div className='orderdetiles'>
       <div className='title'>
         <h6>
-          المنتجات التي طلبتها
+                {language === "En" ? "Products You Ordered" : "المنتجات التي طلبتها"}
         </h6>
         {Showbutton === false ? "" :
           <button type="button" className="btn-done">
-            قيد التنفيذ
+          {language === "En" ? "Underway" : "قيد التنفيذ"}
           </button>
         }
       </div>

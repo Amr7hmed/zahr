@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Getsummery } from "../../api/actions";
+import { Authcontext } from "../../store/context";
 
 
 function OrderDetails() {
   let navigate  = useNavigate();
 
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
   const [price, setPrice] = useState("");
   const [delivery, setDelivery] = useState("");
   const [total, setTotal] = useState("");
@@ -16,22 +19,36 @@ function OrderDetails() {
     }, [price]);
   return (
     <div className="orderdetails">
-        <h6>تفاصيل الطلب</h6>
+        <h6>
+            {language === "En" ? "Order Details" : "تفاصيل الطلب"}
+        </h6>
 
 
         <div className="item">
-            <span>أجمالى المبلغ</span>
-            <span>{price} {" "} ر.س</span>
+            <span>
+            {language === "En" ? "The Total Amount" : "أجمالى المبلغ"}
+            </span>
+            <span>{price} {" "}
+            {language === "En" ? "SAR" : "ر.س"}
+             </span>
         </div>
         
         <div className="item">
-            <span> الشحن</span>
-            <span>{delivery} {" "} ر.س</span>
+            <span>
+            {language === "En" ? "Shipping" :"الشحن"}
+             </span>
+            <span>{delivery} {" "} 
+            {language === "En" ? "SAR" : "ر.س"}
+            </span>
         </div>
         
         <div className="item">
-            <span> المجموع</span>
-            <span>{total} {" "} ر.س</span>
+            <span>
+            {language === "En" ? "The Total" : "المجموع"}
+              </span>
+            <span>{total} {" "} 
+            {language === "En" ? "SAR" : "ر.س"}
+            </span>
         </div>
 
     </div>

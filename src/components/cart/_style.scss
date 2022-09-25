@@ -93,7 +93,6 @@
                 font-weight: normal;
 
                 &:first-of-type {
-                    margin-left: 40px;
                     color: #9f9f9f;
                 }
 
@@ -192,13 +191,42 @@
                 right: 0;
             }
         }
-    
+        .contenet {
+            .color,
+            .size {
+                span {
+                    &:first-of-type {
+                        margin-left: 40px;
+                    }
+                }
+            }
+        }
     }
-    
-
 }
 
-.En {}
+.En {
+    .cart {
+        direction: ltr;
+    }
+    .cardcart {
+        .img {
+            .over{
+                left: 0;
+            }
+        }
+        .contenet {
+            .color,
+            .size {
+                span {
+                    &:first-of-type {
+                        margin-right: 40px;
+                    }
+                }
+            }
+        }
+    
+    }
+}
 
 @media screen and (max-width: 991px) {
     .cart {

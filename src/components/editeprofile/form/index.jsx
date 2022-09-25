@@ -87,7 +87,7 @@ function FormProfile() {
       <div className="input input-control-password">
         <button className='btn_password' type="button" data-bs-toggle="modal" data-bs-target="#chingepassword" >
           <img src={Reseteicon} alt="" />
-          تغيير كلمة المرور
+                {language === "En" ? "Change Password" : "تغيير كلمة المرور"}
         </button>
         <ModalPassword setLoading={setLoading}/>
       </div>
@@ -95,10 +95,10 @@ function FormProfile() {
 
       <div className="buttons">
         <button type='button' className='btn-save' onClick={handleSaveData}>
-          حفظ
+                {language === "En" ? "Save" : "حفظ"}
         </button>
         <button type='button' className='btn-remove' onClick={handleRemoveData}>
-          ألغاء
+                {language === "En" ? "Cancel" : "ألغاء"}
         </button>
 
       </div>

@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AddAddress } from '../../api/actions';
 import LoctionIcon from "../../images/icon/location-icon.svg";
+import { Authcontext } from '../../store/context';
 import Loction from './loction';
 
 function ModalAddAddress() {
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
   const [state, setState] = useState({
       name: "",
       phone: "",
@@ -11,8 +14,6 @@ function ModalAddAddress() {
       address: ""
   });
 const [clickedLatLng, setClickedLatLng] = useState(null);
-
-
   const options = [
     {
       label: "الرياض",
@@ -27,8 +28,6 @@ const [clickedLatLng, setClickedLatLng] = useState(null);
       value: "جيزان",
     },
   ];
-
-
   const handleChange = (e) => {
     const value = e.target.value;
     setState({
@@ -51,23 +50,25 @@ const [clickedLatLng, setClickedLatLng] = useState(null);
         <div className="modal-header">
           <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           <h5 className="modal-title" id="modaladdaddressLabel">
-            اضافة عنوان
+          {language === "En" ? "Add A Title": "اضافة عنوان"}
           </h5>
         </div>
         <div className="modal-body">
           <div className='input'>
-            <label>الاسم</label>
-
+            <label>{language === "En" ? "Name": "الاسم"}</label>
             <input className="form-control" type="text"
-            name="name"
-            onChange={handleChange} />
+            name="name" onChange={handleChange} />
 
           </div>
 
           <div className='input'>
-            <label>المدينة</label>
+            <label>
+              {language === "En" ? "City": "المدينة"}
+              </label>
             <select className="form-select"  value={state.city} name="city"
-             aria-label="Default select example" placeholder='اختر المدينة'  onChange={handleChange}>
+             aria-label="Default select example" 
+             placeholder={language === "En" ? "Choose The City": 'اختر المدينة'}
+             onChange={handleChange}>
             {options.map((option) => (
               <option value={option.value} key={option.value}>{option.label}</option>
             ))}
@@ -76,16 +77,20 @@ const [clickedLatLng, setClickedLatLng] = useState(null);
           </div>
 
           <div className='input'>
-            <label>العنوان</label>
-
-            <input className="form-control" type="text"  placeholder='الحي الشارع رقم المبني'
+            <label>
+              {language === "En" ? "The Address": "العنوان"}
+              </label>
+            <input className="form-control" type="text" 
+             placeholder={language === "En" ? 'District Street Building No.': 'الحي الشارع رقم المبني'}
             name="address"
             onChange={handleChange} />
 
           </div>
           
           <div className='input'>
-            <label>رقم الجوال</label>
+            <label>
+              {language === "En" ? "Mobile Number": "رقم الجوال"}
+            </label>
 
             <input className="form-control input-phone" type="text" 
             name="phone"
@@ -98,10 +103,11 @@ const [clickedLatLng, setClickedLatLng] = useState(null);
         </div>
         <div className="modal-footer">
           <button type="button" className="btn btn-save" onClick={handleClick} ata-bs-dismiss="modal">
-            حفظ
+              {language === "En" ? "Save": "حفظ"}  
           </button>
           <button type="button" className="btn btn-cansal" data-bs-dismiss="modal"  aria-label="Close">
-            إلغاء
+              {language === "En" ? "Cancel": "إلغاء"}
+            
           </button>
         </div>
       </div>

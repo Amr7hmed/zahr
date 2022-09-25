@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import CardOrder from './cardorder.jsx';
 import Imageproudect from "../../images/product/image-1.png";
+import { Authcontext } from '../../store/context.js';
 
 function Order(props) {
     const { Nemberorder, Dayorder, OrderProducts } = props;
     const [toggole, setToggole] = useState(false);
+    const authcontext = useContext(Authcontext);
+    const language = authcontext.language;
 
     const Toggoleaction = () => {
         setToggole(!toggole)
@@ -21,13 +24,14 @@ function Order(props) {
                 <div className={toggole === false ? "show" : "hide"}>
 
                     <CardOrder Image={OrderProducts[0].image} Title={OrderProducts[0].title}
-                        Color={OrderProducts[0].colors} Weight={OrderProducts[0].weight} Price={`${OrderProducts[0].price} ر.س`} />
+                        Color={OrderProducts[0].colors} Weight={OrderProducts[0].weight} 
+                        Price={`${OrderProducts[0].price} ${language === "En" ? "SAR" : "ر.س"}`} />
                 </div>
                 <div className={toggole === false ? "hide" : "show all"}>
                     {OrderProducts.map(item => <div key={item.id}>
 
                         <CardOrder Image={item.image} Title={item.title}
-                            Color={item.colors} Weight={item.weight} Price={`${item.price} ر.س`} />
+                            Color={item.colors} Weight={item.weight} Price={`${item.price} ${language === "En" ? "SAR" : "ر.س"}`} />
                         <span className="line"></span>
                     </div>
                     )}
@@ -37,11 +41,13 @@ function Order(props) {
                 {OrderProducts.length === 1?"":
                 <div className="button">
                     <button className='show-all' type='button' onClick={Toggoleaction}>
-                        {toggole === false ?
-                            "عرض الكل"
-                            :
-                            "عرض اقل"}
-
+                        {language === "En" ?<>
+                         {toggole === false ?"View All":"View Less"}
+                         </>
+                         : <>
+                         {toggole === false ?"عرض الكل":"عرض اقل"}
+                         </>
+                        } 
                     </button>
                 </div>
                         }

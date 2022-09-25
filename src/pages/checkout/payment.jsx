@@ -106,13 +106,17 @@ function Payment() {
           <div className="row">
             <div className="col-md-12 col-lg-8">
               <button type="button" className={payment === "visa" ? "btn-payment active" : "btn-payment"} onClick={handleVisa}>
-                الدفع باستخدام كارت البنك
+                
+            {language === "En" ? "Pay With A Visa Card" : "الدفع باستخدام كارت البنك"}  
+                
+                
 
                 <img src={Accept} alt="Accept" />
               </button>
 
               <button type="button" className={payment === "cash" ? "btn-payment active" : "btn-payment"} onClick={handleCash}>
-                الدفع نقدا
+               
+            {language === "En" ? "Pay Cash" : " الدفع نقدا"}  
 
                 <img src={Accept} alt="Accept" />
               </button>
@@ -130,7 +134,7 @@ function Payment() {
 
             <div className="buttons col-12">
               <button className="btn-done" type="button" onClick={handleDone}>
-                تأكيد الطلب
+            {language === "En" ? "Confirmation" : "تأكيد الطلب"}
               </button>
             </div>
           </div>

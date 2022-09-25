@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 import { AddRevwe } from '../../api/actions';
+import { Authcontext } from '../../store/context';
 
 function PoupeRevewe(props) {
     const { Id} = props;
     const [rating, setRating] = useState(0);
     const [message, setMessage] = useState("");
+    const authcontext = useContext(Authcontext);
+    const language = authcontext.language;
 
     const handleRating = (e) => {
         let value = e / 20;
@@ -40,7 +43,7 @@ function PoupeRevewe(props) {
                     <div className="modal-body">
                         <div className="content">
                             <h4>
-                                تقييم المنتج
+            {language === "En" ? "Product Rating" : "تقييم المنتج"}
                             </h4>
                             <div className='rating'>
                                 <Rating onClick={handleRating} ratingValue={rating} size={30} />
@@ -48,7 +51,8 @@ function PoupeRevewe(props) {
 
                             <div className="massege">
                                 <span>
-                                    اترك تعليق (اختياري)
+            {language === "En" ? "Leave A Comment" : "اترك تعليق"}
+                                     
                                 </span>
 
 
@@ -61,7 +65,8 @@ function PoupeRevewe(props) {
                     </div>
                     <div className="modal-footer">
                         <button className="btn" type="button" onClick={handleSubmit}>
-                            حفظ
+            {language === "En" ? "Save" : "حفظ"}
+                            
                         </button>
                     </div>
                 </div>

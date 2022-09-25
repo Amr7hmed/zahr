@@ -1,13 +1,16 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import { Api } from '../../api';
 import InputImgUpload from "../../images/icon/camera.png";
 import ImageCover from "../../images/icon/woman.png";
+import { Authcontext } from '../../store/context';
 
 function InputImag(props) {
     const {Data}=props;
     const [selectedFile, setSelectedFile] = useState("");  
+    const authcontext = useContext(Authcontext);
+    const language = authcontext.language;
     
     const [urlimage, setUrlImage] = useState(Data);
     
@@ -103,7 +106,7 @@ function InputImag(props) {
               </span>
 
               <button className="btn_save_img" type='button' >
-              تغير الصورة الشخصية
+                {language === "En" ?"Change Profile Picture":"تغير الصورة الشخصية"}
             </button>
 
             </div>

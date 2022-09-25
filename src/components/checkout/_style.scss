@@ -3,7 +3,6 @@
 
     &__links {
         display: flex;
-        flex-direction: row;
         align-items: center;
         width: 80%;
         margin: 30px auto;
@@ -38,7 +37,6 @@
 
         .text {
             margin: 0px 10px;
-            font-size: 18px;
             font-weight: normal;
             text-align: center;
             color: #000;
@@ -49,7 +47,6 @@
             height: 5px;
             background-color: #c8c8c8;
             border-radius: 5px;
-            margin-left: 20px;
         }
     }
 
@@ -90,9 +87,6 @@
     }
 
     &__form {
-        direction: rtl;
-        text-align: right;
-
         .item {
             display: flex;
             flex-direction: row;
@@ -102,10 +96,8 @@
 
             label {
                 margin-left: 50px;
-                font-size: 28px;
                 font-weight: normal;
                 color: rgba(0, 0, 0, 0.68);
-                width: 200px;
             }
 
             .data {
@@ -170,10 +162,64 @@
 .Ar {
     .checkout {
         direction: rtl;
+
+        &__links {
+            flex-direction: row;
+
+            .text {
+                font-size: 18px;
+            }
+
+            .line {
+                margin-left: 20px;
+            }
+        }
+
+        &__form {
+            direction: rtl;
+            text-align: right;
+
+            .item {
+                label {
+                    margin-left: 50px;
+                    font-size: 28px;
+                    width: 200px;
+                }
+            }
+        }
     }
 }
 
-.En {}
+.En {
+    .checkout {
+        direction: ltr;
+
+        &__links {
+            flex-direction: row;
+
+            .text {
+                font-size: 16px;
+            }
+
+            .line {
+                margin-left: 20px;
+            }
+        }
+
+        &__form {
+            direction: ltr;
+            text-align: left;
+
+            .item {
+                label {
+                    margin-right: 50px;
+                    font-size: 18px;
+                    width: 250px;
+                }
+            }
+        }
+    }
+}
 
 .vectorone {
     .bultes-one {
@@ -236,166 +282,170 @@
 }
 
 @media screen and (max-width: 991px) {
-    .checkout {
-        .container {
-            display: flex;
-            flex-direction: row;
-        }
 
-        &__links {
-            flex-direction: column !important;
-            width: 10%;
-            margin: 10px;
-
-            .bultes {
-                margin-left: 0px;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-
-            .text {
-                margin: 10px 0px;
-                font-size: 12px;
-                width: 35px;
-            }
-
-            .line {
-                width: 5%;
-                height: 60px;
-                margin-left: 0px;
-                margin: 10px 0px;
-            }
-        }
-
-        &__header {
-            height: 30px;
-            margin: 10px 0px !important;
-            width: 100%;
-
-            h5 {
-                font-size: 24px;
-                text-align: center;
-            }
-        }
-
-        &__detiles {
-            margin: 10px 0px !important;
-            width: 100%;
-
-            h6 {
-                font-size: 20px;
-                margin-bottom: 20px;
-                text-align: center;
-            }
-        }
-
-        &__data {
-            width: 100%;
-        }
-
-        &__rows {
-            flex-direction: column;
-            align-items: center;
-
-            &_center {
-                justify-content: center;
-            }
-        }
-
-        &__form {
-
-            .item {
+    .Ar,
+    .En {
+        .checkout {
+            .container {
                 display: flex;
                 flex-direction: row;
-                align-items: center;
-                width: 100%;
-                margin: 40px 0px;
-                justify-content: space-around;
+            }
 
-                label {
+            &__links {
+                flex-direction: column !important;
+                width: 10%;
+                margin: 10px;
+
+                .bultes {
                     margin-left: 0px;
-                    font-size: 16px;
-                    width: auto;
-                }
 
-                data {
-                    position: relative;
-                    width: auto !important;
-
-                    .data-input {
-                        width: auto !important;
-                        height: 40px !important;
-                        border-radius: 10px !important;
-                        border: solid 1px rgba(0, 0, 0, 0.31) !important;
-                        background-color: #fff;
-                        -webkit-border-radius: 10px !important;
-                        -moz-border-radius: 10px !important;
-                        -ms-border-radius: 10px !important;
-                        -o-border-radius: 10px !important;
+                    img {
+                        width: 100%;
+                        height: 100%;
                     }
-
                 }
 
-                .time {
+                .text {
+                    margin: 10px 0px;
+                    font-size: 12px;
+                    width: 35px;
+                }
+
+                .line {
+                    width: 5%;
+                    height: 60px;
+                    margin-left: 0px;
+                    margin: 10px 0px;
+                }
+            }
+
+            &__header {
+                height: 30px;
+                margin: 10px 0px !important;
+                width: 100%;
+
+                h5 {
+                    font-size: 24px;
+                    text-align: center;
+                }
+            }
+
+            &__detiles {
+                margin: 10px 0px !important;
+                width: 100%;
+
+                h6 {
+                    font-size: 20px;
+                    margin-bottom: 20px;
+                    text-align: center;
+                }
+            }
+
+            &__data {
+                width: 100%;
+            }
+
+            &__rows {
+                flex-direction: column;
+                align-items: center;
+
+                &_center {
+                    justify-content: center;
+                }
+            }
+
+            &__form {
+
+                .item {
                     display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    width: 100%;
+                    margin: 40px 0px;
+                    justify-content: space-around;
 
-                    input {
-                        width: 40px;
-                        height: 50px;
-                        margin: 0px 5px;
-                        font-size: 24px;
+                    label {
+                        margin-left: 0px;
+                        font-size: 16px;
+                        width: auto;
                     }
 
-                    .bulltes {
-                        font-size: 40px;
-                        display: inline-block;
-                        height: 50px;
-                        line-height: 40px;
-                    }
+                    data {
+                        position: relative;
+                        width: auto !important;
 
-                    .button_zone {
-                        width: 60px;
-                        height: 51px;
-
-                        button {
-                            height: 25px;
+                        .data-input {
+                            width: auto !important;
+                            height: 40px !important;
+                            border-radius: 10px !important;
+                            border: solid 1px rgba(0, 0, 0, 0.31) !important;
+                            background-color: #fff;
+                            -webkit-border-radius: 10px !important;
+                            -moz-border-radius: 10px !important;
+                            -ms-border-radius: 10px !important;
+                            -o-border-radius: 10px !important;
                         }
 
-                        .notactive {
-                            color: rgba(0, 0, 0, 0.6);
+                    }
+
+                    .time {
+                        display: flex;
+
+                        input {
+                            width: 40px;
+                            height: 50px;
+                            margin: 0px 5px;
+                            font-size: 24px;
                         }
 
+                        .bulltes {
+                            font-size: 40px;
+                            display: inline-block;
+                            height: 50px;
+                            line-height: 40px;
+                        }
+
+                        .button_zone {
+                            width: 60px;
+                            height: 51px;
+
+                            button {
+                                height: 25px;
+                            }
+
+                            .notactive {
+                                color: rgba(0, 0, 0, 0.6);
+                            }
+
+                        }
+                    }
+
+                    .react-datepicker-popper {
+                        inset: revert !important;
+                        transform: none !important;
                     }
                 }
+            }
 
-                .react-datepicker-popper {
-                    inset: revert !important;
-                    transform: none !important;
+            .buttons {
+                text-align: center;
+
+                .btn-done {
+                    width: 200px;
+                    height: 40px;
+                    margin-top: 30px;
+                    color: #fff;
+                    border-radius: 12px;
+                    background-color: #868558;
+                    border-color: transparent;
+                    outline: none;
+                    -webkit-border-radius: 12px;
+                    -moz-border-radius: 12px;
+                    -ms-border-radius: 12px;
+                    -o-border-radius: 12px;
                 }
+
             }
-        }
-
-        .buttons {
-            text-align: center;
-
-            .btn-done {
-                width: 200px;
-                height: 40px;
-                margin-top: 30px;
-                color: #fff;
-                border-radius: 12px;
-                background-color: #868558;
-                border-color: transparent;
-                outline: none;
-                -webkit-border-radius: 12px;
-                -moz-border-radius: 12px;
-                -ms-border-radius: 12px;
-                -o-border-radius: 12px;
-            }
-
         }
     }
 }
@@ -403,17 +453,62 @@
 
 // 1- 2- Style Footer Component To Media Queris Samll.
 @media screen and (max-width: 576px) {
-    .checkout {
-        &__rows {
-            flex-direction: column;
-            align-items: center;
 
-            .cardaddress {
-                min-width: 200px;
+    .Ar,
+    .En {
+        .checkout {
+            &__rows {
+                flex-direction: column;
+                align-items: center;
+
+                .cardaddress {
+                    min-width: 200px;
+                }
+
+                .cardbutton {
+                    min-width: 210px;
+                }
             }
 
-            .cardbutton {
-                min-width: 210px;
+            &__header {
+                margin-bottom: 60px !important;
+                height: auto;
+
+                h5 {
+                    font-size: 24px;
+
+                }
+            }
+
+            &__form {
+                .item {
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
+                    margin: 20px 0px;
+
+                    label {
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        width: 100%;
+                        margin-bottom: 15px;
+                        text-align: center;
+                    }
+
+                    .data {
+                        width: 100% !important;
+                        text-align: center;
+                    }
+
+                    .time {
+                        width: 100% !important;
+                        text-align: center;
+
+                        .ant-picker {
+                            margin: 0px auto;
+                        }
+                    }
+                }
             }
         }
     }

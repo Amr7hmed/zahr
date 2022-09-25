@@ -100,7 +100,7 @@ function Profile() {
             <div className="itemdatashow input-control-password">
               <button className='btn_password' type="button" data-bs-toggle="modal" data-bs-target="#chingepassword" >
                 <img src={Reseteicon} alt="" />
-                تغيير كلمة المرور
+                {language === "En" ? "Change Password" : "تغيير كلمة المرور"}
               </button>
               <ModalPassword setLoading={setLoading} />
             </div>
@@ -108,7 +108,8 @@ function Profile() {
 
             <div className="buttons">
               <NavLink to={`/editeprofile`} className="edite-button" onClick={scrollToTop}>
-                تعديل
+                {language === "En" ? "Modify" : "تعديل"}
+              
               </NavLink>
             </div>
           </div>

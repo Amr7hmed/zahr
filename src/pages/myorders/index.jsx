@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { GetOrdersAll } from '../../api/actions';
 import Empty from '../../components/empty';
 import Order from '../../components/myorders/order';
 import Imagrempity from "../../images/empty/shoppingcart-empty.png";
 import Loading from '../../layout/loading/loading';
+import { Authcontext } from '../../store/context';
 
 function MyOrders() {
+    const authcontext = useContext(Authcontext);
+    const language = authcontext.language;
 
-    const language = "Ar";
     const [Orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(false);
 

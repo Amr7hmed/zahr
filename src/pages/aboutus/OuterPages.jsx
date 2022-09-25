@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AboutusImage from "../../images/bg/mainframe.png";
 import AboutusBackground from "../../images/bg/blackgroud.png";
 import { useParams } from 'react-router-dom';
 import Loading from "../../layout/loading/loading";
 import { GetDatapage } from "../../api/actions";
+import { Authcontext } from "../../store/context";
 
 function OuterPages() {
   const { id } = useParams();
-  const  language  = "Ar";
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState([]);
   

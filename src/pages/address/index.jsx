@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { GetAddress } from '../../api/actions';
 import CardAddress from '../../components/address/card';
 import CardButton from '../../components/address/cardbutton';
 import Loading from '../../layout/loading/loading';
 import Imagrempity from "../../images/empty/location-icon.svg";
 import EmptyAddress from '../../components/empty/EmptyAddress';
+import { Authcontext } from '../../store/context';
 
 function Address() {
-  const language   = "Ar";
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
+
   const [address, setAddress] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -40,7 +43,7 @@ function Address() {
               
             <div className="col-12 col-md-6 col-lg-4" key={item.id}>
               <CardAddress Title={"المنزل"} Nameuser={item.name}
-                Addres={`${item.city} ${" - "} ${item.address}`}  Phone={item.phone} ShowButtons={true} Id={item.id}/>
+                Addres={`${item.city} ${" - "} ${item.address}`}  Phone={item.phone} ShowButtons={true} Id={item.id} Item={address}/>
             </div>
                 )}
             <div className="col-12 col-md-6 col-lg-4">

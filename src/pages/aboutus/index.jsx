@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import AboutusImage from "../../images/bg/mainframe.png";
 import AboutusBackground from "../../images/bg/blackgroud.png";
+import { Authcontext } from "../../store/context";
 
 function AboutUs() {
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
   return (
     <div className="aboutus">
       <div className="imgbakground">
@@ -10,7 +13,9 @@ function AboutUs() {
       </div>
       <div className="container">
         <div className="section__header">
-          <h3>من نحن</h3>
+          <h3>
+            {language === "En" ? "About Us" : "من نحن"}
+          </h3>
         </div>
 
         <div className="aboutus__detiles">
