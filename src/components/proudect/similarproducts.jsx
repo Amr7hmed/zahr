@@ -20,6 +20,7 @@ function SimilarProducts(props) {
                Image={item.image}
                Title={item.title}
                Price={item.price} Id={item.id}
+               proudect={item}
              />
    
                </div>

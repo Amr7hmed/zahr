@@ -28,7 +28,7 @@ function Proudect() {
       <div className="container">
         <Links
         Category={language === "En" ? "All Products" : "كل المنتجات"} 
-        Title={proudect.title}/>
+        Title={language === "En" ? proudect.title: proudect.title_ar}/>
         <Ditels proudect={proudect} Similarproducts={similarproducts} Id={id}/>
       </div>
       </section>

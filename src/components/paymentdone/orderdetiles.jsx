@@ -7,12 +7,14 @@ function OrderDetiles(props) {
   const { Showbutton, summary } = props;
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
+  console.log(summary);
   return (
     <div className='orderdetiles'>
       <div className='title'>
         <h6>
-          {language === "En" ? "Order" : "الطلبية"}
-          <span>567345#</span></h6>
+          {language === "En" ? "Order" : "الطلبية"} 
+          {" "}
+          <span>#{" "}{summary.id}</span></h6>
         {Showbutton === false ? "" :
           <button type="button" className="btn-done">
             {language === "En" ? "Underway" : " قيد التنفيذ"}
@@ -28,13 +30,13 @@ function OrderDetiles(props) {
               {language === "En" ? "The Address" : "العنوان"}
             </span>
             <span className='text'>
-              المنزل
+              {summary.address.name}
             </span>
             <span className='text'>
-              الرياض - العليا- منطقة الرياض -مبني 5 -شقة 12
+              {`${summary.address.city} ${" - "} ${summary.address.address}`}
             </span>
             <span className='number'>
-              +9665559164782
+              {summary.address.phone}
             </span>
           </div>
         </div>

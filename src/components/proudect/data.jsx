@@ -18,27 +18,40 @@ function Data(props) {
   for(i = 0 ; i < Rates.length; i++){
     NewArray.push(parseInt(Rates[i].rate));
   }
-
   const initialValue = 0;
   const sumWithInitial = NewArray.reduce(
     (previousValue, currentValue) => previousValue + currentValue,
     initialValue
   );
-  
   console.log(sumWithInitial);
   const count = sumWithInitial/NewArray.length;
-console.log(count);
-
+console.log(Proudect.price_before_discount);
+var Over;
+if(Proudect.price_before_discount === Proudect.price){
+  Over= 0;
+}else{
+  Over= (parseInt(Proudect.price_before_discount) / parseInt(Proudect.price) - 1) *100;
+}
+console.log(Over);
 
   return (
     <div className='proudect__data'>
       <span className='over'>
-          {language === "En" ? "Dg522 Coupon - Extra 25% Off" : "كوبون Dg522 - خصم إضافي 25%"} 
+        {Proudect.code === null? "":<>
+          {language === "En" ? `Coupon ${Proudect.code} - Extra Off - ${" "} ${Over}% ` 
+          : `كوبون ${Proudect.code} - خصم إضافي  - ${" "} ${Over}% `} 
+        </>
+        }
         </span>
       <div className='revewe'>
         <span className='star'>
           <span>
-          {Rates.length === 0 ?0 :count} {" "}
+          {Rates.length === 0 ?0 :
+          count >= 5 ? 5
+          :
+          count.toFixed(1)
+          } 
+          {" "} 
           </span>
           <img src={Star} alt="Star" />
         </span>
@@ -52,7 +65,7 @@ console.log(count);
 
       <div className="title">
         <span className="left">
-          {Proudect.title}
+          {language === "En" ? Proudect.title: Proudect.title_ar}
         </span>
 
         <span className="right">
@@ -68,9 +81,28 @@ console.log(count);
 
       </div>
       <div className="price">
-        <span>
-          SAR {Proudect.price}
-        </span>
+        {Proudect.price_before_discount > Proudect.price ?
+          <>
+          <span className='overprice'>
+            {Proudect.price_before_discount}  {" "} 
+                {language === "En" ? "SAR": " ر.س "}  {" "} 
+            </span>
+            {" "}
+          <span>
+            {Proudect.price}  {" "} 
+            {language === "En" ? "SAR": "ر.س"}  {" "} 
+          </span>
+          </>
+          :
+          <span>
+            {Proudect.price}  {" "} 
+            {language === "En" ? "SAR": "ر.س"}  {" "} 
+          </span>
+          
+          }
+
+
+
         <span className="btn-revewe" data-bs-toggle="modal" data-bs-target="#exampleModal">
           {language === "En" ? "Product Rating" : "تقييم المنتج"}
         </span>
@@ -93,7 +125,11 @@ console.log(count);
         <span>
           {language === "En" ? "Weight" : "الوزن"}
           
-        </span>{" "}<span>{Proudect.weight} kg </span>
+        </span>{" "}<span>
+          {Proudect.weight}
+          {" "}
+          {language === "En" ? "Kg": "كجم"}
+        </span>
       </div>
 
 
@@ -108,7 +144,7 @@ console.log(count);
           {language === "En" ? "Basic Materials" : "المواد الأساسية"}
             </span>
             <span>
-              null 
+          {language === "En" ? Proudect.description: Proudect.description_ar}
             </span>
           </li>
 
@@ -130,7 +166,9 @@ console.log(count);
             <span>
           {language === "En" ? "Country of Origin" : "بلد المنشأ"} 
             </span>
-            <span> null </span>
+            <span> 
+          {language === "En" ? Proudect.city: Proudect.city_ar}
+           </span>
           </li>
 
 
@@ -138,7 +176,9 @@ console.log(count);
             <span>           
           {language === "En" ? "Model Name" : "أسم الموديل"} 
           </span>
-            <span> {Proudect.brand}</span>
+            <span>
+          {language === "En" ? Proudect.brand: Proudect.brand_ar}
+            </span>
           </li>
         </ul>
       </div>

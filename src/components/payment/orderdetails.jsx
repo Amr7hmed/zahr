@@ -6,16 +6,17 @@ import { Authcontext } from "../../store/context";
 
 function OrderDetails() {
   let navigate  = useNavigate();
-
+  const [loading, setLoading] = useState(false);
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
   const [price, setPrice] = useState("");
   const [delivery, setDelivery] = useState("");
   const [total, setTotal] = useState("");
+  const [code, setCode] = useState(null);
 
 
   useEffect(() => {
-    Getsummery(setPrice,setDelivery , setTotal);
+    Getsummery(setLoading, setPrice, setDelivery, setTotal, setCode);
     }, [price]);
   return (
     <div className="orderdetails">

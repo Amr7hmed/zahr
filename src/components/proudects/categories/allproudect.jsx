@@ -13,7 +13,7 @@ function AllProudect(props) {
       <div className="row">
         {Products.map(item =>
           <div className="col-6 col-lg-4" key={item.id}>
-            <CardProudects Image={item.image} Title={item.title} 
+            <CardProudects Image={item.image}
             Price={item.price} Id={item.id}  proudect={item} />
           </div>
         )}

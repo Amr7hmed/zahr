@@ -1,20 +1,23 @@
 import React, { useContext } from 'react'
+import { NavLink } from 'react-router-dom';
 import { Authcontext } from '../../store/context';
 
 function CardOrder(props) {
-    const {Image,Title , Color ,Weight ,Price}=props;
+    const {Image,Item , Color ,Weight ,Price ,Status}=props;
     const authcontext = useContext(Authcontext);
     const language = authcontext.language;
   return (
     <div className='cardorder'>
         <div className="contect">
 
-        <div className="image">
+        <NavLink to={`/proudect/${Item.id}`}  className="image">
             <img src={Image} alt="Image" />
-        </div>
+        </NavLink>
 
         <div className="text">
-            <span className='title'>{Title}</span>
+            <span className='title'>
+                  {language === "En" ? Item.title: Item.title_ar}
+                </span>
 
             <div className="colors">
                 <span>
@@ -28,7 +31,17 @@ function CardOrder(props) {
                 <span>
                 {language === "En" ? "Weight" : "الوزن"}
                 </span>{" "}
-                <span>{Weight}kg</span>
+                <span>{Weight}  {" "}
+                {language === "En" ? " K.g": "كجم"}
+                </span>
+            </div>
+
+            <div className="weight">
+                <span>
+                {language === "En" ? "Order Status" : "حالة الطلب"}
+                </span>{" "}
+                <span>{Status}  {" "}
+                </span>
             </div>
         </div>
         </div>

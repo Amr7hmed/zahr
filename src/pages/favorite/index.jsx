@@ -44,9 +44,9 @@ function Favorite() {
         <div className="favorite__items">
         
         {products.map(item=>
-          <CardFav Image={item.product.image}  Price={item.product.price} Color={"متعدد الألوان"}
-            Size={"2.5"} Title={item.product.title} key={item.product.id}
-             Id={item.product.id} setLoading={setLoading}/>
+          <CardFav Image={item.product.image}  Price={item.product.price} Color={item.product.colors}
+            Size={item.product.weight} key={item.product.id}
+             Id={item.product.id} setLoading={setLoading} Item={item.product}/>
             )}
         </div>
       </div>
@@ -58,7 +58,3 @@ function Favorite() {
 
 export default Favorite;
 
-/*
-
-          
-*/

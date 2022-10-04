@@ -69,8 +69,14 @@
         .price {
             margin: 15px 0px;
             display: block;
-            font-size: 24px;
+            font-size: 18px;
             color: #ff5069;
+            .overprice{
+                font-size: 16px;
+                color: #898989;
+                font-weight: normal;
+                text-decoration: line-through;
+            }
         }
 
 
@@ -109,6 +115,12 @@
                     }
                 }
             }
+            
+            .price {
+                .overprice{
+                    margin-left: 10px;
+                }
+            }
         }
     }
     
@@ -127,6 +139,12 @@
                     &:first-of-type {
                         margin-right: 40px;
                     }
+                }
+            }
+            
+            .price {
+                .overprice{
+                    margin-right: 10px;
                 }
             }
         }

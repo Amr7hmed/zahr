@@ -80,6 +80,10 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        h5{
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
 
         &_center {
             justify-content: center;
@@ -355,7 +359,6 @@
             }
 
             &__form {
-
                 .item {
                     display: flex;
                     flex-direction: row;
@@ -423,7 +426,11 @@
                     .react-datepicker-popper {
                         inset: revert !important;
                         transform: none !important;
-                    }
+                        -webkit-transform: none !important;
+                        -moz-transform: none !important;
+                        -ms-transform: none !important;
+                        -o-transform: none !important;
+}
                 }
             }
 
@@ -503,6 +510,9 @@
                     .time {
                         width: 100% !important;
                         text-align: center;
+                        input {
+                            font-size: 14px;
+                        }
 
                         .ant-picker {
                             margin: 0px auto;

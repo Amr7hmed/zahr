@@ -43,8 +43,9 @@ function Cart() {
                 {products.map(item =>
                   <Cardcart Image={item.image}
                     Title={item.title} Id={item.id}
-                    Color={item.colors}
-                    Size={item.sizes} key={item.id} Cartid={cartid} Count={item.count} Price={item.price} setLoading={setLoading}/>
+                    Color={item.colors} Item={item}
+                    Weight={item.weight} key={item.id} Cartid={cartid}
+                     Count={item.count} Price={item.price} setLoading={setLoading}/>
                 )}
               </div>
               <div className="col-md-12 col-lg-4">

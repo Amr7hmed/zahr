@@ -4,7 +4,6 @@ import Star from "../../../images/icon/star.svg";
 
 function ReviewItem(props) {
     const {Image , Title , Description,Rate}=props;
-    console.log(Rate);
     const Newrate=parseInt(Rate);
     const Stars=[Star,Star,Star,Star,Star];
     const NewArray=[];
@@ -13,13 +12,17 @@ function ReviewItem(props) {
       NewArray.push(Stars[i]);
     }
 
-  console.log(NewArray);
 
 
   return (
     <div className='reviewitem'>
         <div className="image">
-            <img src={Image} alt="Image" />
+            <img src={Image} 
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src =
+                  "https://www.aaronfaber.com/wp-content/uploads/2017/03/product-placeholder-wp.jpg";
+              }} />
         </div>
         <div className="contetext">
             <span className="title">

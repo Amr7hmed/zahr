@@ -8,10 +8,14 @@ import EmailIcon from '../../images/icon/envelope-regular.svg';
 import PhoneIcon from '../../images/icon/phone-solid.svg';
 import { NavLink } from 'react-router-dom';
 import AboutusBackground from "../../images/bg/blackgroud.png";
+import { GetSettings } from '../../api/actions';
+import Loading from '../../layout/loading/loading';
 
 function ConnectUs() {
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
+  const [loading, setLoading] = useState(false);
+  const [settings, setSettings] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   // Top: 0 takes us all the way back to the top of the page
   // Behavior: smooth keeps it smooth!
@@ -35,7 +39,17 @@ function ConnectUs() {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  return (
+
+  
+
+   
+  useEffect(() => {
+    GetSettings(setLoading,setSettings) ;
+   }, [loading]);
+  return (<>
+    {loading === false ? (
+      <Loading />
+    ) : (
     <section className="outer">
       <div className="container">
         <Links />
@@ -64,15 +78,17 @@ function ConnectUs() {
           <div className="row">
             <div className="col-12 col-lg-4">
               <CardConnectUs Title={language === "En" ? "The Address" : "العنوان"}
-               Image={LoctionIcon} Detiles={"هنا يوضع عنوان"} />
+               Image={LoctionIcon} 
+               Detiles={language === "En" ? settings.address_en : settings.address_ar}/>
             </div>
             <div className="col-12 col-lg-4">
               <CardConnectUs Title={language === "En" ? "E-mail" : "البريد الالكتروني"}
-               Image={EmailIcon} Detiles={"zahr@gmail.com"} />
+               Image={EmailIcon} 
+               Detiles={settings.email}/>
             </div>
             <div className="col-12 col-lg-4">
               <CardConnectUs Title={language === "En" ? "Phone Number" : "رقم الهاتف"}
-               Image={PhoneIcon} Detiles={"0584932999"} />
+               Image={PhoneIcon} Detiles={settings.phone} />
             </div>
           </div>
         </div>
@@ -85,8 +101,9 @@ function ConnectUs() {
           </NavLink>
         </div>
       </div>
-    </section>
-  )
+    </section>)}
+  </>)
+  
 }
 
 export default ConnectUs;

@@ -4,7 +4,7 @@ import OpenBook from '../../images/icon/open-book.png';
 import { Authcontext } from '../../store/context';
 
 function CardArticles(props) {
-    const {Image , TextArticles}=props;
+    const {Image , TextArticles ,Id}=props;
     const authcontext = useContext(Authcontext);
     const language = authcontext.language;
     const [isVisible, setIsVisible] = useState(false);
@@ -32,9 +32,14 @@ function CardArticles(props) {
   
   return (
     <div className='articles__card'>
-        <div className="image"><img src={Image} alt="" /></div>
+        <div className="image"><img src={Image} alt="" 
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src =
+                    "https://www.aaronfaber.com/wp-content/uploads/2017/03/product-placeholder-wp.jpg";
+                }} /></div>
         <div className="text">{TextArticles}</div>
-        <NavLink to={`/article/${1}`} className="btn-read"  onClick={scrollToTop}>
+        <NavLink to={`/article/${Id}`} className="btn-read"  onClick={scrollToTop}>
             <span className='text'> {language === "En" ? "Read" : "اقرأ"}</span>
             <span className="imageicon">
                 <img src={OpenBook} alt="" />

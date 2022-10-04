@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from "react";
 import CardServices from '../cards/cardservices';
 import Image1 from "../../images/services/image-1.png";
 import Image2 from "../../images/services/image-2.png";
@@ -6,8 +6,21 @@ import Image3 from "../../images/services/image-3.png";
 import Backgroud from "../../images/services/backgroud.png";
 
 import Slider from "react-slick";
+import { GetDataServices } from '../../api/actions';
+import { Authcontext } from "../../store/context";
+
 
 function Services() {
+const [Services, setServices] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const authcontext = useContext(Authcontext);
+  const language = authcontext.language;
+
+  useEffect(() => {
+    GetDataServices(setLoading,setServices);
+  }, [loading]);
+  
+
     
   const settings = {
     dots: true,
@@ -55,7 +68,10 @@ function Services() {
       },
     ],
   };
-    return (
+    return (<>
+      {loading === false ? (
+        ""
+      ) : (
         <section className='home__services'>
             <div className="over_background">
                 <img src={Backgroud} alt="Backgroud" />
@@ -63,21 +79,15 @@ function Services() {
             <div className='container'>
                     
           <Slider {...settings}>
-                        <CardServices Image={Image3} Title={"دفع سهل"} />
-                        <CardServices Image={Image1} Title={" توصيلة علي الوقت"} />
-                        <CardServices Image={Image2} Title={"صور واقعية"} />
-                        <CardServices Image={Image3} Title={"دفع سهل"} />
-                        <CardServices Image={Image1} Title={" توصيلة علي الوقت"} />
-                        <CardServices Image={Image2} Title={"صور واقعية"} />
-                        <CardServices Image={Image3} Title={"دفع سهل"} />
-                        <CardServices Image={Image1} Title={" توصيلة علي الوقت"} />
-                        <CardServices Image={Image2} Title={"صور واقعية"} />
+            {Services.map(item =>
+                        <CardServices Image={item.image} 
+                        Title={language === "En" ? item.title_en : item.title_ar} key={item.id}/>
+              )}
            </Slider>
             </div>
         </section>
-    )
+        )}
+  </>)
 }
 
 export default Services;
-
-

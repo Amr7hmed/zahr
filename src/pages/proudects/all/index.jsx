@@ -50,7 +50,9 @@ function Proudects() {
                   setPerpage={setPerpage} ToggleFilterclass={ToggleFilterclass} setTogglefilter={setTogglefilter} />
               </div>
               <div className="col-md-12 col-lg-9">
+                
                 <AllProudect Products={products} />
+                 
               </div>
               <div className="col-12">
               <ReactPaginate
@@ -87,53 +89,3 @@ function Proudects() {
 }
 
 export default Proudects;
-
-/*
-
-        <section className="proudects__full">
-          <div className="container">
-            <div className="link">
-              <ul>
-                <li className="active">
-                  <NavLink to="/">الصفحه الرئيسية</NavLink>
-                </li>
-                <li className="arrow">
-                  <img src={Iconleft} alt="" />
-                </li>
-                <li>
-                  <NavLink to="/proudects">أحدث المنتجات </NavLink>
-                </li>
-              </ul>
-            </div>
-            <div className="row">
-
-              {products.map(item =>
-                <div className="col-lg-4 col-md-6 col-sm-12" key={item.id}>
-                  <CardProudects Image={item.image} Title={item.title} Price={item.price} Id={item.id} />
-                </div>)}
-            </div>
-            <ReactPaginate
-              previousLabel={"<"}
-              nextLabel={">"}
-              breakLabel={"..."}
-              pageCount={perpage}
-              pageSize={4}
-              marginPagesDisplayed={4}
-              pageRangeDisplayed={3}
-              onPageChange={handlePageClick}
-              containerClassName={"pagination justify-content-center"}
-              pageClassName={"page-item"}
-              pageLinkClassName={"page-link"}
-              previousClassName={"page-item"}
-              previousLinkClassName={"page-link"}
-              nextClassName={"page-item"}
-              nextLinkClassName={"page-link"}
-              breakClassName={"page-item"}
-              breakLinkClassName={"page-link"}
-              activeClassName={"active"}
-            />
-          </div>
-        </section>
-
-
-*/

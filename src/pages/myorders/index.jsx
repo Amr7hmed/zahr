@@ -16,9 +16,8 @@ function MyOrders() {
     useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         GetOrdersAll(setLoading, setOrders);
-        console.log(Orders);
     }, [loading]);
-
+    console.log(Orders);
     return (<>
         {loading === false ? (
             <Loading />
@@ -39,9 +38,9 @@ function MyOrders() {
                             </h3>
                         </div>
                         <div className="myorders__row">
-                            {Orders.map(item =>
-                                <Order Nemberorder={`#${item.id}`} Dayorder={item.created_at} 
-                                OrderProducts={item.orderProducts} key={item.id}/>
+                            {Orders.map((item,index) =>
+                                <Order Nemberorder={`#${index+1}`} Dayorder={item.created_at} 
+                                OrderProducts={item.orderProducts} key={item.id} Item={item}/>
                             )}
                         </div>
 

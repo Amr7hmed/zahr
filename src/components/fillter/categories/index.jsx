@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useContext } from "react";
 import { useState } from "react";
-import { GetFiltersCategories } from "../../../api/actions.js";
+import { FilterDataCategoryPage, GetFiltersCategories } from "../../../api/actions.js";
 import { Authcontext } from "../../../store/context.js";
 import Categories from "./categories.jsx";
 import City from './city.jsx';
@@ -57,6 +57,9 @@ function Fillter(props) {
     GetFiltersCategories(setCities,setDatafilter,set_minValue,set_maxValue,setlistcategories)
   }, []);
 
+  const SearchData = () => {
+    FilterDataCategoryPage(Id,setProducts,minValue,maxValue,city)
+  };
 
   return (
     <section className='fillter'>
@@ -84,6 +87,9 @@ function Fillter(props) {
         
           <button className="btn btn_removeall" type="button" onClick={() => removeData()}>
           {language === "En" ?"Remove All":"مسح الكل"}
+          </button>
+          <button className="btn btn_search" type="button" onClick={SearchData}>
+          {language === "En" ? "Search" : "بحث "}
           </button>
       </form>
 

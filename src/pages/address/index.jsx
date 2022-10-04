@@ -32,22 +32,22 @@ function Address() {
     <section className='address'>
       <div className="container">
         <div className="section__header">
-          <h3>
-          {language === "En" ? ("Addresses "): ("العناوين")}
-          </h3>
+          <h3>{language === "En" ? ("Addresses "): ("العناوين")}</h3>
         </div>
 
         <div className="address__row">
           <div className="row">
-            {address.map(item =>
+            {address.map((item,index) =>
               
             <div className="col-12 col-md-6 col-lg-4" key={item.id}>
-              <CardAddress Title={"المنزل"} Nameuser={item.name}
-                Addres={`${item.city} ${" - "} ${item.address}`}  Phone={item.phone} ShowButtons={true} Id={item.id} Item={address}/>
+              <CardAddress Index={index} Nameuser={item.name}
+                Addres={`${item.city} ${" - "} ${item.address}`}  
+                setLoading={setLoading}
+                Phone={item.phone} ShowButtons={true} Id={item.id} Item={address}/>
             </div>
                 )}
             <div className="col-12 col-md-6 col-lg-4">
-              <CardButton />
+              <CardButton setLoading={setLoading}/>
             </div>
           </div>
         </div>

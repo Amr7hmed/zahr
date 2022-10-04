@@ -27,7 +27,7 @@ function Footer() {
           </div>
         </div>
 
-<FooterEnd/>
+        <FooterEnd />
       </div>
     </footer>
   )

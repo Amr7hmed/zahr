@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { GetDatapages } from '../../../api/actions';
 import Arbiecicon from '../../../images/icon/Saudi-arabia-icon.png';
 import Engilshicon from '../../../images/icon/USA-icon.png';
 import { Authcontext } from '../../../store/context';
@@ -13,6 +14,10 @@ function MenuNavbar(props) {
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
   const setLanguage = authcontext.setLanguage;
+
+  const [loadingpages, setLoadingpages] = useState(false);
+  const [pages, setPages] = useState([]);
+
   const [isVisible, setIsVisible] = useState(false);
   // Top: 0 takes us all the way back to the top of the page
   // Behavior: smooth keeps it smooth!
@@ -45,7 +50,9 @@ function MenuNavbar(props) {
     }
   }
 
-
+  useEffect(() => {
+    GetDatapages(setLoadingpages, setPages)
+  }, [loadingpages]);
   return (
     <>
 
@@ -81,11 +88,16 @@ function MenuNavbar(props) {
                   </ul>
 
                 </li>
-                <li className="nav-item">
-                  <NavLink to="/aboutus" onClick={scrollToTop} className="nav-link">
-                    {language === "En" ? "About Us" : "من نحن"}
-                  </NavLink>
-                </li>
+                {loadingpages === false ? "" : <>
+                  {pages.map(item =>
+                    item.show_in_navbar === "1" ?
+                      <li key={item.id} className="nav-item">
+                        <NavLink to={`/pages/${item.id}`} key={item.id} onClick={scrollToTop} className="nav-link">
+                          {language === "En" ? item.name_en : item.name_ar}
+                        </NavLink>
+                      </li>: null)}
+                </>
+                }
                 <li className="nav-item">
                   <NavLink to="/connectus" onClick={scrollToTop} className="nav-link">
                     {language === "En" ? "Connect Us" : "تواصل معنا"}

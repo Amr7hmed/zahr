@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { FilterDataCategoryPage, FilterDataCity } from "../../../api/actions";
 import { Authcontext } from "../../../store/context";
-import removeIcon from "../../../images/icon/icon_remove.svg";
+import removeIcon from "../../../images/icon/delete.png";
 
 function City(props) {
   const {cities, Id, setProducts,setCity ,minValue,maxValue } = props;
@@ -42,7 +42,7 @@ function City(props) {
       <ul>
         {cities.map(item =>
           <li key={item.city}>
-            <input type="radio" value={item.city} name="filter" onChange={handleChange}
+            <input type="radio" value={item.city} onChange={handleChange}
              name="city"
             id={item.city} />
             <label htmlFor={item.city}>

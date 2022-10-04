@@ -28,6 +28,7 @@ function ModelonePassword(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setEmail(state.email);
+    localStorage.setItem("email", JSON.stringify(state.email));
     ResetPasswordRequest(state, setMessage, setToggole);
   };
 

@@ -34,32 +34,31 @@ function FooterEnd() {
 
 
   useEffect(() => {
-    GetDatapages(setLoading,setPages)
+    GetDatapages(setLoading, setPages)
   }, [loading]);
 
 
   return (
-    
+
     <>
-        {loading === false ? (
-          ""
-        ) : (
-          
-    <div className="footer-end">
-    <ul>
-      {pages.map(item =>
-        
-      <li key={item.id}>
-        
-        <NavLink to={`/pages/${item.id}`} key={item.id}  onClick={scrollToTop}>
-          {language === "En" ? item.name_en : item.name_ar}
-          </NavLink>
-      </li>
-        )}
-    </ul>
-      </div>
-        )}
-      </>
+      {loading === false ? (
+        ""
+      ) : (
+
+        <div className="footer-end">
+          <ul>
+            {pages.map(item =>
+              item.show_in_navbar === "0" ?
+                <li key={item.id}>
+                  <NavLink to={`/pages/${item.id}`} key={item.id} onClick={scrollToTop}>
+                    {language === "En" ? item.name_en : item.name_ar}
+                  </NavLink>
+                </li> : null
+            )}
+          </ul>
+        </div>
+      )}
+    </>
   )
 }
 

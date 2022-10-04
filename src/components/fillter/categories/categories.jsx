@@ -29,7 +29,7 @@ return (
         <div className="accordion-item" key={item.id}>
           <h2 className="accordion-header" id="flush-headingTwo">
             <button 
-            className={item.branches.length === 0 ? "accordion-button accordion-button-noafter" :
+            className={item.categories.length === 0 ? "accordion-button accordion-button-noafter" :
              `accordion-button collapsed`} 
             type="button"
               data-bs-toggle="collapse" data-bs-target={`#tage${item.id}`} 
@@ -44,7 +44,7 @@ return (
                 </label>}
             </button>
           </h2>
-          {item.branches.map(elment =>
+          {item.categories.map(elment =>
             <div id={`tage${item.id}`} className={item.id === Idpage ? 
               "accordion-collapse collapse show" 
             :"accordion-collapse collapse"}

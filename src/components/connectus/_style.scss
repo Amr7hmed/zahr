@@ -59,11 +59,11 @@
     }
 
     .cardconnectus {
-      width: 90%;
-      height: 225px;
+      width: 80%;
+      height: 180px;
       flex-grow: 0;
       margin: 25px auto;
-      padding: 30px 25px;
+      padding: 30px 15px;
       border-radius: 20px;
       box-shadow: 0 3px 49px 9px rgba(0, 0, 0, 0.06);
       background-color: #fff;
@@ -101,6 +101,7 @@
         margin: 40px 0px;
         color: #000;
         font-size: 16px;
+        direction: ltr;
       }
     }
   }
@@ -168,7 +169,7 @@
         color: var(--primary-two-color);
       }
 
-      input {
+      input.form-control{
         width: 95%;
         height: 39px;
         margin: 4px 0px 0px 0px;
@@ -179,11 +180,18 @@
         -moz-border-radius: 19.5px;
         -ms-border-radius: 19.5px;
         -o-border-radius: 19.5px;
+        &:focus {
+          border: solid 1px #d5d5d5;
+        }
       }
 
-      textarea {
+      textarea.form-control {
         width: 95%;
         height: 271px;
+        border: solid 1px #d5d5d5;
+        &:focus {
+          border: solid 1px #d5d5d5;
+        }
       }
 
     }
@@ -232,6 +240,15 @@
 .En {
   .outer {
     direction: ltr;
+    &__row {
+      .cardconnectus {
+        .top {
+          .image {
+            margin-right: 25px;
+          }
+        }
+      }
+    }
   }
 }
 

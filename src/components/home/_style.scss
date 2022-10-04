@@ -347,13 +347,20 @@ margin-right: 20px;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+            margin-top: 15px;
 
             .price {
-                margin-top: 15px;
                 font-family: var(--font-ar);
                 font-size: 16px;
                 font-weight: normal;
                 color: #ff5069;
+                height: 20px;
+                .overprice{
+                    font-size: 14px;
+                    color: #898989;
+                    font-weight: normal;
+                    text-decoration: line-through;
+                }
             }
 
             .btn-fivorte {
@@ -441,6 +448,10 @@ margin-right: 20px;
             .end {
                 .price {
                     text-align: right;
+                    
+                .overprice{
+                    margin-left: 10px;
+                }
                 }
             }
         }
@@ -473,7 +484,10 @@ margin-right: 20px;
 
             .end {
                 .price {
-                    text-align: left;
+                    text-align: left; 
+                    .overprice{
+                        margin-right: 10px;
+                    }
                 }
             }
         }

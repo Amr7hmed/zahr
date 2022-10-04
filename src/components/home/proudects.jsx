@@ -47,7 +47,7 @@ function SectionProudects(props) {
           <div className="row">
             {Products.map(item=>
             <div className="col-6 col-md-6 col-lg-4" key={item.id}>
-              <CardProudects Image={item.image} Title={item.title} 
+              <CardProudects Image={item.image}
               Price={item.price} Id={item.id} Style={"home_card"}  proudect={item}/>
             </div>
               )}

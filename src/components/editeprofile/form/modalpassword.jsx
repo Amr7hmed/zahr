@@ -10,9 +10,11 @@ import { Authcontext } from '../../../store/context.js';
 function ModalPassword(props) {
   const {setLoading}=props;
   let navigate  = useNavigate();
+  const [validation, setValidation] = useState(true);
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
   const [state, setState] = useState({
+    password_confirmation_done:"",
     password: "",
     password_confirmation: "",
   });
@@ -45,12 +47,23 @@ function ModalPassword(props) {
     axios(options).then(function (response) {
       console.log("handle success");
       console.log(response);
-      if (language === "En") {
-          swal("Password changed successfully !", "", "success");
-          window.location.pathname = "/profile";
-      } else {
-          swal("تم تغيير كلمه المرور بنجاح", "", "success");
-          window.location.pathname = "/profile";
+      
+      if(language === "En" ){
+        swal({
+          text: "Password changed successfully !",
+          icon: "success",
+          buttons: false,
+          timer: 3000
+        })
+        window.location.pathname = "/profile";
+      }else{
+       swal({
+        text: "تم تغيير كلمه المرور بنجاح",
+        icon: "success",
+        buttons: false,
+        timer: 3000
+      })
+      window.location.pathname = "/profile";
       }
     })
       .catch(function (error) {
@@ -68,10 +81,15 @@ function ModalPassword(props) {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(state.password);
-    console.log(state.password_confirmation);
-    EditeProfilepassword(state.password,state.password_confirmation,language)
+    e.preventDefault(); 
+    if (state.password_confirmation_done === ""||
+    state.password === "" ||
+    state.password_confirmation === ""){
+      setValidation(false);
+    } else {
+      setValidation(true);
+      EditeProfilepassword(state.password,state.password_confirmation,language);
+   }
   };
 
 
@@ -91,21 +109,31 @@ function ModalPassword(props) {
                 {language === "En" ? "Change Password" : "تغيير كلمة المرور"}
           </h4>
 
-          <input className="form-control" type="password"
+          <input  type="password"
             name="password_confirmation_done" placeholder=
             {language === "En" ? "Current Password": "كلمة المرور الحاليه"}
+            required
+            className={validation === false && state.password_confirmation_done === "" ?
+             "form-control is-invalid" : "form-control"}
             value={state.password_confirmation_done || ''}
             onChange={handleChange} />
 
 
-          <input className="form-control" type="password"
+          <input 
+          required
+          className={validation === false && state.password === "" ?
+             "form-control is-invalid" : "form-control"}
+          type="password"
             name="password"  
             placeholder={language === "En" ? "Enter a new password": "ادخل كلمة المرور جديدة"}
             value={state.password || ''}
             onChange={handleChange} />
 
 
-          <input className="form-control" type="password"
+          <input 
+          required
+          className={validation === false && state.password_confirmation === "" ?
+             "form-control is-invalid" : "form-control"} type="password"
             name="password_confirmation" placeholder=
             {language === "En" ? "Re-enter A New Password": "أعد ادخل كلمة المرور جديدة"}
             value={state.password_confirmation || ''}

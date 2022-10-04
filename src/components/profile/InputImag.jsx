@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext } from 'react';
 import { useState } from 'react';
+import swal from 'sweetalert';
 import { Api } from '../../api';
 import InputImgUpload from "../../images/icon/camera.png";
 import ImageCover from "../../images/icon/woman.png";
@@ -43,19 +44,25 @@ function InputImag(props) {
       console.log(e.target.files[0]);
       //let { files } = state;
       const filesdata = e.target.files[0];
-      
       getBase64(filesdata)
       .then(result => {
           filesdata["base64"] = result;
           setSelectedFile(urlimage);
        console.log("File Is", selectedFile);
-        EditeProfile();
       })
       .catch(err => {
         console.log(err);
       });
+      
     }
     const EditeProfile = () => {
+      if(selectedFile === ""){
+        {language === "En"?
+        swal({text: "Please choose a profile picture !",icon: "warning",buttons: false,timer: 3000})
+        :
+        swal({text: "يرجي اختيار صورة شخصية",icon: "warning",buttons: false,timer: 3000})
+      }
+      }else{
         const options = {
           method: "put",
           url: `${Api}update-profile`,
@@ -85,8 +92,10 @@ function InputImag(props) {
             }
             console.log(error.config);
           });
+      }
       };
-      console.log(urlimage);
+      //console.log(urlimage);
+      console.log(selectedFile);
   
     return (
             <div className="imageinput">
@@ -105,7 +114,7 @@ function InputImag(props) {
                 </span>
               </span>
 
-              <button className="btn_save_img" type='button' >
+              <button className="btn_save_img" type='button' onClick={EditeProfile}>
                 {language === "En" ?"Change Profile Picture":"تغير الصورة الشخصية"}
             </button>
 
@@ -115,27 +124,3 @@ function InputImag(props) {
   
 
 export default InputImag;
-
-/*
-
-          <div className="imageinput">
-            <span className="imgcover">
-              <img src={data.image} className="img-one" alt=""
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src =
-                    "https://www.aaronfaber.com/wp-content/uploads/2017/03/product-placeholder-wp.jpg";
-                }} />
-              <span className="imginput">
-                <img src={InputImgUpload} alt="" />
-                <input type="file" className="input-file"
-                  onChange={handleChange} />
-              </span>
-            </span>
-
-            <button className="btn_save_img" type='button' onClick={handleChangeImage}>
-              تغير الصورة الشخصية
-            </button>
-          </div>
-
-*/

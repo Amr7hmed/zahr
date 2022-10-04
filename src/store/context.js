@@ -41,29 +41,3 @@ export function Contextprovider(props) {
     )
 }
 
-
-/*
-
-
-  const addCart = (id) => {
-    setCart([...cart, Item])
-    //alert("This Item Is Add To Cart!")
-    AddToCart(id)
-    if(language === "En" ){
-      swal("Item Has Been Added !", "", "success");
-    }else{
-      swal("تمت إضافة العنصر", "", "success");
-    }
-    
-  }
-  const addWishlist = (id) => {
-    setWishlist([...wishlist, Item])
-    AddToFavourite(id)
-    if(language === "En" ){
-      swal("Item Has Been Added !", "", "success");
-    }else{
-      swal("تمت إضافة العنصر", "", "success");
-    }
-  }
-
-*/

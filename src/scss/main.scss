@@ -144,11 +144,11 @@ img {
 input[type='checkbox'] {
   accent-color: #5c6349 !important;
 }
-
+/*
 input[type='radio'] {
   accent-color: #5c6349 !important;
 }
-
+*/
 .section{
 
   &__header {
@@ -208,6 +208,73 @@ input:-webkit-autofill,
     }
 }
 
+input[type=radio] {
+  appearance: none;
+  background-color: #fff;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+  display: inline-grid;
+  place-content: center; 
+  &::before{
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: scale(0);
+    transform-origin: bottom left;
+    background-color: #fff;
+    clip-path: polygon(13% 50%, 34% 66%, 81% 2%, 100% 18%, 39% 100%, 0 71%);
+  }
+  &:checked{
+    background-color:   #5c6349;
+    border: 2px solid #5c6349;
+    &::before{
+      transform: scale(1);
+    }
+  }
+}
+
+
+.dropdown-menu{
+  border-color: transparent;  box-shadow: 0 3px 49px 9px rgba(0, 0, 0, 0.06);
+}
+.is-invalid {
+  border-color: #dc3545 !important;
+}
+.form-select-invalid{
+  border-color: #dc3545 !important;
+}
+.position-relative{
+  .form-check.form-check-inline{
+
+    .form-check-label{
+    .form-check-input {
+      border-color: #dc3545 !important;
+    }
+      color: #dc3545 !important;
+    }
+  }
+  .invalid-feedback{
+    display: block !important;
+  }
+
+      .form-proudect_imgs{
+      .left{ .item{
+        border-color: #dc3545 !important;}
+      }
+      .righet{
+        border-color: #dc3545 !important;
+      }
+  } 
+}
+
+.ant-picker-ok{
+  .ant-btn-primary{
+      background-color: #5c6349 ;
+      border-color: #5c6349 ;
+  }
+}
 @import "../components/home/_style.scss";
 @import "../components/proudects/_style.scss";
 @import "../components/fillter/_style.scss";
@@ -221,7 +288,6 @@ input:-webkit-autofill,
 @import "../components/payment/_style.scss";
 @import "../components/paymentdone/_style.scss";
 @import "../components/empty/_style.scss";
-@import "../components/profile/_style.scss";
 @import "../components/articles/_style.scss";
 @import "../components/connectus/_style.scss";
 

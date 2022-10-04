@@ -1,6 +1,6 @@
 import React from "react";
 import { FilterDataAll } from "../../../api/actions";
-import removeIcon from "../../../images/icon/icon_remove.svg";
+import removeIcon from "../../../images/icon/delete.png";
 
 function City(props) {
   const { Getcity, setProducts, setPerpage,language ,setCity ,minValue,maxValue ,categories ,city} = props;

@@ -8,6 +8,7 @@ import TimePickerdata from "./timepicker";
 import { CheckoutDate } from "../../api/actions";
 import { Api } from "../../api";
 import axios from "axios";
+import { useEffect } from "react";
 
 function CheckOutData() {
   let navigate = useNavigate();
@@ -16,6 +17,28 @@ function CheckOutData() {
   const language = authcontext.language;
   const [startDate, setStartDate] = useState(new Date());
   const [startTime, setStartTime] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+    
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    // Button is displayed after scrolling for 500 pixels
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 500) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
 
 
   const CheckoutDate = (startDate, startTime) => {
@@ -54,10 +77,12 @@ function CheckOutData() {
     if (startDate === new Date() || startTime === "") {
       {
         language === "En" ?
-        swal("Please Select A Shipping Date !", "", "warning") :
-        swal("يرجي تحديد موعد الشحن", "", "warning")
+        swal({text: "Please Select A Shipping Date !",icon: "warning",buttons: false,timer: 3000})
+        :
+        swal({text: "يرجي تحديد موعد الشحن",icon: "warning",buttons: false,timer: 3000})
       }
     } else {
+      scrollToTop();
       CheckoutDate(startDate, startTime)
     }
   };

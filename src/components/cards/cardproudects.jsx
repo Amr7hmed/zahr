@@ -6,7 +6,7 @@ import swal from "sweetalert";
 import { AddToFavourite } from "../../api/actions";
 
 function CardProudects(props) {
-  const { Image, Title, Price, Style, Id, proudect } = props;
+  const { Image, Price, Style, Id, proudect } = props;
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
   const setWishlist = authcontext.setWishlist;
@@ -40,10 +40,20 @@ function CardProudects(props) {
     // setShowalertWishlist(true);
 
     AddToFavourite(id)
-    if (language === "En") {
-      swal("Item Has Been Added !", "", "success");
-    } else {
-      swal("تمت إضافة المنتج", "", "success");
+    if(language === "En" ){
+      swal({
+        text: "Item Has Been Added !",
+        icon: "success",
+        buttons: false,
+        timer: 3000
+      })
+    }else{
+     swal({
+      text: "تمت إضافة المنتج",
+      icon: "success",
+      buttons: false,
+      timer: 3000
+    })
     }
   }
   return (
@@ -59,11 +69,32 @@ function CardProudects(props) {
       </NavLink>
 
       <div className="text">
-        <span className='title'>{Title}</span>
+        <span className='title'>
+                  {language === "En" ? proudect.title: proudect.title_ar}
+          </span>
 
         <span className='end'>
-          <span className="price">
-            {Price} SAR
+          
+        <span className="price">
+        {proudect.price_before_discount > proudect.price ?
+          <>
+          <span className='overprice'>
+            {proudect.price_before_discount}  {" "} 
+                {language === "En" ? "SAR": " ر.س "}
+            </span>
+            {" "}
+          <span>
+            {proudect.price}  {" "} 
+            {language === "En" ? "SAR": "ر.س"}
+          </span>
+          </>
+          :
+          <span>
+            {proudect.price}  {" "} 
+            {language === "En" ? "SAR": "ر.س"}
+          </span>
+          
+          }
           </span>
 
           {localStorage.getItem("token") === null ?

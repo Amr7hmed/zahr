@@ -17,8 +17,6 @@ export const login = async (state, setMessage) => {
   };
   axios(options)
     .then(function (response) {
-      console.log("handle success");
-      console.log(response.data.access_token);
       localStorage.setItem("token", JSON.stringify(response.data.access_token));
       window.location.pathname = "/";
     })
@@ -36,7 +34,6 @@ export const login = async (state, setMessage) => {
       console.log(error.config);
     });
 };
-
 export const Singup = async (state, setMessage,setToggole) => {
   localStorage.setItem("email", JSON.stringify(state.email));
   const options = {
@@ -57,10 +54,7 @@ export const Singup = async (state, setMessage,setToggole) => {
     })
     .catch(function (error) {
       if (error.response) {
-        console.log(error.response.data);
         setMessage(error.response.data.message);
-        console.log(error.response.status);
-        console.log(error.response.headers);
       } else if (error.request) {
         console.log(error.request);
       } else {
@@ -69,7 +63,6 @@ export const Singup = async (state, setMessage,setToggole) => {
       console.log(error.config);
     });
 };
-
 export const SingupCode = async (state, setMessage, setToggole) => {
   const options = {
     method: "post",
@@ -85,7 +78,6 @@ export const SingupCode = async (state, setMessage, setToggole) => {
   };
   axios(options)
     .then(function (response) {
-      console.log("handle success");
       setToggole(true);
     })
     .catch(function (error) {
@@ -102,9 +94,7 @@ export const SingupCode = async (state, setMessage, setToggole) => {
       console.log(error.config);
     });
 };
-
 export const ResetPasswordRequest = async (state, setMessage, setToggole) => {
-  localStorage.setItem("email", JSON.stringify(state.email));
   const options = {
     method: "post",
     url: `${Api}reset-password-request`,
@@ -118,9 +108,7 @@ export const ResetPasswordRequest = async (state, setMessage, setToggole) => {
   };
   axios(options)
     .then(function (response) {
-      console.log("handle success");
       setToggole(true);
-      console.log(response);
     })
     .catch(function (error) {
       if (error.response) {
@@ -137,7 +125,6 @@ export const ResetPasswordRequest = async (state, setMessage, setToggole) => {
       console.log(error.config);
     });
 };
-
 export const ResetPasswordCode = async (state, setMessage, setToggole) => {
   const options = {
     method: "post",
@@ -153,7 +140,6 @@ export const ResetPasswordCode = async (state, setMessage, setToggole) => {
   };
   axios(options)
     .then(function (response) {
-      console.log("handle success");
       setToggole(true);
     })
     .catch(function (error) {
@@ -170,7 +156,6 @@ export const ResetPasswordCode = async (state, setMessage, setToggole) => {
       console.log(error.config);
     });
 };
-
 export const PaymentPay = (Id, data) => {
   const options = {
     method: "post",
@@ -185,8 +170,6 @@ export const PaymentPay = (Id, data) => {
     })
   };
   axios(options).then(function (response) {
-    console.log("handle success");
-    console.log(response.messge);
   })
     .catch(function (error) {
       if (error.response) {
@@ -201,8 +184,7 @@ export const PaymentPay = (Id, data) => {
       console.log(error.config);
     });
 };
-
-export const AddAddress = (data,location_lat,location_lng) => {
+export const AddAddress = (setLoading,data,location_lat,location_lng) => {
   const options = {
     method: "post",
     url: `${Api}address/save`,
@@ -214,14 +196,13 @@ export const AddAddress = (data,location_lat,location_lng) => {
 
     data: JSON.stringify({
       ...data,
-      "location_lat": location_lat,
-      "location_lng": location_lng,
+      location_lat: location_lat,
+      location_lng: location_lng,
     }),
   };
   axios(options).then(function (response) {
-    console.log("handle success");
-    console.log(response.messge);
-    //window.location.pathname = "/addresses";
+    window.location.reload();
+    setLoading(false)
   })
     .catch(function (error) {
       if (error.response) {
@@ -237,7 +218,44 @@ export const AddAddress = (data,location_lat,location_lng) => {
     });
 };
 
-export const EditeAddress = (id,data) => {
+export const AddOrderAddress = (data,id) => {
+  const options = {
+    method: "put",
+    url: `${Api}order/address`,
+    headers: {
+      Accept: "application/json",
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+    },
+
+    data: JSON.stringify({
+      name: data.name,
+      phone: data.phone,
+      city: data.city,
+      address: data.address,
+      location_lat: data.location_lat,
+      location_lng: data.location_lng,
+      address_id: data.id
+    }),
+  };
+  axios(options).then(function (response) {
+    window.location.pathname = `/checkoutdata/${id}`;
+    console.log(response);
+  })
+    .catch(function (error) {
+      if (error.response) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
+    });
+};
+export const EditeAddress = (setLoading,id,data,location_lat,location_lng) => {
   const options = {
     method: "put",
     url: `${Api}address/${id}`,
@@ -249,11 +267,13 @@ export const EditeAddress = (id,data) => {
 
     data: JSON.stringify({
       ...data,
+      location_lat: location_lat,
+      location_lng: location_lng,
     }),
   };
   axios(options).then(function (response) {
-    console.log("handle success");
-    console.log(response.messge);
+    setLoading(false)
+    window.location.pathname = "/addresses";
   })
     .catch(function (error) {
       if (error.response) {
@@ -268,7 +288,6 @@ export const EditeAddress = (id,data) => {
       console.log(error.config);
     });
 };
-
 export const EditeProfile = (file,name,email,phone,city) => {
   const options = {
     method: "put",
@@ -288,8 +307,6 @@ export const EditeProfile = (file,name,email,phone,city) => {
     }),
   };
   axios(options).then(function (response) {
-    console.log("handle success");
-    console.log(response.messge);
   })
     .catch(function (error) {
       if (error.response) {
@@ -304,7 +321,6 @@ export const EditeProfile = (file,name,email,phone,city) => {
       console.log(error.config);
     });
 };
-
 export const ConnectUsapi = async (state) => {
   const options = {
     method: "post",
@@ -319,8 +335,6 @@ export const ConnectUsapi = async (state) => {
     }),
   };
   axios(options).then(function (response) {
-    console.log("handle success");
-    console.log(response);
     window.location.pathname = "/";
   })
     .catch(function (error) {
@@ -336,199 +350,6 @@ export const ConnectUsapi = async (state) => {
       console.log(error.config);
     });
 };
-
-// Get Function Api
-
-export const GetDataHome = async (setLoading, setCategories, setProducts) => {
-  const options = {
-    method: "get",
-    url: `${Api}home`,
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json;charset=UTF-8",
-    },
-  };
-  axios(options)
-    .then(function (response) {
-      setLoading(true);
-      console.log("handle success");
-      console.log(response.data.products);
-      console.log(response.data.categories);
-      setCategories(response.data.categories);
-      setProducts(response.data.products);
-    })
-    .catch(function (error) {
-      setLoading(true);
-      console.log("handle error");
-      console.log(error.response.data);
-    });
-};
-
-export const GetProductsCategories = async (
-  id,
-  setLoading,
-  setResults,
-  setProducts
-) => {
-  const options = {
-    method: "get",
-    url: `${Api}products?category=${id}`,
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json;charset=UTF-8",
-    },
-  };
-  axios(options)
-    .then(function (response) {
-      setLoading(true);
-      console.log("handle success");
-      console.log(response);
-      console.log(response.data.results);
-      console.log(response.data.products.data);
-      setResults(response.data.results);
-      setProducts(response.data.products.data);
-    })
-    .catch(function (error) {
-      setLoading(true);
-      console.log("handle error");
-      console.log(error.response.data);
-    });
-};
-
-export const GetProductsAll = async (setLoading, setProducts ,setPerpage) => {
-  const options = {
-    method: "get",
-    url: `${Api}products`,
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json;charset=UTF-8",
-    },
-  };
-  axios(options)
-    .then(function (response) {
-      setLoading(true);
-      console.log("handle success");
-      console.log(response);
-      setProducts(response.data.products.data)
-      setPerpage(Math.ceil(response.data.products.total / response.data.products.per_page));
-    })
-    .catch(function (error) {
-      setLoading(true);
-      console.log("handle error");
-      console.log(error.response.data);
-    });
-};
-
-export const Getfavourites = async (
-  setLoading,
-  setProducts,
-  setWishlist
-) => {
-  const options = {
-    method: "get",
-    url: `${Api}favourites`,
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-    },
-  };
-  axios(options)
-    .then(function (response) {
-      setLoading(true);
-      console.log("handle success");
-      console.log(response.data);
-      setProducts(response.data);
-      setWishlist(response.data);
-    })
-    .catch(function (error) {
-      console.log("handle error");
-      console.log(error.response.data);
-      setLoading(true);
-    });
-};
-
-export const Getcart = async (setLoading, setProducts, setCartid ,setCart) => {
-  const options = {
-    method: "get",
-    url: `${Api}order/products`,
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-    },
-  };
-  axios(options)
-    .then(function (response) {
-      setLoading(true);
-      console.log("handle success");
-      console.log(response.data);
-      setCartid(response.data.cart.id);
-      setProducts(response.data.cart_products);
-      if(response.data.cart_products === undefined){
-        setCart([]);
-      }else{
-        setCart(response.data.cart_products);
-      }
-    })
-    .catch(function (error) {
-      console.log("handle error");
-      console.log(error.response.data);
-      setLoading(true);
-    });
-};
-
-export const Getprofile = async (setLoading, setName ,setFile,setEmail,setPhone,setCity) => {
-  const options = {
-    method: "get",
-    url: `${Api}profile`,
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
-    },
-  };
-  axios(options)
-    .then(function (response) {
-      console.log("handle success");
-      console.log(response.data.user);
-      setLoading(true);
-      setName(response.data.user.name);
-      setEmail(response.data.user.email)
-      setPhone(response.data.user.phone)
-      setFile(response.data.user.image)
-      setCity(response.data.user.city)
-    })
-    .catch(function (error) {
-      console.log("handle error");
-      console.log(error.response.data);
-    });
-};
-
-export const GetDataProduct = async (id, setLoading, setProudect, setSimilarproducts) => {
-  const options = {
-    method: "get",
-    url: `${Api}product/${id}`,
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json;charset=UTF-8",
-    },
-  };
-  await axios(options)
-    .then(function (response) {
-      setLoading(true);
-      console.log("handle success");
-      console.log(response.data.product);
-      console.log(response.data.similarproducts);
-      setProudect(response.data.product);
-      setSimilarproducts(response.data.similarproducts)
-    })
-    .catch(function (error) {
-      console.log("handle error");
-      console.log(error.response);
-    });
-};
-
 export const AddToCart = (Id, number) => {
   const options = {
     method: "post",
@@ -545,8 +366,6 @@ export const AddToCart = (Id, number) => {
   };
   axios(options)
     .then(function (response) {
-      console.log("handle success");
-      console.log(response.data.messge);
     })
     .catch(function (error) {
       if (error.response) {
@@ -562,7 +381,6 @@ export const AddToCart = (Id, number) => {
       console.log(error.config);
     });
 };
-
 export const AddToFavourite = (Id) => {
   const options = {
     method: "get",
@@ -592,7 +410,6 @@ export const AddToFavourite = (Id) => {
       console.log(error.config);
     });
 };
-
 export const AddRevwe = (Id,rate,comment) => {
   const options = {
     method: "post",
@@ -611,8 +428,6 @@ export const AddRevwe = (Id,rate,comment) => {
   };
   axios(options)
     .then(function (response) {
-      console.log("handle success");
-      console.log(response);
     })
     .catch(function (error) {
       if (error.response) {
@@ -628,7 +443,6 @@ export const AddRevwe = (Id,rate,comment) => {
       console.log(error.config);
     });
 };
-
 export const AddCoupon = (setDataCoupon,codedata) => {
   const options = {
     method: "post",
@@ -644,8 +458,6 @@ export const AddCoupon = (setDataCoupon,codedata) => {
   };
   axios(options)
     .then(function (response) {
-      console.log("handle success");
-      console.log(response);
       setDataCoupon(true)
     })
     .catch(function (error) {
@@ -663,21 +475,49 @@ export const AddCoupon = (setDataCoupon,codedata) => {
       console.log(error.config);
     });
 };
-
-
-export const deleteCart = (Cartid, Id, setLoading) => {
+export const RemoveCoupon = () => {
+  const options = {
+    method: "delete",
+    url: `${Api}order/code/remove`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+    }
+  };
+  axios(options)
+    .then(function (response) {
+      console.log("handle success");
+      console.log(response);
+    })
+    .catch(function (error) {
+      if (error.response) {
+        console.log("error");
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log("Error", error.message);
+      }
+      console.log(error.config);
+    });
+};
+export const deleteCart = (Id, setLoading) => {
   const options = {
     method: "DELETE",
-    url: `${Api}order/products/${Cartid}/${Id}`,
+    url: `${Api}order/products`,
     headers: {
       Accept: "application/json",
       'Content-Type': 'application/json',
       Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
     },
+    data: JSON.stringify({
+      "product_id": Id
+    }),
   };
   axios(options).then(function (response) {
-    console.log("handle success");
-    console.log(response)
     setLoading(false)
   })
     .catch(function (error) {
@@ -693,7 +533,6 @@ export const deleteCart = (Cartid, Id, setLoading) => {
       console.log(error.config);
     });
 };
-
 export const deleteFavorite = (Id, setLoading) => {
   const options = {
     method: "get",
@@ -705,8 +544,6 @@ export const deleteFavorite = (Id, setLoading) => {
     },
   };
   axios(options).then(function (response) {
-    console.log("handle success");
-    console.log(response.data);
     setLoading(false);
   })
     .catch(function (error) {
@@ -725,7 +562,310 @@ export const deleteFavorite = (Id, setLoading) => {
 
 
 };
+export const SendEmail = (email) => {
+  console.log(email);
+  const options = {
+    method: "post",
+    url: `${Api}email`,
+    headers: {
+      Accept: "application/json",
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify({
+      email: email 
+    }),
+  };
+  axios(options)
+    .then(function (response) {
+      console.log("handle success");
+    })
+    .catch(function (error) {
+      if (error.response) {
+        console.log("error");
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log("Error", error.message);
+      }
+      console.log(error.config);
+    });
+    
+};
+export const deleteAddress = (Id, setLoading) => {
+  const options = {
+    method: "delete",
+    url: `${Api}address/${Id}`,
+    headers: {
+      Accept: "application/json",
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+    },
+  };
+  axios(options).then(function (response) {
+    setLoading(false);
+  })
+    .catch(function (error) {
+      if (error.response) {
+        console.log("error");
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
+    });
 
+
+};
+// Get Function Api
+
+export const GetDataHome = async (setLoading, setCategories, setProducts) => {
+  const options = {
+    method: "get",
+    url: `${Api}home`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  axios(options)
+    .then(function (response) {
+      setLoading(true);
+      console.log("handle success");
+      console.log(response.data.products);
+      console.log(response.data.categories);
+      setCategories(response.data.categories);
+      setProducts(response.data.products);
+    })
+    .catch(function (error) {
+      setLoading(true);
+      console.log("handle error");
+      console.log(error.response.data);
+    });
+};
+export const GetProductsCategories = async (
+  id,
+  setLoading,
+  setResults,
+  setProducts
+) => {
+  const options = {
+    method: "get",
+    url: `${Api}products?category=${id}`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  axios(options)
+    .then(function (response) {
+      setLoading(true);
+      setResults(response.data.results);
+      setProducts(response.data.products.data);
+    })
+    .catch(function (error) {
+      setLoading(true);
+      console.log("handle error");
+      console.log(error.response.data);
+    });
+};
+export const GetProductsAll = async (setLoading, setProducts ,setPerpage) => {
+  const options = {
+    method: "get",
+    url: `${Api}products`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  axios(options)
+    .then(function (response) {
+      setLoading(true);
+      setProducts(response.data.products.data)
+      setPerpage(Math.ceil(response.data.products.total / response.data.products.per_page));
+    })
+    .catch(function (error) {
+      setLoading(true);
+      console.log("handle error");
+      console.log(error.response.data);
+    });
+};
+export const Getfavourites = async (
+  setLoading,
+  setProducts,
+  setWishlist
+) => {
+  const options = {
+    method: "get",
+    url: `${Api}favourites`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+    },
+  };
+  axios(options)
+    .then(function (response) {
+      setLoading(true);
+      setProducts(response.data);
+      setWishlist(response.data);
+    })
+    .catch(function (error) {
+      console.log("handle error");
+      console.log(error.response.data);
+      setLoading(true);
+    });
+};
+export const Getcart = async (setLoading, setProducts, setCartid ,setCart) => {
+  const options = {
+    method: "get",
+    url: `${Api}order/products`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+    },
+  };
+  axios(options)
+    .then(function (response) {
+      setLoading(true);
+      console.log("handle success");
+      console.log(response.data);
+      setCartid(response.data.cart.id);
+      setProducts(response.data.cart_products);
+      if(response.data.cart_products === undefined){
+        setCart([]);
+      }else{
+        setCart(response.data.cart_products);
+      }
+    })
+    .catch(function (error) {
+      console.log("handle error");
+      console.log(error.response.data);
+      setLoading(true);
+    });
+};
+export const Getprofile = async (setLoading, setName ,setFile,setEmail,setPhone,setCity) => {
+  const options = {
+    method: "get",
+    url: `${Api}profile`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+    },
+  };
+  axios(options)
+    .then(function (response) {
+      console.log("handle success");
+      console.log(response.data.user);
+      setLoading(true);
+      setName(response.data.user.name);
+      setEmail(response.data.user.email)
+      setPhone(response.data.user.phone)
+      setFile(response.data.user.image)
+      setCity(response.data.user.city)
+    })
+    .catch(function (error) {
+      console.log("handle error");
+      console.log(error.response.data);
+    });
+};
+export const GetDataProduct = async (id, setLoading, setProudect, setSimilarproducts) => {
+  const options = {
+    method: "get",
+    url: `${Api}product/${id}`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  await axios(options)
+    .then(function (response) {
+      setLoading(true);
+      console.log("handle success");
+      console.log(response.data.product);
+      console.log(response.data.similarproducts);
+      setProudect(response.data.product);
+      setSimilarproducts(response.data.similarproducts)
+    })
+    .catch(function (error) {
+      console.log("handle error");
+      console.log(error.response);
+    });
+};
+export const GetArticlesAll = async (setLoading, setGetarticles ,setPerpage) => {
+  const options = {
+    method: "get",
+    url: `${Api}articles`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  axios(options)
+    .then(function (response) {
+      setLoading(true);
+      console.log("handle success");
+      console.log(response.data);
+      setGetarticles(response.data.articles.data);
+     setPerpage(Math.ceil(response.data.articles.total / response.data.articles.per_page));
+    })
+    .catch(function (error) {
+      setLoading(true);
+      console.log("handle error");
+      console.log(error.response.data);
+    });
+};
+export const GetArticle = async (id,setLoading,setArticle) => {
+  const options = {
+    method: "get",
+    url: `${Api}article/${id}`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  axios(options)
+    .then(function (response) {
+      setLoading(true);
+      console.log("handle success");
+      setArticle(response.data.article);
+    })
+    .catch(function (error) {
+      setLoading(true);
+      console.log("handle error");
+      console.log(error.response.data);
+    });
+};
+export const GetSettings = async (setLoading,setSettings) => {
+  const options = {
+    method: "get",
+    url: `${Api}settings`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  axios(options)
+    .then(function (response) {
+      setLoading(true);
+      console.log("handle success");
+      console.log(response.data);
+      setSettings(response.data.settings)
+    })
+    .catch(function (error) {
+      setLoading(true);
+      console.log("handle error");
+      console.log(error.response.data);
+    });
+};
 export const GetOrdersAll = async (setLoading, setOrders) => {
   const options = {
     method: "get",
@@ -749,7 +889,6 @@ export const GetOrdersAll = async (setLoading, setOrders) => {
       console.log(error.response.data);
     });
 };
-
 export const GetAddress = async (setLoading, setAddress) => {
   const options = {
     method: "get",
@@ -773,7 +912,6 @@ export const GetAddress = async (setLoading, setAddress) => {
       console.log(error.response.data);
     });
 };
-
 export const GetLastAddress = async (setLoading, setAddress) => {
   const options = {
     method: "get",
@@ -797,8 +935,7 @@ export const GetLastAddress = async (setLoading, setAddress) => {
       console.log(error.response.data);
     });
 };
-
-export const Getsummery = async (setPrice, setDelivery, setTotal) => {
+export const Getsummery = async (setLoading,setPrice, setDelivery, setTotal,setCode) => {
   const options = {
     method: "get",
     url: `${Api}order/summary`,
@@ -814,13 +951,15 @@ export const Getsummery = async (setPrice, setDelivery, setTotal) => {
     setPrice(response.data.summary.price);
     setDelivery(response.data.summary.delivery_price);
     setTotal(response.data.summary.total);
+    setCode(response.data.summary.code);
+    setLoading(true);
   })
     .catch(function (error) {
       console.log("handle error");
       console.log(error.response.data);
+      setLoading(true);
     });
 };
-
 export const GetDatapages = async (setLoading,setPages) => {
   const options = {
     method: "get",
@@ -832,6 +971,7 @@ export const GetDatapages = async (setLoading,setPages) => {
   };
   axios(options)
     .then(function (response) {
+      console.log(response);
       setPages(response.data.pages)
       setLoading(true);
     })
@@ -841,7 +981,6 @@ export const GetDatapages = async (setLoading,setPages) => {
       setLoading(true);
     });
 };
-
 export const GetDatapage = async (id,setLoading,setPage) => {
   const options = {
     method: "get",
@@ -864,7 +1003,6 @@ export const GetDatapage = async (id,setLoading,setPage) => {
       setLoading(true);
     });
 };
-
 export const GetSummary = async (setLoading,setSummary) => {
   const options = {
     method: "get",
@@ -888,7 +1026,6 @@ export const GetSummary = async (setLoading,setSummary) => {
       console.log(error.response.data);
     });
 };
-
 export const GetCategories = async (setLoading,setcategories) => {
   const options = {
     method: "get",
@@ -900,13 +1037,54 @@ export const GetCategories = async (setLoading,setcategories) => {
   };
   axios(options)
     .then(function (response) {
-      console.log("handle success");
-      console.log(response.data);
       setcategories(response.data.categories);
       setLoading(true);
     })
     .catch(function (error) {
       setLoading(true);
+      console.log("handle error");
+      console.log(error.response.data);
+    });
+};
+export const GetDataServices = async (setLoading,setServices) => {
+  const options = {
+    method: "get",
+    url: `${Api}services`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  axios(options)
+    .then(function (response) {
+      setLoading(true);
+      console.log("handle success");
+      console.log(response.data.services);
+      setServices(response.data.services);
+    })
+    .catch(function (error) {
+      setLoading(true);
+      console.log("handle error");
+      console.log(error.response.data);
+    });
+};
+
+export const GetDataCity = async (setLoadingcity,setCitys) => {
+  const options = {
+    method: "get",
+    url: `${Api}cities`,
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  };
+  axios(options)
+    .then(function (response) {
+      setLoadingcity(true);
+      setCitys(response.data.cities);
+    })
+    .catch(function (error) {
+      setLoadingcity(true);
       console.log("handle error");
       console.log(error.response.data);
     });
@@ -1006,7 +1184,6 @@ export const FilterDataCategoryPage = async (Id,setProducts,minValue,maxValue,ci
   });
 };
 
-
 // Api Filter Data All
 export const GetFiltersAll = async (setLoadingfilter,setGetCategories
   ,setDatafilter,set_minValue,set_maxValue,setGetCity) => {
@@ -1094,7 +1271,6 @@ export const FilterSearchInput = async (datasearch) => {
     console.log(error.response.data);
   });
 };
-
 export const FilterSearchData = async (setLoading,datasearch , setData,setPerpage,setResults) => {
   const  options = {
     method: "get",
@@ -1154,7 +1330,6 @@ export const GetcartIcon = async (setCart) => {
   };
   axios(options)
     .then(function (response) {
-      console.log("handle success");
       if(response.data.cart_products === undefined){
         setCart([]);
       }else{
@@ -1166,7 +1341,6 @@ export const GetcartIcon = async (setCart) => {
       console.log(error.response.data);
     });
 };
-
 
 export const GetfavouritesIcon = async (setWishlist) => {
   const options = {

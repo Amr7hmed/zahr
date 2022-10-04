@@ -12,8 +12,11 @@ function IconWishlist() {
       useEffect(() => {
         GetfavouritesIcon(setWishlist)
      },[])
-  return (
+  return (<>
+  {wishlist.length === 0 ?"":
     <span>{wishlist.length}</span>
+  }
+  </>
   )
 }
 

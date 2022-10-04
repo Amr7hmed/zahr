@@ -6,7 +6,6 @@ import Footer from './layout/footer/index.jsx';
 import Home from './pages/home/index.jsx';
 import Cart from './pages/cart/index.jsx';
 import Favorite from './pages/favorite/index.jsx';
-
 import Proudect from './pages/proudect/index.jsx';
 import Profile from "./pages/profile/index.jsx";
 import CheckOut from './pages/checkout/index.jsx';
@@ -56,7 +55,9 @@ function App() {
           <Route path="/paymentshipping" element={<PaymentShipping/>} exact />
           <Route path="/connectus" element={<ConnectUs/>} exact />
           <Route path="/formconnectus" element={<FormConnectUs/>} exact />
+          {/*
           <Route path="/aboutus" element={<AboutUs/>} exact />
+           */}
           <Route path="/pages/:id" element={<OuterPages/>} exact />
           <Route path="/articles" element={<Articles/>} exact />
           <Route path="/article/:id" element={<Article/>} exact />

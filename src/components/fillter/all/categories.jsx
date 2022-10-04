@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { FilterDataAll } from '../../../api/actions';
-import removeIcon from "../../../images/icon/icon_remove.svg";
+import removeIcon from "../../../images/icon/delete.png";
 import { Authcontext } from '../../../store/context';
 
 function Categories(props) {
@@ -44,7 +44,7 @@ return (
       {getCategories.map(item =>
         <div className="accordion-item" key={item.id}>
           <h2 className="accordion-header" id="flush-headingTwo">
-            <button className={item.branches.length === 0 ? "accordion-button accordion-button-noafter" : `accordion-button collapsed`} type="button"
+            <button className={item.categories.length === 0 ? "accordion-button accordion-button-noafter" : `accordion-button collapsed`} type="button"
               data-bs-toggle="collapse" data-bs-target={`#tage${item.id}`} aria-expanded="false" aria-controls={item.name}>
               <input type="radio" value={item.name} name="filter" id={item.id} onChange={handleChange}
               />
@@ -54,7 +54,7 @@ return (
                 </label>}
             </button>
           </h2>
-          {item.branches.map(elment =>
+          {item.categories.map(elment =>
             <div id={`tage${item.id}`} className="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
               data-bs-parent="#accordionFlushExample" key={elment.id}>
               <div className="accordion-body">

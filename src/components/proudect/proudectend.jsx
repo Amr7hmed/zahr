@@ -27,7 +27,6 @@ function ProudectEnd(props) {
         e.preventDefault();
         setNumber(number + 1)
     }
-
     const Downaction = (e) => {
         e.preventDefault();
         if (number <= 1) {
@@ -36,28 +35,46 @@ function ProudectEnd(props) {
             setNumber(number - 1)
         }
     }
-
     const addCart = (Id, number) => {
         setCart([...cart, proudect])
         //setShowalertcart(true);
         AddToCart(Id, number)
-        if (language === "En") {
-            swal("Item Has Been Added !", "", "success");
-        } else {
-            swal("تمت إضافة المنتج", "", "success");
-        }
+        if(language === "En" ){
+            swal({
+              text: "Item Has Been Added !",
+              icon: "success",
+              buttons: false,
+              timer: 3000
+            })
+          }else{
+           swal({
+            text: "تمت إضافة المنتج",
+            icon: "success",
+            buttons: false,
+            timer: 3000
+          })
+          }
     }
-
     const addWishlist = (id) => {
         setWishlist([...wishlist, proudect])
         // setShowalertWishlist(true);
 
         AddToFavourite(id)
-        if (language === "En") {
-            swal("Item Has Been Added !", "", "success");
-        } else {
-            swal("تمت إضافة المنتج", "", "success");
-        }
+        if(language === "En" ){
+            swal({
+              text: "Item Has Been Added !",
+              icon: "success",
+              buttons: false,
+              timer: 3000
+            })
+          }else{
+           swal({
+            text: "تمت إضافة المنتج",
+            icon: "success",
+            buttons: false,
+            timer: 3000
+          })
+          }
     }
 
     return (

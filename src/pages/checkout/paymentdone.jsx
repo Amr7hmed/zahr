@@ -14,9 +14,31 @@ function PaymentDone() {
   const language = authcontext.language;
   const [summary, setSummary] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+    
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    // Button is displayed after scrolling for 500 pixels
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 500) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
 
   const handleDone = (e) => {
     e.preventDefault();
+    scrollToTop();
     navigate("/paymentshipping");
   };
 
@@ -24,7 +46,6 @@ function PaymentDone() {
   useEffect(() => {
     GetSummary(setLoading, setSummary);
   }, [loading]);
-
   return (
     <>
       {loading === false ? (
@@ -44,7 +65,8 @@ function PaymentDone() {
 
             <div className="paymentdone__row">
               <OrderDetiles Showbutton={false} summary={summary}/>
-              <OrderCard Showbutton={false} />
+              <OrderCard Showbutton={false} Products={summary.products}/>
+               
             </div>
           </div>
         </section>

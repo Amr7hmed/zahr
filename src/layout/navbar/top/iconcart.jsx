@@ -13,8 +13,11 @@ function IconCart() {
       useEffect(() => {
        GetcartIcon(setCart)
      },[])
-  return (
+  return (<>
+    {cart.length === 0 ?"":
       <span>{cart.length}</span>
+    }
+    </>
   )
 }
 

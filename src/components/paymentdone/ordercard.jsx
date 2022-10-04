@@ -4,9 +4,10 @@ import Image from "../../images/product/image-proudect-one.png";
 import { Authcontext } from '../../store/context';
 
 function OrderCard(props) {
-  const { Showbutton } = props;
+  const { Showbutton ,Products} = props;
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
+  console.log(Products);
   return (
     <div className='orderdetiles'>
       <div className='title'>
@@ -21,12 +22,11 @@ function OrderCard(props) {
       </div>
 
       <div className="row">
-          <div className="col-md-12 col-lg-8">
-            <Cardcart Image={Image} Price={"74.5"} Color={"متعدد الألوان"}
-              Size={"2.5"} Hidebutton={false}/>
-
-            <Cardcart Image={Image} Price={"74.5"} Color={"متعدد الألوان"}
-              Size={"2.5"} Hidebutton={false}/>
+          <div className="col-md-12 col-lg-8">{Products.map(item =>
+            <Cardcart Image={item.product.image} Price={item.product.price} Color={item.product.colors}
+            Count={item.count}
+            Weight={item.product.weight} Hidebutton={false} Item={item.product} key={item.product.id}/>
+            )}
           </div>
           </div>
 

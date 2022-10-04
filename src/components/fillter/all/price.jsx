@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import MultiRangeSlider from "multi-range-slider-react";
-import removeIcon from "../../../images/icon/icon_remove.svg"
+import removeIcon from "../../../images/icon/delete.png";
 import { FilterDataAll } from "../../../api/actions";
 import { Authcontext } from "../../../store/context";
 

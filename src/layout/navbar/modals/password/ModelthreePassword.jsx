@@ -11,9 +11,8 @@ import { Authcontext } from "../../../../store/context";
 function ModelthreePassword(props) {
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
-  const { Code, email } = props;
+  const { Code } = props;
   const [state, setState] = useState({
-    email: JSON.parse(localStorage.getItem("email")),
     password: "",
     password_confirmation: "",
   });
@@ -30,7 +29,7 @@ function ModelthreePassword(props) {
     setMessage("")
   };
 
-  const AddNewPassword = async (email, state, setMessage, setToggole, Code) => {
+  const AddNewPassword = async ( state, setMessage, setToggole, Code) => {
     const options = {
       method: "post",
       url: `${Api}reset-password`,
@@ -39,7 +38,7 @@ function ModelthreePassword(props) {
         "Content-Type": "application/json;charset=UTF-8",
       },
       data: JSON.stringify({
-        email: email,
+        email: JSON.parse(localStorage.getItem("email")),
         code: Code,
         ...state,
       }),
@@ -75,7 +74,7 @@ function ModelthreePassword(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    AddNewPassword(email, state, setMessage, setToggole, Code);
+    AddNewPassword(state, setMessage, setToggole, Code);
   };
 
 

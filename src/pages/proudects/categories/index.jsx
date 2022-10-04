@@ -55,6 +55,7 @@ function ProductsCategories() {
                     <h5>نتائج البحث<span> ( {results} نتيجه ) </span></h5>
                   }
                 </div>
+                
                 <AllProudect Products={products} />
               </div>
               <div className="col-12">

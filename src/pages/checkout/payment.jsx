@@ -22,6 +22,27 @@ function Payment() {
   let navigate = useNavigate();
 
   const { id } = useParams();
+  const [isVisible, setIsVisible] = useState(false);
+    
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    // Button is displayed after scrolling for 500 pixels
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 500) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
 
 
  const PaymentPay = (data) => {
@@ -44,8 +65,10 @@ function Payment() {
       if(data==="cash" ){
         console.log(data)
         navigate(`/paymentdone/${id}`);
+        scrollToTop();
       }else if(data==="visa"){
         console.log(data)
+        scrollToTop();
       }else{
         return null;
       }
@@ -68,8 +91,9 @@ function Payment() {
     e.preventDefault();
     if (payment === "") {
       {language === "En"?
-      swal("Please select a payment method !", "", "warning"):
-      swal("يرجي تحديد طريقة الدقع", "", "warning")
+      swal({text: "Please select a payment method !",icon: "warning",buttons: false,timer: 3000})
+      :
+      swal({text: "يرجي تحديد طريقة الدقع",icon: "warning",buttons: false,timer: 3000})
     }
     } else {
       //navigate(`/paymentdone/${id}`);

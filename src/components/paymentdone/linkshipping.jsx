@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import ImageIcon from "../../images/icon/accept.png";
+import ImageGrey from "../../images/icon/grey.png";
 import { Authcontext } from '../../store/context';
 
 function LinkShipping() {
@@ -38,7 +39,7 @@ function LinkShipping() {
             </div>
             <div className="itemlink">
                 <span className="top">
-                    <span className='img'></span>
+                    <img src={ImageGrey} alt="Image Icon" className='img imggray' />
                     <span className='head'>
             {language === "En" ? "Shipping " : "تم الشحن"}
                     </span>
@@ -49,7 +50,7 @@ function LinkShipping() {
             </div>
             <div className="itemlink">
                 <span className="top">
-                    <span className='img'></span>
+                    <img src={ImageGrey} alt="Image Icon" className='img imggray' />
                     <span className='head'>
             {language === "En" ? "It Was Received " : "تم الاستلام"}
                     </span>
