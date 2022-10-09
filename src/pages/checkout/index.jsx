@@ -40,7 +40,6 @@ function CheckOut() {
     GetLastAddress(setLoading, setAddress)
   }, [loading]);
 
-  console.log(address);
 
   const handleDone = (e) => {
     e.preventDefault();

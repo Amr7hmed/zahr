@@ -239,8 +239,8 @@ export const AddOrderAddress = (data,id) => {
     }),
   };
   axios(options).then(function (response) {
-    window.location.pathname = `/checkoutdata/${id}`;
-    console.log(response);
+    //window.location.pathname = `/checkoutdata/${id}`;
+    window.location.pathname = `/payment/${id}`;
   })
     .catch(function (error) {
       if (error.response) {
@@ -394,7 +394,6 @@ export const AddToFavourite = (Id) => {
   axios(options)
     .then(function (response) {
       console.log("handle success");
-      console.log(response.data);
     })
     .catch(function (error) {
       if (error.response) {
@@ -488,7 +487,6 @@ export const RemoveCoupon = () => {
   axios(options)
     .then(function (response) {
       console.log("handle success");
-      console.log(response);
     })
     .catch(function (error) {
       if (error.response) {

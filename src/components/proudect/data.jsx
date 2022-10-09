@@ -8,14 +8,14 @@ import { useContext } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 function Data(props) {
-  const { Proudect ,Id ,Rates} = props;
+  const { Proudect, Id, Rates } = props;
   const authcontext = useContext(Authcontext);
   const language = authcontext.language;
   const [linkurl, setLinkurl] = useState(false);
   console.log(Rates);
-  const NewArray=[];
+  const NewArray = [];
   let i;
-  for(i = 0 ; i < Rates.length; i++){
+  for (i = 0; i < Rates.length; i++) {
     NewArray.push(parseInt(Rates[i].rate));
   }
   const initialValue = 0;
@@ -24,40 +24,40 @@ function Data(props) {
     initialValue
   );
   console.log(sumWithInitial);
-  const count = sumWithInitial/NewArray.length;
-console.log(Proudect.price_before_discount);
-var Over;
-if(Proudect.price_before_discount === Proudect.price){
-  Over= 0;
-}else{
-  Over= (parseInt(Proudect.price_before_discount) / parseInt(Proudect.price) - 1) *100;
-}
-console.log(Over);
+  const count = sumWithInitial / NewArray.length;
+  console.log(Proudect.price_before_discount);
+  var Over;
+  if (Proudect.price_before_discount === Proudect.price) {
+    Over = 0;
+  } else {
+    Over = (parseInt(Proudect.price_before_discount) / parseInt(Proudect.price) - 1) * 100;
+  }
+  console.log(Over);
 
   return (
     <div className='proudect__data'>
       <span className='over'>
-        {Proudect.code === null? "":<>
-          {language === "En" ? `Coupon ${Proudect.code} - Extra Off - ${" "} ${Over}% ` 
-          : `كوبون ${Proudect.code} - خصم إضافي  - ${" "} ${Over}% `} 
+        {Proudect.code === null ? "" : <>
+          {language === "En" ? `Coupon ${Proudect.code} - Extra Off - ${" "} ${Over}% `
+            : `كوبون ${Proudect.code} - خصم إضافي  - ${" "} ${Over}% `}
         </>
         }
-        </span>
+      </span>
       <div className='revewe'>
         <span className='star'>
           <span>
-          {Rates.length === 0 ?0 :
-          count >= 5 ? 5
-          :
-          count.toFixed(1)
-          } 
-          {" "} 
+            {Rates.length === 0 ? 0 :
+              count >= 5 ? 5
+                :
+                count.toFixed(1)
+            }
+            {" "}
           </span>
           <img src={Star} alt="Star" />
         </span>
         <a href="#" className='text'>
 
-          {Rates.length === 0 ?0 :Rates.length} {" "}
+          {Rates.length === 0 ? 0 : Rates.length} {" "}
           {language === "En" ? "Reviews" : "تقييمات"}
         </a>
 
@@ -65,13 +65,13 @@ console.log(Over);
 
       <div className="title">
         <span className="left">
-          {language === "En" ? Proudect.title: Proudect.title_ar}
+          {language === "En" ? Proudect.title : Proudect.title_ar}
         </span>
 
         <span className="right">
           <CopyToClipboard text={window.location.href}
             onCopy={() => setLinkurl(true)} className="btn">
-          <img src={Share} alt="Share" />
+            <img src={Share} alt="Share" />
           </CopyToClipboard>
           {linkurl === true ? <span className="share_content">
             {language === "En" ? "link copied" : "تم نسخ الرابط"}
@@ -83,23 +83,23 @@ console.log(Over);
       <div className="price">
         {Proudect.price_before_discount > Proudect.price ?
           <>
-          <span className='overprice'>
-            {Proudect.price_before_discount}  {" "} 
-                {language === "En" ? "SAR": " ر.س "}  {" "} 
+            <span className='overprice'>
+              {Proudect.price_before_discount}  {" "}
+              {language === "En" ? "SAR" : " ر.س "}  {" "}
             </span>
             {" "}
-          <span>
-            {Proudect.price}  {" "} 
-            {language === "En" ? "SAR": "ر.س"}  {" "} 
-          </span>
+            <span>
+              {Proudect.price}  {" "}
+              {language === "En" ? "SAR" : "ر.س"}  {" "}
+            </span>
           </>
           :
           <span>
-            {Proudect.price}  {" "} 
-            {language === "En" ? "SAR": "ر.س"}  {" "} 
+            {Proudect.price}  {" "}
+            {language === "En" ? "SAR" : "ر.س"}  {" "}
           </span>
-          
-          }
+
+        }
 
 
 
@@ -111,7 +111,7 @@ console.log(Over);
 
       <div className="color">
         <span>
-          {language === "En" ? "Color" : "اللون"} 
+          {language === "En" ? "Color" : "اللون"}
         </span>{" "}
         {Proudect.colors.map((item, index) =>
           <span key={index}>
@@ -124,11 +124,11 @@ console.log(Over);
       <div className="size">
         <span>
           {language === "En" ? "Weight" : "الوزن"}
-          
+
         </span>{" "}<span>
           {Proudect.weight}
           {" "}
-          {language === "En" ? "Kg": "كجم"}
+          {language === "En" ? "Kg" : "كجم"}
         </span>
       </div>
 
@@ -138,49 +138,49 @@ console.log(Over);
           {language === "En" ? "Product Description" : "وصف المنتج"}
         </div>
 
+
+
+        <p>{language === "En" ? Proudect.description : Proudect.description_ar}</p>
+        {/*
         <ul>
           <li>
             <span>
-          {language === "En" ? "Basic Materials" : "المواد الأساسية"}
+              {language === "En" ? "Basic Materials" : "المواد الأساسية"}
             </span>
             <span>
-          {language === "En" ? Proudect.description: Proudect.description_ar}
+              {language === "En" ? Proudect.description : Proudect.description_ar}
             </span>
           </li>
-
-
           <li>
             <span>
-          {language === "En" ? "Color Name" : "أسم اللون"} 
-              </span>
-
+              {language === "En" ? "Color Name" : "أسم اللون"}
+            </span>
             {Proudect.colors.map((item, index) =>
               <span key={index}>
                 {item}
               </span>)}
           </li>
-
-
-
           <li>
             <span>
-          {language === "En" ? "Country of Origin" : "بلد المنشأ"} 
+          {language === "En" ? "Country of Origin" : "بلد المنشأ"} {":"}
             </span>
             <span> 
           {language === "En" ? Proudect.city: Proudect.city_ar}
            </span>
           </li>
-
-
           <li>
             <span>           
-          {language === "En" ? "Model Name" : "أسم الموديل"} 
+          {language === "En" ? "Model Name" : "أسم الموديل"} {":"}
           </span>
+          {" "}
             <span>
           {language === "En" ? Proudect.brand: Proudect.brand_ar}
             </span>
           </li>
         </ul>
+
+
+         */}
       </div>
     </div>
   )

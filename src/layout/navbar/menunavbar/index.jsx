@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import ReactWhatsapp from 'react-whatsapp';
 import { GetDatapages } from '../../../api/actions';
 import Arbiecicon from '../../../images/icon/Saudi-arabia-icon.png';
 import Engilshicon from '../../../images/icon/USA-icon.png';
@@ -49,10 +50,11 @@ function MenuNavbar(props) {
       localStorage.removeItem("language");
     }
   }
-
-  useEffect(() => {
-    GetDatapages(setLoadingpages, setPages)
-  }, [loadingpages]);
+  /*
+    useEffect(() => {
+      GetDatapages(setLoadingpages, setPages)
+    }, [loadingpages]);
+    */
   return (
     <>
 
@@ -71,6 +73,26 @@ function MenuNavbar(props) {
                     {language === "En" ? "Home Page" : "الرئيسية"}
                   </NavLink>
                 </li>
+                {categories.map(item =>
+                  <li key={item.id} className="nav-item">
+                    <NavLink onClick={scrollToTop} className="nav-link"
+                      to={`/proudectscategories/${item.id}/${language === "En" ? item.name_en : item.name_ar}`}>
+                      {language === "En" ? item.name_en : item.name_ar}
+                    </NavLink>
+                  </li>
+                )}
+
+                <li className="nav-item">
+                  <ReactWhatsapp number="+966508172222" message="Hello !" className="nav-link">
+                    {language === "En" ? "Projects Department" : "قسم المشاريع"}
+
+                  </ReactWhatsapp>
+                </li>
+
+
+
+                {/*
+                
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle"
                     href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -88,6 +110,8 @@ function MenuNavbar(props) {
                   </ul>
 
                 </li>
+
+                
                 {loadingpages === false ? "" : <>
                   {pages.map(item =>
                     item.show_in_navbar === "1" ?
@@ -103,6 +127,8 @@ function MenuNavbar(props) {
                     {language === "En" ? "Connect Us" : "تواصل معنا"}
                   </NavLink>
                 </li>
+
+                 */}
               </ul>
               <div class="d-flex">
                 <ul>
